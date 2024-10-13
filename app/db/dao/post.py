@@ -1,0 +1,60 @@
+from typing import Optional, Any
+
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.db.repository import Repository
+from app.db.models import PostModel
+
+from app.entities.dataclasses import PostType
+
+
+class PostDAO:
+    repository: Repository[PostModel]
+
+    __slots__ = ("repository",)
+
+    def __init__(self, session: AsyncSession) -> None:
+        self.repository = Repository(
+            session=session,
+            model=PostModel
+        )
+
+    async def add_post(
+            self,
+            post_from_user: int,
+            media: str,
+            description: str,
+            tags: Optional[str] = None
+    ) -> None:
+        await self.repository.insert(
+            post_from_user=post_from_user,
+            media=media,
+            description=description,
+            tags=tags
+        )
+        await self.repository.commit()
+
+    async def get_post_by_id(self, post_id: int) -> Optional[PostModel]:
+        result_obj = await self.repository.get_by_where(
+            PostModel.post_id == post_id
+        )
+        post = result_obj.all()
+        if post:
+            return post
+        return None
+
+    async def get_all_posts(self) -> list[PostModel] | list:
+        result_obj = await self.repository.get_by_where()
+        posts = result_obj.all()
+
+        return [
+            PostType(*post)
+            for post in posts
+        ]
+
+    async def update_post_by_id(self, post_id: int, **values: Any) -> None:
+        await self.repository.update_by_where(
+            PostModel.post_id == post_id,
+            **values
+        )
+        await self.repository.commit()

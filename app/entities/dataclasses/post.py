@@ -1,0 +1,12 @@
+from dataclasses import dataclass
+from typing import Optional
+
+
+@dataclass
+class PostType:
+    post_id: int
+    post_from_user: int
+    media: str
+    description: str
+    tags: Optional[str]
+    likes: int

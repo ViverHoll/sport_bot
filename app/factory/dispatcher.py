@@ -1,0 +1,55 @@
+from aiogram import Dispatcher
+from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
+from aiogram_dialog import setup_dialogs
+
+from app.app_config import AppConfig
+from app.db import DatabaseMiddleware
+from app.db.session import create_session_pool
+from app.dialogs import setup_all_dialogs
+from app.handlers import handler_router
+from app.middleware.outer import CheckUserMiddleware
+from app.state import state_router
+
+from .gpt import GptClient
+from .redis import create_redis
+from .cache import create_ttl_cache
+
+
+def _setup_inner_middleware(_: Dispatcher) -> None:
+    ...
+
+
+def _setup_outer_middleware(dp: Dispatcher) -> None:
+    dp.update.middleware(DatabaseMiddleware())
+    dp.update.middleware(CheckUserMiddleware())
+
+
+async def create_dispatcher(config: AppConfig) -> Dispatcher:
+    """Create dispatcher with routers, middlewares."""
+    dp = Dispatcher(
+        config=config,
+        gpt=GptClient(config),
+        storage=RedisStorage(
+            redis=await create_redis(config),
+            key_builder=DefaultKeyBuilder(
+                with_destiny=True
+            )
+        ),
+        session_pool=create_session_pool(
+            url=config.postgres.build_url()
+        ),
+        ttl_cache=create_ttl_cache()
+    )
+
+    _setup_inner_middleware(dp)
+    _setup_outer_middleware(dp)
+
+    dp.include_routers(
+        handler_router,
+        state_router,
+        setup_all_dialogs()
+    )
+
+    setup_dialogs(dp)
+
+    return dp
