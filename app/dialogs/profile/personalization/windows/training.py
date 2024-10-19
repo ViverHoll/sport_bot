@@ -1,7 +1,7 @@
-from aiogram_dialog import Dialog, Window
+from aiogram_dialog import Window
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.input import TextInput
-from aiogram_dialog.widgets.kbd import SwitchTo, Start, Button
+from aiogram_dialog.widgets.kbd import SwitchTo
 
 from app.dialogs.states import PersonalizationDialog
 

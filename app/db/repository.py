@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Generic, TypeVar, TYPE_CHECKING
+from typing import Any, TypeVar, TYPE_CHECKING, Generic
 
 from sqlalchemy import insert, select, update, CursorResult, Result
 

@@ -8,7 +8,6 @@ from aiogram_dialog.widgets.input import MessageInput, ManagedTextInput
 from app.dialogs.states import NewPost
 
 if TYPE_CHECKING:
-    from aiogram.fsm.context import FSMContext
 
     from app.db import HolderDAO
 

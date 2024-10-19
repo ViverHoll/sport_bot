@@ -44,9 +44,6 @@ async def get_lents_social_network(
         _: Message,
         dialog_manager: DialogManager
 ) -> None:
-    # await message.answer(
-    #     "<b><i><u>В разработке...🛠</u></i></b>"
-    # )
     await dialog_manager.start(
         state=PostSocialNetwork.look_post
     )

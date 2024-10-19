@@ -2,16 +2,20 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder, ReplyKeyboardMarkup
 
 
 def get_main_menu(admin: bool = False) -> ReplyKeyboardMarkup:
+    # buttons = [
+    #     "Узнать программу 🔥",
+    #     "Профиль 🦁",
+    #     "Соц. сеть 🤩",
+    #     "Другое 🤟",
+    #     "Избранное ⭐️",
+    #     "Подписка 💵",
+    #     "ИИ",
+    #     "Дневник 📕",
+    #     "О боте"
+    # ]
     buttons = [
-        "Узнать программу 🔥",
-        "Профиль 🦁",
-        "Соц. сеть 🤩",
-        "Другое 🤟",
-        "Избранное ⭐️",
-        "Подписка 💵",
-        "ИИ",
-        "Дневник 📕",
-        "О боте"
+        "Купить подписку 💵",
+        "Профиль 🦁"
     ]
 
     keyboard = ReplyKeyboardBuilder()
@@ -26,7 +30,7 @@ def get_main_menu(admin: bool = False) -> ReplyKeyboardMarkup:
             text="Админ-Панель 🚀"
         )
 
-    keyboard.adjust(1, 2)
+    keyboard.adjust(1)
 
     return keyboard.as_markup(
         resize_keyboard=True

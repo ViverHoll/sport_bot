@@ -1,8 +1,9 @@
-from typing import Any
+from typing import Any, TYPE_CHECKING
 
 from aiogram_dialog import DialogManager
 
-from app.db import HolderDAO
+if TYPE_CHECKING:
+    from app.db import HolderDAO
 
 
 async def get_list_sportsman(

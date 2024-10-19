@@ -34,5 +34,12 @@ class RegSocialNetwork(StatesGroup):
     city = State()
     description = State()
 
+
 class GptDialog(StatesGroup):
     question = State()
+
+
+class PersonalizationStates(StatesGroup):
+    parameters_user = State()
+    select_trainer = State()
+

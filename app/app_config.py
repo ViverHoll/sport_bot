@@ -32,6 +32,7 @@ class PostgresConfig(BaseSettings, env_prefix="POSTGRES_"):
     password: SecretStr
     username: str
     db_name: str
+    data: str
 
     def build_url(self) -> URL:
         return URL.create(
@@ -48,6 +49,7 @@ class RedisConfig(BaseSettings, env_prefix="REDIS_"):
     port: int
     host: str
     db: int
+    data: str
 
 class AppConfig(BaseModel):
     common: CommonConfig

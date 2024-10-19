@@ -1,7 +1,10 @@
 from aiogram import F, Router
 from aiogram.types import CallbackQuery
 
+from aiogram_dialog import DialogManager
+
 from app.app_config import AppConfig
+from app.dialogs.states import SocialNetworkProfile, OptionsSearchSportsman
 from app.keyboards.user.inline import get_support_menu, pay_menu
 from app.keyboards.user.reply import get_main_menu
 
@@ -58,5 +61,37 @@ async def inline_get_support(
     )
 
 
-"""127"""
-"""35"""
+@router.callback_query(F.data == "social_network")
+async def transition_to_social_network(
+        _: CallbackQuery,
+        dialog_manager: DialogManager
+) -> None:
+    await dialog_manager.start(
+        state=SocialNetworkProfile.options
+    )
+
+
+@router.callback_query(F.data == "training_popular_people")
+async def send_options_search_sportsman(
+        _: CallbackQuery,
+        dialog_manager: DialogManager
+) -> None:
+    await dialog_manager.start(
+        state=OptionsSearchSportsman.select
+    )
+
+
+@router.callback_query(F.data == "shop")
+async def get_shop_menu(callback: CallbackQuery) -> None:
+    await callback.answer(
+        "В разработке...",
+        show_alert=True
+    )
+
+
+@router.callback_query(F.data == "fitness_room")
+async def get_fitness_room_menu(callback: CallbackQuery) -> None:
+    await callback.answer(
+        "В разработке...",
+        show_alert=True
+    )

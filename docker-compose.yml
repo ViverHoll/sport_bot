@@ -1,0 +1,39 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    env_file: app/config.env
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+#    volumes:
+#      - redis-data:/redis_data
+
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    env_file: app/config.env
+    environment:
+      POSTGRES_PASSWORD: 090807opol
+      POSTGRES_USERNAME: postgres
+      POSTGRES_DB_NAME: sport_bot
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+#    volumes:
+#      - postgres-data:/var/lib/postgresql/data
+
+  bot:
+    build: .
+    restart: always
+    env_file: app/config.env
+    depends_on:
+      - redis
+      - postgres
+
+#volumes:
+#  redis-data: "/redis_data"
+#  postgres-data: "/var/lib/postgresql/data"

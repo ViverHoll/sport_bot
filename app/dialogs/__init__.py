@@ -15,7 +15,7 @@ from . import (
 
 
 def setup_all_dialogs() -> Router:
-    """Setup all dialogs"""
+    """Setting all dialogs."""
     router = Router()
 
     select_sportsman.setup(router)

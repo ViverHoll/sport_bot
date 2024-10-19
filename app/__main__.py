@@ -1,5 +1,7 @@
 import asyncio
 
+from sulguk import AiogramSulgukMiddleware
+
 from app.utils import configure_logging
 from app.factory import create_app_config, create_bot, create_dispatcher
 
@@ -11,6 +13,8 @@ async def main() -> None:
 
     bot = create_bot(config)
     dp = await create_dispatcher(config)
+
+    bot.session.middleware(AiogramSulgukMiddleware())
 
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)

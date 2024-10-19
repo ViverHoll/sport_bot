@@ -1,4 +1,3 @@
-from functools import partial
 from typing import Optional, Any
 
 from sqlalchemy.ext.asyncio import AsyncSession

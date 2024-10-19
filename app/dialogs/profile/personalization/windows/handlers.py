@@ -3,13 +3,14 @@ from typing import TYPE_CHECKING
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.input import ManagedTextInput
 
-from aiogram import Bot
 from aiogram.types import Message
 from aiogram.utils.chat_action import ChatActionSender
 
 from app.dialogs.states import PersonalizationDialog
 
 if TYPE_CHECKING:
+    from aiogram import Bot
+
     from app.factory import GptClient
 
 

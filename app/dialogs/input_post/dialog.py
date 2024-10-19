@@ -9,8 +9,7 @@ from app.dialogs.states import NewPost
 from .handlers import get_photo_user, get_description_user, get_tags_user, check_tags_in_text
 
 
-async def cheto(*args):
-    print("error bro")
+
 
 input_text_dialog = Dialog(
     Window(
@@ -25,8 +24,7 @@ input_text_dialog = Dialog(
         Const("Отлично! Пришлите описание своего поста"),
         TextInput(
             id="input_description_post",
-            on_success=get_description_user,
-            on_error=cheto
+            on_success=get_description_user
         ),
         state=NewPost.description
     ),
@@ -38,8 +36,7 @@ input_text_dialog = Dialog(
         TextInput(
             id="input_tags_post",
             type_factory=check_tags_in_text,
-            on_success=get_tags_user,
-            on_error=cheto
+            on_success=get_tags_user
         ),
         SwitchTo(
             text=Const("Пропустить"),

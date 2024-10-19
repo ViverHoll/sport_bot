@@ -1,5 +1,5 @@
 from aiogram_dialog import Dialog, Window, StartMode
-from aiogram_dialog.widgets.kbd import Column, Row, SwitchTo, Start, NextPage, CurrentPage, PrevPage, Row
+from aiogram_dialog.widgets.kbd import Column, SwitchTo, Start, NextPage, CurrentPage, PrevPage, Row
 from aiogram_dialog.widgets.text import Const, List, Format
 
 from app.dialogs.states import OptionsSearchSportsman, StubScrollSportsman

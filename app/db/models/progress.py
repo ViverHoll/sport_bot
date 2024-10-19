@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base import BaseModel, TimestampMixin, Int64, Int32
+from .base import BaseModel, TimestampMixin, Int64
 
 
 class ProgressModel(BaseModel, TimestampMixin):

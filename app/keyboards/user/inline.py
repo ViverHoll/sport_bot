@@ -1,19 +1,21 @@
-from typing import Mapping
+from typing import Mapping, Iterable
 
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardMarkup
 
 from app.app_config import AppConfig
 from app.callback_factory import SubscribeFactory
+from app.callback_factory.trainer import TrainerCallbackFactory
 from app.entities.enums.levels_subscribe import (
     NameSubscribe,
     PriceSubscribe
 )
+from app.entities.enums.trainer import SpeciesCoaches
 
 
 def _create_default_keyboard(
         *,
         buttons: Mapping[str, str],
-        adjust: list[int] | None = None,
+        adjust: Iterable[int] | None = None,
 ) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     for text, callback in buttons.items():
@@ -24,6 +26,40 @@ def _create_default_keyboard(
     if adjust:
         builder.adjust(*adjust)
 
+    return builder.as_markup()
+
+
+def start_menu() -> InlineKeyboardMarkup:
+    buttons = {
+        "Персональное ведение": "personalization",
+        "Тренировка знаменитостей": "training_popular_people",
+        "Фитнес залы": "fitness_room",
+        "Магазин": "shop",
+        "Соц. сеть": "social_network"
+    }
+    return _create_default_keyboard(
+        buttons=buttons,
+        adjust=[2]
+    )
+
+
+def get_coaches_menu() -> InlineKeyboardMarkup:
+    buttons = {
+        "физ тренер": SpeciesCoaches.PHYSICAL_TRAINER,
+        "нутрициолог": SpeciesCoaches.NUTRITIONIST,
+        "оздоровитель": SpeciesCoaches.WELLNESS_SPECIALIST,
+    }
+    builder = InlineKeyboardBuilder()
+
+    for text, trainer in buttons.items():
+        builder.button(
+            text=text,
+            callback_data=TrainerCallbackFactory(
+                trainer=trainer
+            )
+        )
+
+    builder.adjust(2)
     return builder.as_markup()
 
 
