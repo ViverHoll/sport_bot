@@ -1,8 +1,9 @@
 from typing import TYPE_CHECKING
 
-from aiogram.types import Message
+from aiogram.types import Message, CallbackQuery
 
 from aiogram_dialog import DialogManager
+from aiogram_dialog.widgets.kbd import Button
 from aiogram_dialog.widgets.input import MessageInput, ManagedTextInput
 
 from app.dialogs.states import NewPost
@@ -53,7 +54,7 @@ async def get_description_user(
 
 async def get_tags_user(
         message: Message,
-        _: ManagedTextInput,
+        _: ManagedTextInput | Button,
         manager: DialogManager,
         tags: str
 ) -> None:
@@ -68,9 +69,25 @@ async def get_tags_user(
         description=manager.dialog_data["description"],
         tags=tags
     )
-    # print("yshe tyt")
+    print("save post")
 
-    # await state.update_data(tags=text)
+    await manager.switch_to(
+        state=NewPost.end
+    )
+
+async def get_tags_user_handler(
+        callback: CallbackQuery,
+        _: Button,
+        manager: DialogManager
+) -> None:
+    db: HolderDAO = manager.middleware_data["db"]
+    await db.post.add_post(
+        post_from_user=callback.from_user.id,
+        media=manager.dialog_data["photo_id"],
+        description=manager.dialog_data["description"],
+        tags=None
+    )
+
     await manager.switch_to(
         state=NewPost.end
     )

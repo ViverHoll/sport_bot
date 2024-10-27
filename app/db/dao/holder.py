@@ -5,6 +5,7 @@ from .user import UsersBase
 from .sport_food import SportFoodBase
 from .post import PostDAO
 from .social_network import SocialNetworkDAO
+from .strength_indicators import StrengthIndicatorDAO
 
 
 class HolderDAO:
@@ -13,13 +14,15 @@ class HolderDAO:
     sport_food: SportFoodBase
     post: PostDAO
     social_network: SocialNetworkDAO
+    strength_indicator: StrengthIndicatorDAO
 
     __slots__ = (
         "users",
         "athletes",
         "sport_food",
         "post",
-        "social_network"
+        "social_network",
+        "strength_indicator"
     )
 
     def __init__(self, *, session: AsyncSession) -> None:
@@ -28,3 +31,4 @@ class HolderDAO:
         self.sport_food = SportFoodBase(session=session)
         self.post = PostDAO(session=session)
         self.social_network = SocialNetworkDAO(session=session)
+        self.strength_indicator = StrengthIndicatorDAO(session=session)

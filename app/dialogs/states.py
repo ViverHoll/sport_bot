@@ -84,6 +84,13 @@ class ProfileDialog(StatesGroup):
     buy_premium = State()
 
 
+class NewStrengthIndicators(StatesGroup):
+    start = State()
+    name = State()
+    core = State()
+    confirm = State()
+
+
 class SocialNetworkProfile(StatesGroup):
     options = State()
 
@@ -123,8 +130,3 @@ class SettingProfileUser(StatesGroup):
     options = State()
     notifications = State()
     motivation_quotes = State()
-
-
-
-
-

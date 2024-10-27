@@ -34,8 +34,6 @@ async def get_posts_with_info(
     if current_post_cache:
         current_post = PostType(**current_post_cache)
     else:
-        # print(f"{posts=}")
-        # print(posts[current_page])
         ttl_cache[f"post_{current_page}"] = posts[current_page].__dict__
         current_post = posts[current_page]
 

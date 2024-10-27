@@ -17,7 +17,7 @@ class UserModel(BaseModel):
     user_photo: Mapped[str | None]
 
     username: Mapped[str | None]
-    premium: Mapped[bool] = mapped_column(default=False)  # сделать тут енум(куплен, не куплен)
+    premium: Mapped[bool] = mapped_column(default=False)  # мб сделать тут енум(куплен, не куплен)
 
     select_sportsman: Mapped[bool] = mapped_column(
         default=False

@@ -18,12 +18,12 @@ options_sportsman_dialog = Dialog(
         Start(
             text=Const("🥊 Упражнения"),
             id="button_exercises",
-            state=Exercises.select
+            state=Exercises.more_item
         ),
         Start(
             text=Const("🥬 Питание"),
             id="button_food",
-            state=Food.select
+            state=Food.more_item
         ),
         # Start(
         #     text=Const("🎧 Музыка"),

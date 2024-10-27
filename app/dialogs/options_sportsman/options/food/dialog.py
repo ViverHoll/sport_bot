@@ -43,20 +43,30 @@ food_sportsman_dialog = Dialog(
             state=Pay.menu,
             when=~F["premium"]
         ),
-        SwitchTo(
+        # SwitchTo(
+        #     text=Const("⬅️ Назад"),
+        #     id="button_back",
+        #     state=Food.select
+        # ),
+        Start(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=Food.select
+            state=OptionsSportsmanStates.options
         ),
         state=Food.one_item,
         getter=get_info_about_sportsman
     ),
     Window(
         Format("{food}"),
-        SwitchTo(
+        # SwitchTo(
+        #     text=Const("⬅️ Назад"),
+        #     id="button_back",
+        #     state=Food.select
+        # ),
+        Start(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=Food.select
+            state=OptionsSportsmanStates.options
         ),
         state=Food.more_item,
         getter=get_more_foods

@@ -4,6 +4,7 @@ from .user import UserModel
 from .sport_food import SportFoodModel
 from .post import PostModel
 from .social_network import SocialNetworkModel
+from .strength_indicators import StrengthIndicatorsModel
 
 __all__ = [
     "BaseModel",
@@ -11,5 +12,6 @@ __all__ = [
     "UserModel",
     "SportFoodModel",
     "PostModel",
-    "SocialNetworkModel"
+    "SocialNetworkModel",
+    "StrengthIndicatorsModel"
 ]

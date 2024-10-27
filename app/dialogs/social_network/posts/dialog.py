@@ -1,5 +1,7 @@
+from aiogram import F
+
 from aiogram_dialog import Dialog, Window
-from aiogram_dialog.widgets.text import Format, Const
+from aiogram_dialog.widgets.text import Format, Const, Multi
 from aiogram_dialog.widgets.media import DynamicMedia
 from aiogram_dialog.widgets.kbd import (
     NextPage,
@@ -20,9 +22,13 @@ posts_dialog = Dialog(
             pages="pages"
         ),
         DynamicMedia("post_photo"),
-        Format(
-            "<i>{description}</i>\n\n"
-            "{tags}"
+        Multi(
+            Format(
+                "<i>{description}</i>\n\n"
+                "{tags}",
+                when=F["tags"]
+            ),
+            Format("<i>{description}</i>",when=~F["tags"])
         ),
         Group(
             Button(

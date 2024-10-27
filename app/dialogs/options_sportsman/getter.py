@@ -19,7 +19,7 @@ async def get_info_about_sportsman(
     info_sportsman = await db.athletes.get_sportsman_by_id(user.current_sportsman)
 
     sportsman_photo_url = MediaAttachment(
-        ContentType.VIDEO,
+        ContentType.PHOTO,
         file_id=MediaId(
             file_id=info_sportsman.photo_url
         )

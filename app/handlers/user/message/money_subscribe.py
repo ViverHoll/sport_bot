@@ -2,7 +2,9 @@ from typing import Final
 
 from aiogram import Router, F
 from aiogram.types import (
-    CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+    CallbackQuery,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton
 )
 
 from app.callback_factory import SubscribeFactory

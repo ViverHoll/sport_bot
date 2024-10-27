@@ -40,7 +40,7 @@ async def paging_logic(
         current_sportsman = sportsman_list[current_page]
 
     sportsman_photo_url = MediaAttachment(
-        ContentType.VIDEO,
+        ContentType.PHOTO,
         file_id=MediaId(
             file_id=current_sportsman.photo_url
         )

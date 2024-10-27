@@ -21,5 +21,6 @@ async def get_list_sportsman(
                 count
             )
             for count, sportsman in enumerate(sportsman_list, 1)
-        ]
+        ],
+        "count_athletes": len(sportsman_list)
     }

@@ -83,6 +83,11 @@ options_search_dialog = Dialog(
                 text=Const("➡️")
             )
         ),
+        SwitchTo(
+            text=Const("Назад"),
+            id="switch_to_options_search_menu",
+            state=OptionsSearchSportsman.select
+        ),
         state=OptionsSearchSportsman.list_sportsman,
         getter=get_list_sportsman
     ),

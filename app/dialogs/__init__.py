@@ -10,7 +10,8 @@ from . import (
     profile,
     social_network,
     input_post,
-    premium
+    premium,
+    strength_indicators
 )
 
 
@@ -27,6 +28,7 @@ def setup_all_dialogs() -> Router:
     profile.setup(router)
     input_post.setup(router)
     premium.setup(router)
+    strength_indicators.setup(router)
 
     social_network.setup(router)
 

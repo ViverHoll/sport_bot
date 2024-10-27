@@ -17,10 +17,10 @@ profile_dialog = Dialog(
             "Город: <u>{city}</u>\n"
             "Всего лайков: <s>{likes}</s>"
         ),
-        Button(
-            text=Const("Прогресс"),
-            id="button_progress"
-        ),
+        # Button(
+        #     text=Const("Прогресс"),
+        #     id="button_progress"
+        # ),
         Start(
             text=Const("Посты"),
             id="button_about_posts",

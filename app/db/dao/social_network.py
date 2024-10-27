@@ -6,6 +6,7 @@ from app.db.repository import Repository
 from app.db.models import SocialNetworkModel
 from app.entities.dataclasses import SocialNetworkType
 
+
 class SocialNetworkDAO:
     repository: Repository[SocialNetworkModel]
 

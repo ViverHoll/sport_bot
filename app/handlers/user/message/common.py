@@ -25,7 +25,7 @@ logger = logging.getLogger()
 #     await message.answer_photo()
 
 
-@common_router.message(F.text == "Узнать программу 🔥")
+@common_router.message(F.text == "Тренировка знаменитостей")
 async def go_sportsmen_menu(
         _: Message,
         dialog_manager: DialogManager
@@ -139,7 +139,28 @@ async def back_to_main_menu(message: Message) -> None:
     )
 
 
-@common_router.message(F.text == "Подписка 💵")
+@common_router.message(F.text == "Магазин")
+async def get_market(message: Message) -> None:
+    await message.answer(
+        "<b><i><u>В разработке...</u></i></b>"
+    )
+
+
+@common_router.message(F.text == "Фитнес залы")
+async def get_fitness_gym(message: Message) -> None:
+    await message.answer(
+        "<b><i><u>В разработке...</u></i></b>"
+    )
+
+
+@common_router.message(F.text == "Инструкция 📙")
+async def get_manual(message: Message) -> None:
+    await message.answer(
+        "<b><i><u>В разработке...</u></i></b>"
+    )
+
+
+@common_router.message(F.text == "Купить подписку 💵")
 async def get_info_about_subscribe(
         _: Message,
         dialog_manager: DialogManager
@@ -173,9 +194,8 @@ async def send_video_id(message: Message) -> None:
         f"{message.video.file_id}"
     )
 
-
-@common_router.message(F.photo)
-async def send_photo_id(message: Message) -> None:
-    await message.answer(
-        f"{message.photo[-1].file_id}"
-    )
+# @common_router.message(F.photo)
+# async def send_photo_id(message: Message) -> None:
+#     await message.answer(
+#         f"{message.photo[-1].file_id}"
+#     )

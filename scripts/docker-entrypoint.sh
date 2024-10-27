@@ -1,4 +1,4 @@
 set -e
 
-make migrate
+exec make migrate
 exec make run

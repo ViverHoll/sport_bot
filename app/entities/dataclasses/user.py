@@ -6,6 +6,7 @@ from typing import Optional
 @dataclass
 class UserType:
     user_id: int
+    user_photo: Optional[str]
     username: Optional[str]
     premium: bool
     select_sportsman: bool

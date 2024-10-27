@@ -51,16 +51,6 @@ async def get_lents_social_network(
 
 @router.message(
     UserRegSocialNetwork(),
-    F.text == "Рейтинг 📊"
-)
-async def get_rating_social_network(message: Message) -> None:
-    await message.answer(
-        "<b><i><u>В разработке...🛠</u></i></b>"
-    )
-
-
-@router.message(
-    UserRegSocialNetwork(),
     F.text == "Инструкция 📙"
 )
 async def get_manual_for_social_network(message: Message) -> None:

@@ -1,5 +1,7 @@
+from typing import Final
+
 from aiogram import Router, F, Bot
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.chat_action import ChatActionSender
 
@@ -12,10 +14,20 @@ from app.state.states import PersonalizationStates
 
 router = Router()
 
+_BUTTON_BACK: Final[InlineKeyboardMarkup] = InlineKeyboardMarkup(
+    inline_keyboard=[[
+        InlineKeyboardButton(
+            text="Назад",
+            callback_data="select_trainer_for_gpt"
+        )
+    ]]
+)
 
-@router.callback_query(F.data == "personalization")
-async def start_process_personalization(callback: CallbackQuery, state: FSMContext) -> None:
-    await callback.message.edit_text(
+
+# @router.callback_query(F.data == "personalization")
+@router.message(F.text == "Персональное ведение")
+async def start_process_personalization(message: Message, state: FSMContext) -> None:
+    await message.answer(
         text="напиши свои цели в фитнесе и нынешние параметры"
     )
     await state.set_state(PersonalizationStates.parameters_user)
@@ -31,6 +43,14 @@ async def get_target_user(message: Message, state: FSMContext) -> None:
     await state.set_state(PersonalizationStates.select_trainer)
 
 
+@router.callback_query(F.data == "select_trainer_for_gpt")
+async def get_target_for_user_handle(callback: CallbackQuery) -> None:
+    await callback.message.edit_text(
+        text="Выберите тренера",
+        reply_markup=get_coaches_menu()
+    )
+
+
 @router.callback_query(
     PersonalizationStates.select_trainer,
     TrainerCallbackFactory.filter()
@@ -44,9 +64,9 @@ async def get_select_trainer_user(
 ) -> None:
     # await callback.answer()
     async with ChatActionSender(
-        bot=bot,
-        chat_id=callback.from_user.id,
-        interval=3.0
+            bot=bot,
+            chat_id=callback.from_user.id,
+            interval=3.0
     ):
         await callback.message.edit_reply_markup()
         state_data = await state.get_data()
@@ -59,5 +79,8 @@ async def get_select_trainer_user(
             question=response_text,
             return_text=True
         )
-        await callback.message.edit_text(gpt_result, parse_mode=SULGUK_PARSE_MODE)
-        await state.clear()
+        await callback.message.edit_text(
+            gpt_result,
+            parse_mode=SULGUK_PARSE_MODE,
+            reply_markup=_BUTTON_BACK
+        )

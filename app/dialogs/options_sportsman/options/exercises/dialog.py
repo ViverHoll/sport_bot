@@ -53,10 +53,15 @@ exercises_sportsman_dialog = Dialog(
     ),
     Window(
         Format("{exercises}"),
-        SwitchTo(
+        # SwitchTo(
+        #     text=Const("⬅️ Назад"),
+        #     id="button_back",
+        #     state=Exercises.select
+        # ),
+        Start(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=Exercises.select
+            state=OptionsSportsmanStates.options
         ),
         state=Exercises.more_item,
         getter=get_more_exercises

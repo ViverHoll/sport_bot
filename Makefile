@@ -18,3 +18,9 @@ migrate:
 run:
 	python -m app
 
+
+# Run bot in docker container
+.PHONY: app-run
+app-run:
+	@docker-compose stop
+	@docker-compose up -d --remove-orphans

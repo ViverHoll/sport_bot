@@ -6,10 +6,13 @@ from aiogram_dialog.widgets.input import MessageInput, TextInput
 
 from app.dialogs.states import NewPost
 
-from .handlers import get_photo_user, get_description_user, get_tags_user, check_tags_in_text
-
-
-
+from .handlers import (
+    get_photo_user,
+    get_description_user,
+    get_tags_user,
+    check_tags_in_text,
+    get_tags_user_handler
+)
 
 input_text_dialog = Dialog(
     Window(
@@ -41,6 +44,7 @@ input_text_dialog = Dialog(
         SwitchTo(
             text=Const("Пропустить"),
             id="switch_to_skip_tags",
+            on_click=get_tags_user_handler,
             state=NewPost.end
         ),
         state=NewPost.tags

@@ -1,15 +1,21 @@
 FROM python:3.12.7-alpine
 
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+ENV PATH "/app/scripts:${PATH}"
 ENV PYTHONUNBUFFERED = 1
 
-WORKDIR /my_app
+WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN chmod +x scripts/*
 
-CMD ["python", "-m", "app"]
+#CMD ["python", "-m", "app"]
+
+
+ADD . /app/
+RUN chmod +x scripts/*
+ENTRYPOINT ["docker-entrypoint.sh"]
 
