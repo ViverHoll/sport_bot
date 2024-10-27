@@ -41,16 +41,16 @@ scroll_sportsman_dialog = Dialog(
         Row(
             PrevPage(
                 scroll="stub_scroll",
-                text=Const("⬅️ Назад")
+                text=Const("⬅️")
             ),
             Button(
-                text=Const("Выбрать ✅"),
+                text=Const("✅"),
                 id="select_scroll_sportsman",
                 on_click=select_current_sportsman
             ),
             NextPage(
                 scroll="stub_scroll",
-                text=Const("Дальше ➡️")
+                text=Const("➡️")
             ),
         ),
         Start(

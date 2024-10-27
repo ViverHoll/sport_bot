@@ -19,7 +19,6 @@ async def get_name_exercises(
         text: str
 ) -> None:
     manager.dialog_data["name_exercises"] = text
-    # print(manager.dialog_data)
 
     await manager.switch_to(
         state=NewStrengthIndicators.core
@@ -32,10 +31,7 @@ async def get_core_exercises(
         manager: DialogManager,
         text: str
 ) -> None:
-    # print(manager.dialog_data)
-
     manager.dialog_data["core_exercises"] = text
-    # print(manager.dialog_data)
 
     await manager.switch_to(
         state=NewStrengthIndicators.confirm
@@ -48,7 +44,6 @@ async def save_new_strength_indicators(
         manager: DialogManager
 ) -> None:
     db: HolderDAO = manager.middleware_data["db"]
-    # print(manager.dialog_data)
     name = manager.dialog_data.get("name_exercises")
     core = manager.dialog_data.get("core_exercises")
 

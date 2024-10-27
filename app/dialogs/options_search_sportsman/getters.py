@@ -12,15 +12,20 @@ async def get_list_sportsman(
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     sportsman_list = await db.athletes.get_athletes()
+    print(sportsman_list)
 
     return {
         "athletes": [
             (
-                f"<b>{sportsman.full_name()}</b>\n"
+                f"{sportsman.full_name()}\n"
                 f"<i>{sportsman.description}</i>\n\n",
-                count
+                sportsman.sportsmen_id
             )
-            for count, sportsman in enumerate(sportsman_list, 1)
+            for sportsman in sportsman_list
         ],
-        "count_athletes": len(sportsman_list)
+        "count_athletes": len(sportsman_list),
+        "athletes_names": [
+            (sportsman.full_name(), sportsman.sportsmen_id)
+            for sportsman in sportsman_list
+        ]
     }

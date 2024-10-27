@@ -16,7 +16,7 @@ from aiogram_dialog.widgets.kbd import (
 from app.dialogs.states import (
     ProfileDialog,
     # PersonalizationDialog,
-    SettingProfileUser, PremiumDialog, NewStrengthIndicators
+    SettingProfileUser, PremiumDialog, NewStrengthIndicators, UpdateStrengthIndicator
 )
 
 from .getters import getter
@@ -41,16 +41,16 @@ profile_dialog = Dialog(
         # ),
         Format(
             "<b>✨ Подписка:</b> <u>{premium_status}</u>\n"
-            "Потенциальные gym-bro: {count_gym_bro}\n"
-            "Прогресс по параметрам:"
+            "<b>Потенциальные gym-bro:</b> <u>{count_gym_bro}</u>\n"
+            "<b>Прогресс по параметрам:</b>{parameters}"
         ),
         Column(
             Group(
-                # SwitchTo(
-                #     text=Const("Обновить параметры"),
-                #     id="switch_to_update_parameters",
-                #     state=...
-                # ),
+                Start(
+                    text=Const("Обновить параметры"),
+                    id="switch_to_update_parameters",
+                    state=UpdateStrengthIndicator.update_menu
+                ),
                 # SwitchTo(
                 #     text=Const("Изменить параметры"),
                 #     id="switch_to_edit_parameters",

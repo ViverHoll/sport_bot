@@ -21,4 +21,4 @@ class Sportsman:
     music: str
 
     def full_name(self) -> str:
-        return f"{self.name} {self.surname}"
+        return f"{self.name} {self.surname}".title()

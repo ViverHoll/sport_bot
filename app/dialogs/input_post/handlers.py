@@ -58,10 +58,6 @@ async def get_tags_user(
         manager: DialogManager,
         tags: str
 ) -> None:
-    # print("ya tyt")
-    # print(f"{tags=}")
-    # manager.dialog_data["tags"] = text
-    # state: FSMContext = manager.middleware_data["state"]
     db: HolderDAO = manager.middleware_data["db"]
     await db.post.add_post(
         post_from_user=message.from_user.id,
@@ -69,7 +65,6 @@ async def get_tags_user(
         description=manager.dialog_data["description"],
         tags=tags
     )
-    print("save post")
 
     await manager.switch_to(
         state=NewPost.end

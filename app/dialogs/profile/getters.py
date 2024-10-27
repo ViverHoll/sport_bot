@@ -6,6 +6,7 @@ from aiogram_dialog import DialogManager
 from aiogram_dialog.api.entities import MediaAttachment, MediaId
 
 from app.entities.dataclasses import UserType
+from app.db import Database
 
 """strength indicators"""
 
@@ -26,6 +27,7 @@ def _get_photo_for_aiogram_dialog(
 async def getter(
         dialog_manager: DialogManager,
         user: UserType,
+        db: Database,
         **_: Any,
 ) -> dict[str, Any]:
     checked = dialog_manager.dialog_data.get("is_checked", False)
@@ -33,6 +35,14 @@ async def getter(
     notifications_options = ["Выключены", "Включены"]
 
     count_days = datetime.now().date() - user.created.date()
+
+    parameters = await db.strength_indicator.get_all_strength_indicators(
+        user_id=user.user_id
+    )
+    if parameters:
+        parameters_user = "".join(f"\n<b><i>{i.name}:</i></b> <u>{i.core}</u>" for i in parameters)
+    else:
+        parameters_user = "<i><u>Пока не добавили</u></i>"
 
     if user.user_photo:
         photo = _get_photo_for_aiogram_dialog(
@@ -55,5 +65,6 @@ async def getter(
         "notifications_status": notifications_options[checked],
         "count_gym_bro": 32,
         "button_photo_name": button_photo_name,
-        "photo_user": photo
+        "photo_user": photo,
+        "parameters": parameters_user
     }

@@ -52,3 +52,4 @@ async def get_new_photo_user(
     await manager.switch_to(
         state=ProfileDialog.menu
     )
+

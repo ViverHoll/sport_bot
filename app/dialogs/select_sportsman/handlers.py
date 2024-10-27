@@ -50,6 +50,7 @@ async def paging_logic(
         event_context.user_id,
         current_sportsman=current_sportsman.sportsmen_id
     )
+    print(f"{current_sportsman.sportsmen_id=}")
 
     return {
         "pages": len(sportsman_list),

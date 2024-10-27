@@ -21,7 +21,6 @@ class GptClient:
                 )
             )
         )
-        # print(self.gpt.models.list())
 
     async def response(
             self,

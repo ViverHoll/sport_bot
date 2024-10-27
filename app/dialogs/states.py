@@ -22,6 +22,7 @@ class StubScrollSportsman(StatesGroup):
 
 class OptionsSportsmanStates(StatesGroup):
     options = State()
+    options_for_list = State()
     select_options = State()
     exercises = State()
     food = State()
@@ -88,6 +89,13 @@ class NewStrengthIndicators(StatesGroup):
     start = State()
     name = State()
     core = State()
+    confirm = State()
+
+
+class UpdateStrengthIndicator(StatesGroup):
+    update_menu = State()
+    select_exercises = State()
+    new_core = State()
     confirm = State()
 
 

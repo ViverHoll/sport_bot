@@ -1,6 +1,6 @@
 from aiogram import F
 from aiogram_dialog import Dialog, Window
-from aiogram_dialog.widgets.kbd import Group, Start, SwitchTo, Button
+from aiogram_dialog.widgets.kbd import Group, Start, SwitchTo, Button, Cancel
 from aiogram_dialog.widgets.media import DynamicMedia
 from aiogram_dialog.widgets.text import Const, Format
 

@@ -1,5 +1,12 @@
+import operator
+
 from aiogram_dialog import Dialog, Window, StartMode
-from aiogram_dialog.widgets.kbd import Column, SwitchTo, Start, NextPage, CurrentPage, PrevPage, Row
+from aiogram_dialog.widgets.kbd import (
+    Select,
+    Row, Column,
+    SwitchTo, Start,
+    NextPage, CurrentPage, PrevPage
+)
 from aiogram_dialog.widgets.text import Const, List, Format
 
 from app.dialogs.states import OptionsSearchSportsman, StubScrollSportsman
@@ -11,6 +18,7 @@ from .categories_search_windows import (
 )
 
 from .getters import get_list_sportsman
+from .handlers import select_sportsman
 
 options_search_dialog = Dialog(
     Window(
@@ -70,6 +78,16 @@ options_search_dialog = Dialog(
             id="scroll_list_sportsman",
             page_size=5
         ),
+        Column(
+            Select(
+                text=Format("{item[0]}"),
+                id="select_sportsman_id",
+                item_id_getter=operator.itemgetter(1),
+                items="athletes_names",
+                on_click=select_sportsman,
+                type_factory=int  # чтобы айди приходил как число, а не строка
+            ),
+        ),
         Row(
             PrevPage(
                 scroll="scroll_list_sportsman",
@@ -95,6 +113,3 @@ options_search_dialog = Dialog(
     window_genre_musix,
     window_name
 )
-
-
-

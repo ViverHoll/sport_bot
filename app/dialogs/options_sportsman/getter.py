@@ -16,6 +16,7 @@ async def get_info_about_sportsman(
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     user = await db.users.get_user(event_from_user.id)
+    print(user)
     info_sportsman = await db.athletes.get_sportsman_by_id(user.current_sportsman)
 
     sportsman_photo_url = MediaAttachment(

@@ -73,7 +73,7 @@ async def get_photo_user_handle(
     await state.update_data(media=message.photo[-1].file_id)
     await message.answer(
         "Теперь нужно отправить свою локацию.\n"
-        "Ты можешь сам ввести город, либо отправить локацию через телеграм"
+        "Введите город:"
     )
     await state.set_state(RegSocialNetwork.city)
 
@@ -85,19 +85,13 @@ async def incorrect_input_user_handle(message: Message) -> None:
 
 @router.message(
     RegSocialNetwork.city,
-    or_f(F.location, F.text)
+    F.text
 )
 async def get_user_location_via_tg_handle(
         message: Message,
         state: FSMContext
 ) -> None:
-    if message.location:
-        location = message.location
-        await state.update_data(
-            city=f"{location.latitude}, {location.longitude}"
-        )
-    else:
-        await state.update_data(city=message.text)
+    await state.update_data(city=message.text)
     await message.answer(
         "Остался последний шаг.\n"
         "Напишите свое описание, чтобы пользователь мог прочитать его о восхищаться тобой!"
