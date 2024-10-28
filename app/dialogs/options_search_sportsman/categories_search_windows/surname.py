@@ -5,7 +5,7 @@ from aiogram_dialog.widgets.text import Const
 
 from app.dialogs.states import OptionsSearchSportsman
 
-from app.dialogs.options_search_sportsman.handlers import get_input_name
+from .handlers import get_input_surname
 
 window_surname = Window(
     Const("Введите фамилию спортсмена:"),
@@ -16,7 +16,7 @@ window_surname = Window(
     ),
     TextInput(
         id="input_surname_sportsman",
-        on_success=get_input_name
+        on_success=get_input_surname
     ),
     state=OptionsSearchSportsman.surname
 )

@@ -22,16 +22,17 @@ async def search_available(
     )
 
 
-async def get_input_name(
-        message: Message,
-        _: ManagedTextInput,
-        manager: DialogManager,
-        __: str
-) -> None:
-    await message.answer(
-        "Данные не найдены. Попробуйте позже"
-    )
-    await manager.done()
+# async def get_input_name(
+#         message: Message,
+#         _: ManagedTextInput,
+#         manager: DialogManager,
+#         name_sportsman: str
+# ) -> None:
+#     db: Database =
+#     # await message.answer(
+#     #     "Данные не найдены. Попробуйте позже"
+#     # )
+#     # await manager.done()
 
 
 async def select_sportsman(
@@ -46,4 +47,4 @@ async def select_sportsman(
         user_id=user.user_id,
         current_sportsman=button_id
     )
-    await manager.start(OptionsSportsmanStates.options_for_list)
+    await manager.start(OptionsSportsmanStates.options)

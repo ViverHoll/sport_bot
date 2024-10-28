@@ -8,11 +8,14 @@ from aiogram_dialog.widgets.kbd import (
     PrevPage,
     Button,
     Group,
-    StubScroll
+    StubScroll,
+    SwitchTo
 )
 
 from app.dialogs.states import PostSocialNetwork
+from .handlers import clicked_like
 
+from .windows import comment_window
 from .getters import get_posts_with_info
 
 posts_dialog = Dialog(
@@ -28,21 +31,31 @@ posts_dialog = Dialog(
                 "{tags}",
                 when=F["tags"]
             ),
-            Format("<i>{description}</i>",when=~F["tags"])
+            Format(
+                "<i>{description}</i>",
+                when=~F["tags"]
+            )
         ),
-        Group(
-            Button(
-                text=Format("❤️ ({likes})"),
-                id="button_heart_post"
-            ),
-            Button(
+        SwitchTo(
                 text=Const("✉️"),
-                id="button_comment_post"
+                id="button_comment_post",
+                state=PostSocialNetwork.comment
             ),
-            Button(
-                text=Const("⭐️"),
-                id="button_favourites_post"
-            ),
+        Group(
+            # Button(
+            #     text=Format("{like_heart}"),
+            #     id="button_heart_post",
+            #     on_click=clicked_like
+            # ),
+            # SwitchTo(
+            #     text=Const("✉️"),
+            #     id="button_comment_post",
+            #     state=PostSocialNetwork.comment
+            # ),
+            # Button(
+            #     text=Const("⭐️"),
+            #     id="button_favourites_post"
+            # ),
             PrevPage(
                 scroll="scroll_posts",
                 text=Const("⬅️")
@@ -51,9 +64,10 @@ posts_dialog = Dialog(
                 scroll="scroll_posts",
                 text=Const("➡️")
             ),
-            width=3
+            width=2
         ),
         state=PostSocialNetwork.look_post,
         getter=get_posts_with_info
-    )
+    ),
+    comment_window
 )

@@ -1,10 +1,10 @@
 from aiogram_dialog import Dialog, Window
-from aiogram_dialog.widgets.kbd import Start, Cancel
+from aiogram_dialog.widgets.kbd import Start
 from aiogram_dialog.widgets.media import DynamicMedia
 from aiogram_dialog.widgets.text import Const, Format
 
 from app.dialogs.options_sportsman.getter import get_info_about_sportsman
-from app.dialogs.states import Food, OptionsSportsmanStates, StubScrollSportsman, Exercises
+from app.dialogs.states import Food, OptionsSportsmanStates, StubScrollSportsman, Exercises, OptionsSearchSportsman
 
 options_sportsman_dialog = Dialog(
     Window(
@@ -33,7 +33,8 @@ options_sportsman_dialog = Dialog(
         Start(
             text=Const("⬅️ Назад"),
             id="back_to_select_sportsman",
-            state=StubScrollSportsman.sportsman
+            # state=StubScrollSportsman.sportsman
+            state=OptionsSearchSportsman.list_sportsman
         ),
         state=OptionsSportsmanStates.options,
         getter=get_info_about_sportsman

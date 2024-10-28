@@ -70,9 +70,17 @@ async def get_select_trainer_user(
     ):
         await callback.message.edit_reply_markup()
         state_data = await state.get_data()
+
+        if callback_data.trainer.value == "physical_trainer":
+            more_text = "дай еще программу тренировок под мои требования"
+        elif callback_data.trainer.value == "nutritionist":
+            more_text = "дай еще план питания под мои требования"
+        else:
+            more_text = ""
         response_text = (
             f"Привет! подскажи мне: {state_data['parameters_user']}\n\n"
             f"Только ответь как {callback_data.trainer.value}\n\n"
+            f"{more_text}\n"
             f"И отправь мне сообщение с html-тэгами"
         )
         gpt_result = await gpt.response(

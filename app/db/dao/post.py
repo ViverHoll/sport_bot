@@ -34,17 +34,22 @@ class PostDAO:
         )
         await self.repository.commit()
 
-    async def get_post_by_id(self, post_id: int) -> Optional[PostModel]:
+    async def get_post_by_id(self, post_id: int) -> Optional[PostType]:
         result_obj = await self.repository.get_by_where(
             PostModel.post_id == post_id
         )
         post = result_obj.all()
         if post:
-            return post
+            return PostType(*post[0])
         return None
 
-    async def get_all_posts(self) -> list[PostModel] | list:
-        result_obj = await self.repository.get_by_where()
+    async def get_all_posts(self, user_id: int | None = None) -> list[PostModel] | list:
+        if not user_id:
+            result_obj = await self.repository.get_by_where()
+        else:
+            result_obj = await self.repository.get_by_where(
+                PostModel.post_from_user == user_id
+            )
         posts = result_obj.all()
 
         return [

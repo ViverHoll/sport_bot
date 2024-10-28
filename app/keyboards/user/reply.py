@@ -20,7 +20,8 @@ def get_main_menu(admin: bool = False) -> ReplyKeyboardMarkup:
         "Магазин",
         "Профиль 🦁",
         "Соц. сеть 🤩",
-        "Купить подписку 💵"
+        "Купить подписку 💵",
+        "О боте"
     ]
 
     keyboard = ReplyKeyboardBuilder()
@@ -35,7 +36,7 @@ def get_main_menu(admin: bool = False) -> ReplyKeyboardMarkup:
             text="Админ-Панель 🚀"
         )
 
-    keyboard.adjust(2, 2, 2, 1)
+    keyboard.adjust(2)
 
     return keyboard.as_markup(
         resize_keyboard=True
@@ -46,7 +47,7 @@ def get_social_network_reply_menu() -> ReplyKeyboardMarkup:
     buttons = [
         "Профиль 🎩",
         "Лента ⚡️",
-        "Рейтинг 📊",
+        # "Рейтинг 📊",
         "Инструкция 📙",
         "Главное меню 🔙"
     ]

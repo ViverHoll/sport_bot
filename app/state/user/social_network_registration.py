@@ -2,7 +2,6 @@ from typing import Final
 
 from aiogram import Router, F
 from aiogram.types import CallbackQuery, Message
-from aiogram.filters import or_f
 from aiogram.fsm.context import FSMContext
 
 from app.db import HolderDAO
@@ -120,3 +119,4 @@ async def get_description_user_handle(
         "Приятного пользования",
         reply_markup=get_social_network_reply_menu()
     )
+    await state.set_state()

@@ -8,7 +8,8 @@ from aiogram_dialog.api.entities import MediaAttachment, MediaId
 
 from cachetools import TTLCache
 
-from app.entities.dataclasses import PostType
+from app.entities.dataclasses import UserType, PostType
+
 
 if TYPE_CHECKING:
     from app.db import HolderDAO
@@ -18,9 +19,12 @@ async def get_posts_with_info(
         dialog_manager: DialogManager,
         event_context: EventContext,
         ttl_cache: TTLCache,
+        user: UserType,
         **_kwargs
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
+
+    text_like = "🖤" if dialog_manager.dialog_data.get("like") else "❤️"
 
     if not ttl_cache.get("all_posts", False):
         posts = await db.post.get_all_posts()
@@ -30,6 +34,9 @@ async def get_posts_with_info(
 
     current_page = await dialog_manager.find("scroll_posts").get_page()
     current_post_cache = ttl_cache.get(f"post_{current_page}", {})
+    # current_post = await db.post.get_post_by_id(post_id=user.current_post)
+
+    # current_post = PostType(**current_page_base)
 
     if current_post_cache:
         current_post = PostType(**current_post_cache)
@@ -55,5 +62,6 @@ async def get_posts_with_info(
         "post_photo": post_photo,
         "description": current_post.description,
         "tags": current_post.tags,
-        "likes": current_post.likes
+        "likes": current_post.likes,
+        "like_heart": text_like
     }

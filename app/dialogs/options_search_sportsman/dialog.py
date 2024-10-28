@@ -12,9 +12,9 @@ from aiogram_dialog.widgets.text import Const, List, Format
 from app.dialogs.states import OptionsSearchSportsman, StubScrollSportsman
 
 from .categories_search_windows import (
-    window_genre_musix,
     window_name,
     window_surname,
+    not_found_sportsman_window
 )
 
 from .getters import get_list_sportsman
@@ -54,13 +54,6 @@ options_search_dialog = Dialog(
                 id="search_by_surname",
                 state=OptionsSearchSportsman.surname
             )
-        ),
-        Column(
-            SwitchTo(
-                text=Const("🎧 Жанр музыки"),
-                id="search_by_genre_music",
-                state=OptionsSearchSportsman.genre_music
-            ),
         ),
         SwitchTo(
             text=Const("◀️ Назад"),
@@ -110,6 +103,6 @@ options_search_dialog = Dialog(
         getter=get_list_sportsman
     ),
     window_surname,
-    window_genre_musix,
-    window_name
+    window_name,
+    not_found_sportsman_window
 )

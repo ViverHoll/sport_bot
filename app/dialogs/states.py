@@ -12,6 +12,8 @@ class OptionsSearchSportsman(StatesGroup):
     exercises = State()
     mr_olympia = State()
     genre_music = State()
+    found = State()
+    not_found = State()
 
 
 class StubScrollSportsman(StatesGroup):
@@ -106,6 +108,7 @@ class SocialNetworkProfile(StatesGroup):
 class PostSocialNetwork(StatesGroup):
     look_post = State()
     comment = State()
+    like = State()
 
 
 class NewPost(StatesGroup):

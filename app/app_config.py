@@ -19,6 +19,7 @@ class CommonConfig(BaseSettings, env_prefix="COMMON_"):
     support_url: str
     gpt_token: SecretStr
     proxy: str
+    admins: list[int]
 
 
 class ChannelConfig(BaseSettings, env_prefix="CHANNEL_"):
@@ -50,6 +51,7 @@ class RedisConfig(BaseSettings, env_prefix="REDIS_"):
     host: str
     db: int
     data: str
+
 
 class AppConfig(BaseModel):
     common: CommonConfig

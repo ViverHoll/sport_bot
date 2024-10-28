@@ -55,9 +55,15 @@ async def get_notes_user(message: Message) -> None:
 
 
 @common_router.message(F.text == "О боте")
-async def get_info_about_bot(message: Message) -> None:
-    await message.answer(
-        "<b><i><u>В разработке...</u></i></b>"
+async def get_info_about_bot(
+        _: Message,
+        dialog_manager: DialogManager
+) -> None:
+    # await message.answer(
+    #     "<b><i><u>В разработке...</u></i></b>"
+    # )
+    await dialog_manager.start(
+        state=MoreFuncStates.menu
     )
 
 

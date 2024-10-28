@@ -37,19 +37,31 @@ class SportsmanBase:
 
     async def get_athletes(self) -> list[Sportsman]:
         result_obj = await self.repository.get_by_where()
-
-
-
-
         athletes = result_obj.all()
-
-
-        # for sportsman in xyi:
-        #     athletes.append(
-        #         Sportsman(*sportsman)
-        #     )
 
         return [
             Sportsman(*sportsman)
             for sportsman in athletes
         ]
+
+    async def get_sportsman_by_name(self, sportsman_name: str) -> Sportsman | None:
+        result_obj = await self.repository.get_by_where(
+            SportsmanModel.name == sportsman_name
+        )
+
+        sportsman = result_obj.all()
+
+        if sportsman:
+            return Sportsman(*sportsman[0])
+        return None
+
+    async def get_sportsman_by_surname(self, sportsman_surname: str) -> Sportsman | None:
+        result_obj = await self.repository.get_by_where(
+            SportsmanModel.surname == sportsman_surname
+        )
+
+        sportsman = result_obj.all()
+
+        if sportsman:
+            return Sportsman(*sportsman[0])
+        return None

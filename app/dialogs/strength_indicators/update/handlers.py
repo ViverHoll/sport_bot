@@ -19,7 +19,6 @@ async def get_select_exercise(
         manager: DialogManager,
         button_id: int
 ) -> None:
-    print(widget.text)
     manager.dialog_data["exercise_id"] = button_id
 
     await manager.switch_to(

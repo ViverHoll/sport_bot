@@ -12,7 +12,6 @@ async def get_list_sportsman(
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     sportsman_list = await db.athletes.get_athletes()
-    print(sportsman_list)
 
     return {
         "athletes": [
