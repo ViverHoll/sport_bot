@@ -16,7 +16,7 @@ class PostDAO:
     def __init__(self, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=PostModel
+            model=PostModel,
         )
 
     async def add_post(
@@ -24,19 +24,19 @@ class PostDAO:
             post_from_user: int,
             media: str,
             description: str,
-            tags: Optional[str] = None
+            tags: Optional[str] = None,
     ) -> None:
         await self.repository.insert(
             post_from_user=post_from_user,
             media=media,
             description=description,
-            tags=tags
+            tags=tags,
         )
         await self.repository.commit()
 
     async def get_post_by_id(self, post_id: int) -> Optional[PostType]:
         result_obj = await self.repository.get_by_where(
-            PostModel.post_id == post_id
+            PostModel.post_id == post_id,
         )
         post = result_obj.all()
         if post:
@@ -48,7 +48,7 @@ class PostDAO:
             result_obj = await self.repository.get_by_where()
         else:
             result_obj = await self.repository.get_by_where(
-                PostModel.post_from_user == user_id
+                PostModel.post_from_user == user_id,
             )
         posts = result_obj.all()
 
@@ -60,6 +60,12 @@ class PostDAO:
     async def update_post_by_id(self, post_id: int, **values: Any) -> None:
         await self.repository.update_by_where(
             PostModel.post_id == post_id,
-            **values
+            **values,
+        )
+        await self.repository.commit()
+
+    async def delete_post(self, post_id: int) -> None:
+        await self.repository.delete_by_where(
+            PostModel.post_id == post_id,
         )
         await self.repository.commit()

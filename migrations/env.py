@@ -20,9 +20,11 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from app.db import BaseModel
-from app.app_config import PostgresConfig
+from app.models.sql import BaseModel
+from app.models.config.env import PostgresConfig
+
 target_metadata = BaseModel.metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
@@ -32,6 +34,7 @@ target_metadata = BaseModel.metadata
 def _get_dsn_postgres() -> URL:
     _config = PostgresConfig()
     return _config.build_url()
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.

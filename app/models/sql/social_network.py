@@ -16,6 +16,6 @@ class SocialNetworkModel(BaseModel, TimestampMixin):
     likes: Mapped[Int32] = mapped_column(default=0)
     city: Mapped[str]
     description: Mapped[str]
-    subscribes: Mapped[Int32]
+    subscribes: Mapped[Int32] = mapped_column(default=0)
     grade: Mapped[float] = mapped_column(default=0.0)
-    count_posts: Mapped[Int16]
+    count_posts: Mapped[Int16] = mapped_column(default=0)

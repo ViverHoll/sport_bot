@@ -11,12 +11,13 @@ from . import (
     social_network,
     input_post,
     premium,
-    strength_indicators
+    strength_indicators,
+    delete_post,
 )
 
 
 def setup_all_dialogs() -> Router:
-    """Setting all dialogs."""
+    """Setups all dialogs."""
     router = Router()
 
     select_sportsman.setup(router)
@@ -31,5 +32,6 @@ def setup_all_dialogs() -> Router:
     strength_indicators.setup(router)
 
     social_network.setup(router)
+    delete_post.setup(router)
 
     return router

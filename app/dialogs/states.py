@@ -156,3 +156,8 @@ class NewSportsmanDialog(StatesGroup):
     music = StatesGroup()
 
     confirm = State()
+
+
+class DeletePostDialog(StatesGroup):
+    menu = State()
+    confirm = State()

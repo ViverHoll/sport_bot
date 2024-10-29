@@ -6,9 +6,12 @@ from datetime import datetime
 class SocialNetworkType:
     user_id: int
     full_name: str
-    age: str
+    age: int
     media: str
     likes: int
     city: str
     description: str
+    subscribes: int
+    grade: float
+    count_posts: int
     created_at: datetime

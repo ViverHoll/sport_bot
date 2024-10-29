@@ -21,7 +21,7 @@ def check_tags_in_text(text: str) -> str:
     elements = text.split()
     for element in elements:
         if not element.startswith("#"):
-            raise NotTagsError
+            raise ValueError
     return text
 
 

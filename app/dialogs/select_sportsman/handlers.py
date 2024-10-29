@@ -21,7 +21,7 @@ async def paging_logic(
         dialog_manager: DialogManager,
         event_context: EventContext,
         ttl_cache: TTLCache,
-        **_kwargs
+        **_kwargs: Any
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
 
