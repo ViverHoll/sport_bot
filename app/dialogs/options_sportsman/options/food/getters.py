@@ -2,7 +2,7 @@ from typing import Any, TYPE_CHECKING
 
 from aiogram_dialog import DialogManager
 
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 if TYPE_CHECKING:
     from app.db import HolderDAO

@@ -1,7 +1,7 @@
 import asyncio
 from logging.config import fileConfig
 
-from sqlalchemy import pool, URL
+from sqlalchemy import URL
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine
 
@@ -20,7 +20,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from app.db.models import BaseModel
+from app.db import BaseModel
 from app.app_config import PostgresConfig
 target_metadata = BaseModel.metadata
 

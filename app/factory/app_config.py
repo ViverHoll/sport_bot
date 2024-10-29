@@ -1,7 +1,6 @@
-from app.app_config import (
+from app.models.config.env import (
     AppConfig,
-    ChannelConfig,
-    CommonConfig,
+    TelegramConfig,
     PostgresConfig,
     RedisConfig
 )
@@ -9,8 +8,7 @@ from app.app_config import (
 
 def create_app_config() -> AppConfig:
     return AppConfig(
-        common=CommonConfig(),
-        channel=ChannelConfig(),
+        common=TelegramConfig(),
         postgres=PostgresConfig(),
         redis=RedisConfig()
     )

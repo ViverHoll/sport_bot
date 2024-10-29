@@ -26,4 +26,6 @@ class BaseModel(DeclarativeBase):
 
 
 class TimestampMixin:
-    created_at: Mapped[datetime] = mapped_column(server_default=NowFunc)
+    created_at: Mapped[datetime] = mapped_column(
+        server_default=NowFunc
+    )

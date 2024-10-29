@@ -1,8 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.repository import Repository
-from app.db.models import LikeModel
-from app.entities.dataclasses import LikeType
+from app.models.sql import LikeModel
+from app.models.dataclasses import LikeType
 
 
 class LikeDAO:

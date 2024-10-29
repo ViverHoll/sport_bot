@@ -5,7 +5,7 @@ from aiogram_dialog import DialogManager
 from app.db import Database
 
 if TYPE_CHECKING:
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
 
 
 async def get_all_exercises(

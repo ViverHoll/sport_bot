@@ -6,14 +6,12 @@ from aiogram_dialog.widgets.media import DynamicMedia
 from aiogram_dialog.widgets.kbd import (
     NextPage,
     PrevPage,
-    Button,
     Group,
     StubScroll,
     SwitchTo
 )
 
 from app.dialogs.states import PostSocialNetwork
-from .handlers import clicked_like
 
 from .windows import comment_window
 from .getters import get_posts_with_info

@@ -1,15 +1,14 @@
 from typing import Any, TYPE_CHECKING
 
-from aiogram.types import CallbackQuery, Message
+from aiogram.types import CallbackQuery
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.kbd import Select
-from aiogram_dialog.widgets.input import ManagedTextInput
 
 from app.dialogs.states import OptionsSportsmanStates
 
 if TYPE_CHECKING:
     from app.db import Database
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
 
 
 async def search_available(

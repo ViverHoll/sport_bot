@@ -2,12 +2,12 @@ from typing import Optional, Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import SportFoodModel
+from app.models.sql import SportFoodModel
 from app.db.repository import Repository
-from app.entities.dataclasses import SportFood
+from app.models.dataclasses import SportFood
 
 
-class SportFoodBase:
+class SportFoodDAO:
     repository: Repository[SportFoodModel]
 
     __slots__ = ("repository",)

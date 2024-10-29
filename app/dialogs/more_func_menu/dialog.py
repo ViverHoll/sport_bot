@@ -19,8 +19,7 @@ from app.dialogs.states import MoreFuncStates
 from .getters import get_support_url, paging_sport_food
 from .handlers import (
     get_feedback_user,
-    get_idea_user,
-    coming_soon
+    get_idea_user
 )
 
 more_func_dialog = Dialog(

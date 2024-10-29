@@ -1,6 +1,6 @@
 from aiogram.filters.callback_data import CallbackData
 
-from app.entities.enums.levels_subscribe import (
+from app.models.enums.levels_subscribe import (
     NameSubscribe,
     PriceSubscribe
 )

@@ -2,14 +2,14 @@ from typing import Mapping, Iterable
 
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardMarkup
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 from app.callback_factory import SubscribeFactory
 from app.callback_factory.trainer import TrainerCallbackFactory
-from app.entities.enums.levels_subscribe import (
+from app.models.enums.levels_subscribe import (
     NameSubscribe,
     PriceSubscribe
 )
-from app.entities.enums.trainer import SpeciesCoaches
+from app.models.enums import SpeciesCoaches
 
 
 def _create_default_keyboard(

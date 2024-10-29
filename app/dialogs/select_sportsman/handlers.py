@@ -11,7 +11,7 @@ from aiogram_dialog.widgets.kbd import Button
 from cachetools import TTLCache
 
 from app.dialogs.states import OptionsSportsmanStates
-from app.entities.dataclasses import Sportsman
+from app.models.dataclasses import Sportsman
 
 if TYPE_CHECKING:
     from app.db import HolderDAO

@@ -4,7 +4,7 @@ from aiogram.filters import Filter
 from aiogram.types import Message
 
 from app.db import HolderDAO
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 
 class UserRegSocialNetwork(Filter):

@@ -4,9 +4,8 @@ from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.input import TextInput
 from aiogram_dialog.widgets.kbd import (
-    SwitchTo, Start,
-    PrevPage, CurrentPage, NextPage,
-    Select, Column, Row
+    Start,
+    Select, Column
 )
 
 from app.dialogs.states import UpdateStrengthIndicator, ProfileDialog

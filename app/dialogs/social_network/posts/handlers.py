@@ -7,7 +7,7 @@ from aiogram_dialog.widgets.kbd import Button
 
 if TYPE_CHECKING:
     from app.db import Database
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
 
 
 async def clicked_like(

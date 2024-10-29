@@ -13,14 +13,11 @@ class SportsmanModel(BaseModel):
 
     name: Mapped[str]
     surname: Mapped[str]
+    full_name: Mapped[str]
     description: Mapped[str]
 
-    photo_url: Mapped[str]
+    photo: Mapped[str]
     nickname: Mapped[str | None]
-    mr_olympia: Mapped[str | None]
-    years_life: Mapped[str]
-    height: Mapped[int]
-    competition_parameters: Mapped[str | None]
 
     exercises: Mapped[str | None]
     food: Mapped[str | None]

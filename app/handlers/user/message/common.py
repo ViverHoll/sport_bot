@@ -4,7 +4,7 @@ from aiogram import F, Router
 from aiogram.types import Message
 from aiogram_dialog import DialogManager, StartMode
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 from app.dialogs.states import MoreFuncStates, OptionsSearchSportsman, ProfileDialog, PremiumDialog
 # from app.factory import GptClient
 from app.keyboards.user.inline import get_diary_keyboard

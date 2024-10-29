@@ -1,4 +1,3 @@
-
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .base import BaseModel, TimestampMixin, Int64, Int32, Int16
@@ -17,4 +16,6 @@ class SocialNetworkModel(BaseModel, TimestampMixin):
     likes: Mapped[Int32] = mapped_column(default=0)
     city: Mapped[str]
     description: Mapped[str]
-
+    subscribes: Mapped[Int32]
+    grade: Mapped[float] = mapped_column(default=0.0)
+    count_posts: Mapped[Int16]

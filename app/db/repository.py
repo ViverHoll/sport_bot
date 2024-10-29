@@ -7,7 +7,7 @@ from sqlalchemy import insert, select, update, CursorResult, Result, delete
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
-from .models import BaseModel
+from app.models.sql import BaseModel
 
 ModelType = TypeVar("ModelType", bound=BaseModel)
 

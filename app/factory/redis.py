@@ -2,7 +2,7 @@ import logging
 
 from redis.asyncio import ConnectionPool, Redis
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 
 logger = logging.getLogger(__name__)
 

@@ -8,7 +8,7 @@ from aiogram_dialog.api.entities import MediaAttachment, MediaId
 
 from cachetools import TTLCache
 
-from app.entities.dataclasses import UserType, PostType
+from app.models.dataclasses import UserType, PostType
 
 
 if TYPE_CHECKING:

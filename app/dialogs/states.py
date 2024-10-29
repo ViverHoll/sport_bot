@@ -141,3 +141,18 @@ class SettingProfileUser(StatesGroup):
     options = State()
     notifications = State()
     motivation_quotes = State()
+
+
+class NewSportsmanDialog(StatesGroup):
+    name = StatesGroup()
+    surname = StatesGroup()
+    description = StatesGroup()
+
+    photo = StatesGroup()
+    nickname = StatesGroup()
+
+    exercises = StatesGroup()
+    food = StatesGroup()
+    music = StatesGroup()
+
+    confirm = State()

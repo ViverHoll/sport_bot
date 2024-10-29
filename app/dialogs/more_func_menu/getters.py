@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from app.app_config import AppConfig
     from app.db import HolderDAO
 
-from app.entities.dataclasses import SportFood
+from app.models.dataclasses import SportFood
 
 
 async def get_support_url(

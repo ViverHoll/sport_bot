@@ -4,7 +4,7 @@ import httpx
 from openai import AsyncOpenAI
 from openai.types.chat import ChatCompletion
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 
 _LOCAL_ADDRESS: Final[str] = "0.0.0.0"
 

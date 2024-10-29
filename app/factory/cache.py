@@ -1,8 +1,12 @@
 from cachetools import TTLCache
 
 
-def create_ttl_cache() -> TTLCache:
+def create_ttl_cache(
+        *,
+        max_size: int,
+        ttl: int
+) -> TTLCache:
     return TTLCache(
-        maxsize=100_000,
-        ttl=20
+        maxsize=max_size,
+        ttl=ttl
     )

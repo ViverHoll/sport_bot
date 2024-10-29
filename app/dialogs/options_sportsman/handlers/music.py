@@ -7,7 +7,7 @@ from aiogram_dialog.widgets.kbd import Button
 from app.keyboards.user.inline import pay_menu, get_profile_menu
 
 if TYPE_CHECKING:
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
 
 
 async def select_one_music(

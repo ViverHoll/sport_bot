@@ -7,7 +7,7 @@ from aiogram_dialog.widgets.kbd import ManagedCheckbox
 from aiogram_dialog.widgets.input import MessageInput
 
 from app.dialogs.states import ProfileDialog
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 if TYPE_CHECKING:
     from app.db import HolderDAO

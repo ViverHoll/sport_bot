@@ -1,6 +1,6 @@
 from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.text import Format, Const
-from aiogram_dialog.widgets.kbd import Button, Start
+from aiogram_dialog.widgets.kbd import Start
 from aiogram_dialog.widgets.media import DynamicMedia
 
 from app.dialogs.states import (SocialNetworkProfile,

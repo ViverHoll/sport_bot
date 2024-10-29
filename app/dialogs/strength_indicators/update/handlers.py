@@ -9,7 +9,7 @@ from aiogram_dialog.widgets.input import ManagedTextInput
 from app.dialogs.states import UpdateStrengthIndicator
 
 if TYPE_CHECKING:
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
     from app.db import Database
 
 

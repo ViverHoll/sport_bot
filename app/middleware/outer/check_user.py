@@ -6,7 +6,7 @@ from aiogram.types import TelegramObject, User
 if TYPE_CHECKING:
     from app.db import HolderDAO
 
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 
 class CheckUserMiddleware(BaseMiddleware):

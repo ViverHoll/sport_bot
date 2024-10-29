@@ -3,9 +3,9 @@ from typing import Optional, Any
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.repository import Repository
-from app.db.models import PostModel
+from app.models.sql import PostModel
 
-from app.entities.dataclasses import PostType
+from app.models.dataclasses import PostType
 
 
 class PostDAO:

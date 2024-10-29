@@ -1,6 +1,6 @@
 from aiogram.filters.callback_data import CallbackData
 
-from app.entities.enums.trainer import SpeciesCoaches
+from app.models.enums import SpeciesCoaches
 
 
 class TrainerCallbackFactory(CallbackData, prefix="coaches"):

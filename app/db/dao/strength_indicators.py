@@ -2,10 +2,10 @@ from typing import Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import StrengthIndicatorsModel
+from app.models.sql import StrengthIndicatorsModel
 from app.db.repository import Repository
 
-from app.entities.dataclasses import StrengthIndicatorType
+from app.models.dataclasses import StrengthIndicatorType
 
 
 class StrengthIndicatorDAO:

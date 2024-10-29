@@ -2,7 +2,7 @@ from aiogram import Dispatcher
 from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from aiogram_dialog import setup_dialogs
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 from app.db import DatabaseMiddleware
 from app.db.session import create_session_pool
 from app.dialogs import setup_all_dialogs
@@ -13,10 +13,6 @@ from app.state import state_router
 from .gpt import GptClient
 from .redis import create_redis
 from .cache import create_ttl_cache
-
-
-def _setup_inner_middleware(_: Dispatcher) -> None:
-    ...
 
 
 def _setup_outer_middleware(dp: Dispatcher) -> None:
@@ -38,10 +34,12 @@ async def create_dispatcher(config: AppConfig) -> Dispatcher:
         session_pool=create_session_pool(
             url=config.postgres.build_url()
         ),
-        ttl_cache=create_ttl_cache()
+        ttl_cache=create_ttl_cache(
+            max_size=100_000,
+            ttl=60
+        )
     )
 
-    _setup_inner_middleware(dp)
     _setup_outer_middleware(dp)
 
     dp.include_routers(

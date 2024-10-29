@@ -2,7 +2,7 @@ services:
    redis:
       image: redis:7-alpine
       restart: always
-      env_file: .env
+      env_file: config.env
       ports:
          - "${REDIS_PORT}:${REDIS_PORT}"
       expose:
@@ -13,7 +13,7 @@ services:
    postgres:
       image: postgres:16-alpine
       restart: always
-      env_file: .env
+      env_file: config.env
       environment:
          POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
          POSTGRES_USERNAME: ${POSTGRES_USERNAME}
@@ -29,7 +29,7 @@ services:
    bot:
       build: .
       restart: always
-      env_file: .env
+      env_file: config.env
       depends_on:
          - redis
          - postgres

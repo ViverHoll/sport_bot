@@ -7,9 +7,12 @@ from .options_status import (
     PremiumStatusEnum
 )
 
+from .trainer import SpeciesCoaches
+
 __all__ = [
     "NameSubscribe",
     "PriceSubscribe",
     "NotificationsStatusEnum",
-    "PremiumStatusEnum"
+    "PremiumStatusEnum",
+    "SpeciesCoaches"
 ]

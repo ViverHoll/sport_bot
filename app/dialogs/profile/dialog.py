@@ -8,7 +8,6 @@ from aiogram_dialog.widgets.media import DynamicMedia
 from aiogram_dialog.widgets.kbd import (
     Column,
     Start,
-    Button,
     SwitchTo,
     Group
 )

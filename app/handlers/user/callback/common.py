@@ -3,7 +3,7 @@ from aiogram.types import CallbackQuery
 
 from aiogram_dialog import DialogManager
 
-from app.app_config import AppConfig
+from app.models.config import AppConfig
 from app.dialogs.states import SocialNetworkProfile, OptionsSearchSportsman
 from app.keyboards.user.inline import get_support_menu, pay_menu
 from app.keyboards.user.reply import get_main_menu
@@ -14,8 +14,10 @@ router = Router()
 @router.callback_query(F.data == "check_sub")
 async def success_check_sub(callback: CallbackQuery) -> None:
     await callback.message.delete()
-    await callback.message.answer("Добро пожаловать в бота",
-                                  reply_markup=get_main_menu())
+    await callback.message.answer(
+        "Добро пожаловать в бота",
+        reply_markup=get_main_menu()
+    )
 
 
 @router.callback_query(F.data == "get_pay_menu")

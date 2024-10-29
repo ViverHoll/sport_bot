@@ -9,7 +9,7 @@ from aiogram.types import (
 
 from app.callback_factory import SubscribeFactory
 
-from app.entities.enums.levels_subscribe import (
+from app.models.enums.levels_subscribe import (
     NameSubscribe
 )
 from app.keyboards.user.inline import get_levels_subscribe

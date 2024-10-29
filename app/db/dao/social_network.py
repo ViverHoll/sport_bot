@@ -3,8 +3,8 @@ from typing import Optional, Any
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.repository import Repository
-from app.db.models import SocialNetworkModel
-from app.entities.dataclasses import SocialNetworkType
+from app.models.sql import SocialNetworkModel
+from app.models.dataclasses import SocialNetworkType
 
 
 class SocialNetworkDAO:

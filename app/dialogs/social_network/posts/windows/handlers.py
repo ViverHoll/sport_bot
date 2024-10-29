@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from aiogram import Bot
 
     from app.db import Database
-    from app.entities.dataclasses import UserType
+    from app.models.dataclasses import UserType
 
 
 async def get_input_comment(

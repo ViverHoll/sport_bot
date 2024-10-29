@@ -2,12 +2,12 @@ from typing import Any, Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import UserModel
+from app.models.sql import UserModel
 from app.db.repository import Repository
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 
-class UsersBase:
+class UsersDAO:
     repository: Repository[UserModel]
 
     __slots__ = ("repository",)

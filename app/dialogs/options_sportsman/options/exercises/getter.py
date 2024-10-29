@@ -4,7 +4,7 @@ from aiogram.enums import ContentType
 from aiogram_dialog import DialogManager
 from aiogram_dialog.api.entities import MediaAttachment, MediaId
 
-from app.entities.dataclasses import UserType
+from app.models.dataclasses import UserType
 
 if TYPE_CHECKING:
     from app.db import HolderDAO
