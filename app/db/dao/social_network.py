@@ -15,7 +15,7 @@ class SocialNetworkDAO:
     def __init__(self, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=SocialNetworkModel
+            model=SocialNetworkModel,
         )
 
     async def add_user(
@@ -36,13 +36,13 @@ class SocialNetworkDAO:
             media=media,
             city=city,
             description=description,
-            likes=likes
+            likes=likes,
         )
         await self.repository.commit()
 
     async def get_user_by_id(self, user_id: int) -> Optional[SocialNetworkType]:
         result_obj = await self.repository.get_by_where(
-            SocialNetworkModel.user_id == user_id
+            SocialNetworkModel.user_id == user_id,
         )
         user = result_obj.all()
         if user:
@@ -52,6 +52,6 @@ class SocialNetworkDAO:
     async def update_user(self, user_id: int, **values: Any) -> None:
         await self.repository.update_by_where(
             SocialNetworkModel.user_id == user_id,
-            **values
+            **values,
         )
         await self.repository.commit()

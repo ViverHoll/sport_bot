@@ -11,5 +11,5 @@ message_router.include_routers(
     commands_router,
     common_router,
     subscribe_router,
-    social_network_router
+    social_network_router,
 )

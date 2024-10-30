@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 async def get_list_sportsman(
         dialog_manager: DialogManager,
-        **_kwargs: Any
+        **_kwargs: Any,
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     sportsman_list = await db.athletes.get_athletes()
@@ -18,7 +18,7 @@ async def get_list_sportsman(
             (
                 f"{sportsman.full_name()}\n"
                 f"<i>{sportsman.description}</i>\n\n",
-                sportsman.sportsmen_id
+                sportsman.sportsmen_id,
             )
             for sportsman in sportsman_list
         ],
@@ -26,5 +26,5 @@ async def get_list_sportsman(
         "athletes_names": [
             (sportsman.full_name(), sportsman.sportsmen_id)
             for sportsman in sportsman_list
-        ]
+        ],
     }

@@ -15,12 +15,12 @@ from app.models.dataclasses import SportFood
 
 async def get_support_url(
         dialog_manager: DialogManager,
-        **_: Any
+        **_: Any,
 ) -> dict[str, Any]:
     config: AppConfig = dialog_manager.middleware_data["config"]
 
     return {
-        "support_url": config.common.support_url
+        "support_url": config.common.support_url,
     }
 
 
@@ -28,7 +28,7 @@ async def paging_sport_food(
         dialog_manager: DialogManager,
         event_context: EventContext,
         ttl_cache: TTLCache,
-        **_kwargs
+        **_kwargs,
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
 
@@ -48,7 +48,7 @@ async def paging_sport_food(
 
     await db.users.update_user(
         event_context.user_id,
-        current_sport_food=current_sport_food.id
+        current_sport_food=current_sport_food.id,
     )
 
     # current_page = await dialog_manager.find("stub_scroll_sport_foods").get_page()
@@ -56,12 +56,12 @@ async def paging_sport_food(
     sport_food_photo = MediaAttachment(
         ContentType.PHOTO,
         file_id=MediaId(
-            file_id=current_sport_food.photo
-        )
+            file_id=current_sport_food.photo,
+        ),
     )
 
     return {
         "pages": len(sport_foods),
         "current_page": current_page + 1,
-        "photo_sport_food": sport_food_photo
+        "photo_sport_food": sport_food_photo,
     }

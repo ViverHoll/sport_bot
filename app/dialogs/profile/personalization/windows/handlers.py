@@ -18,7 +18,7 @@ async def get_desired_program_training(
         message: Message,
         _: ManagedTextInput,
         manager: DialogManager,
-        __: str
+        __: str,
 ) -> None:
     gpt: GptClient = manager.middleware_data["gpt"]
     bot: Bot = manager.middleware_data["bot"]
@@ -26,15 +26,15 @@ async def get_desired_program_training(
     async with ChatActionSender.typing(
             chat_id=message.from_user.id,
             bot=bot,
-            interval=3.0
+            interval=3.0,
     ):
         answer_gpt = await gpt.response(
             question=message.text,
-            return_text=True
+            return_text=True,
         )
         manager.dialog_data["gpt_program"] = answer_gpt
         await manager.switch_to(
-            state=PersonalizationDialog.ready_training_program
+            state=PersonalizationDialog.ready_training_program,
         )
 
 

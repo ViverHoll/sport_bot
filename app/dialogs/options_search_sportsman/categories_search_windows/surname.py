@@ -12,11 +12,11 @@ window_surname = Window(
     SwitchTo(
         text=Const("◀️ Назад"),
         id="button_back",
-        state=OptionsSearchSportsman.categories
+        state=OptionsSearchSportsman.categories,
     ),
     TextInput(
         id="input_surname_sportsman",
-        on_success=get_input_surname
+        on_success=get_input_surname,
     ),
-    state=OptionsSearchSportsman.surname
+    state=OptionsSearchSportsman.surname,
 )

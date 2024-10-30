@@ -6,7 +6,7 @@ from aiogram_dialog.widgets.input import MessageInput
 async def get_file_handler(
         message: Message,
         _: MessageInput,
-        dialog_manager: DialogManager
+        dialog_manager: DialogManager,
 ) -> None:
     file_name = message.document.file_name
     if file_name.endswith(".txt"):

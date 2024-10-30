@@ -9,12 +9,12 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )
 
 
@@ -22,12 +22,12 @@ async def get_surname_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        surname: str
+        surname: str,
 ) -> None:
     manager.dialog_data["surname_sportsman"] = surname
 
     await manager.switch_to(
-        state=NewSportsmanDialog.description
+        state=NewSportsmanDialog.description,
     )
 
 
@@ -35,12 +35,12 @@ async def get_description_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        description: str
+        description: str,
 ) -> None:
     manager.dialog_data["description_sportsman"] = description
 
     await manager.switch_to(
-        state=NewSportsmanDialog.photo
+        state=NewSportsmanDialog.photo,
     )
 
 
@@ -48,12 +48,12 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )
 
 
@@ -61,12 +61,12 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )
 
 
@@ -74,12 +74,12 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )
 
 
@@ -87,12 +87,12 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )
 
 
@@ -100,10 +100,10 @@ async def get_name_sportsman(
         message: Message,
         widget: ManagedTextInput,
         manager: DialogManager,
-        name: str
+        name: str,
 ) -> None:
     manager.dialog_data["name_sportsman"] = name
 
     await manager.switch_to(
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     )

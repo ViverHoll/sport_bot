@@ -9,7 +9,7 @@ from .handlers import (
     clicked_on_notifications,
     clicked_on_motivation_quotes,
     clicked_on_show_grade,
-    clicked_on_search_gym_bro
+    clicked_on_search_gym_bro,
 )
 
 permissions_user_dialog = Dialog(
@@ -39,21 +39,21 @@ permissions_user_dialog = Dialog(
             unchecked_text=Const("Показывать ✔️"),
             id="checkbox_show_grade",
             default=True,
-            on_state_changed=clicked_on_show_grade
+            on_state_changed=clicked_on_show_grade,
         ),
         Checkbox(
             checked_text=Const("Не искать ❌"),
             unchecked_text=Const("Искать ✔️"),
             id="checkbox_search_gym_bro",
             default=True,
-            on_state_changed=clicked_on_search_gym_bro
+            on_state_changed=clicked_on_search_gym_bro,
         ),
         Start(
             text=Const("⬅️"),
             id="back_to_profile_dialog_menu",
-            state=ProfileDialog.menu
+            state=ProfileDialog.menu,
         ),
         state=SettingProfileUser.options,
-        getter=get_settings_statuses
-    )
+        getter=get_settings_statuses,
+    ),
 )

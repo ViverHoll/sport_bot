@@ -16,12 +16,12 @@ async def get_name_exercises(
         _: Message,
         __: ManagedTextInput,
         manager: DialogManager,
-        text: str
+        text: str,
 ) -> None:
     manager.dialog_data["name_exercises"] = text
 
     await manager.switch_to(
-        state=NewStrengthIndicators.core
+        state=NewStrengthIndicators.core,
     )
 
 
@@ -29,19 +29,19 @@ async def get_core_exercises(
         _: Message,
         __: ManagedTextInput,
         manager: DialogManager,
-        text: str
+        text: str,
 ) -> None:
     manager.dialog_data["core_exercises"] = text
 
     await manager.switch_to(
-        state=NewStrengthIndicators.confirm
+        state=NewStrengthIndicators.confirm,
     )
 
 
 async def save_new_strength_indicators(
         callback: CallbackQuery,
         widget: Button,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     db: HolderDAO = manager.middleware_data["db"]
     name = manager.dialog_data.get("name_exercises")
@@ -50,7 +50,7 @@ async def save_new_strength_indicators(
     await db.strength_indicator.add_strength_indicators(
         user_id=callback.from_user.id,
         name=name,
-        core=core
+        core=core,
     )
     await callback.message.answer("Упражнение успешно сохранено")
     await manager.start(ProfileDialog.menu)

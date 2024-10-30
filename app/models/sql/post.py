@@ -8,12 +8,12 @@ class PostModel(BaseModel, TimestampMixin):
 
     post_id: Mapped[Int64] = mapped_column(
         autoincrement=True,
-        primary_key=True
+        primary_key=True,
     )
     post_from_user: Mapped[Int64]
     media: Mapped[str]
     description: Mapped[str]
     tags: Mapped[str | None]
     likes: Mapped[Int32] = mapped_column(
-        default=0
+        default=0,
     )

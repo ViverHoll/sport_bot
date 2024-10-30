@@ -18,7 +18,7 @@ premium_dialog = Dialog(
             "<b>- Продвинутый</b> (899₽)\n"
             "<i><u>Тут описание</u></i>\n\n"
             "<b>- Профессионал</b> (1499₽)\n"
-            "<i><u>Тут описание</u></i>"
+            "<i><u>Тут описание</u></i>",
         ),
         Group(
             Select(
@@ -26,12 +26,12 @@ premium_dialog = Dialog(
                 id="select_level_premium",
                 item_id_getter=operator.itemgetter(1),
                 items="subscribes",
-                on_click=go_to_select_term
+                on_click=go_to_select_term,
             ),
-            width=1
+            width=1,
         ),
         state=PremiumDialog.level,
-        getter=get_subscribes
+        getter=get_subscribes,
     ),
     Window(
         Const("Выберите срок подписки"),
@@ -41,17 +41,17 @@ premium_dialog = Dialog(
                 id="select_term_subscribe",
                 item_id_getter=operator.itemgetter(1),
                 items="terms",
-                on_click=go_to_buy_menu
+                on_click=go_to_buy_menu,
             ),
-            width=2
+            width=2,
         ),
         SwitchTo(
             text=Const("Назад"),
             id="back_to_main_subscribe_menu",
-            state=PremiumDialog.level
+            state=PremiumDialog.level,
         ),
         state=PremiumDialog.term,
-        getter=get_terms
+        getter=get_terms,
     ),
     Window(
         Const("Для оплаты пройдите по ссылке ниже"),
@@ -63,8 +63,8 @@ premium_dialog = Dialog(
         Button(
             text=Const("Проверить оплату"),
             id="check_pay",
-            on_click=check_pay
+            on_click=check_pay,
         ),
-        state=PremiumDialog.buy
-    )
+        state=PremiumDialog.buy,
+    ),
 )

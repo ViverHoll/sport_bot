@@ -8,7 +8,7 @@ class LikeModel(BaseModel):
 
     id: Mapped[Int64] = mapped_column(
         autoincrement=True,
-        primary_key=True
+        primary_key=True,
     )
     user_id: Mapped[Int64]
     post_id: Mapped[Int64]

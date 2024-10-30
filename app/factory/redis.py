@@ -12,8 +12,8 @@ async def create_redis(config: AppConfig) -> Redis:
         connection_pool=ConnectionPool(
             host=config.redis.host,
             port=config.redis.port,
-            db=config.redis.db
-        )
+            db=config.redis.db,
+        ),
     )
 
     info = await redis.info()

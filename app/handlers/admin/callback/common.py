@@ -10,6 +10,6 @@ router = Router()
 @router.callback_query(F.data == "add_sportsman_file")
 async def start_add_sportsman_dialog(
         _: CallbackQuery,
-        dialog_manager: DialogManager
+        dialog_manager: DialogManager,
 ) -> None:
     await dialog_manager.start(InputSportsman.select_options)

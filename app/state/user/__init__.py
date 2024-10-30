@@ -10,5 +10,5 @@ user_router.include_routers(
     social_network_reg_router,
     edit_photo_router,
     gpt_router,
-    personalization_router
+    personalization_router,
 )

@@ -14,10 +14,10 @@ _BREAK_BUTTON = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Отмена",
-                callback_data="break_gpt_dialog"
-            )
-        ]
-    ]
+                callback_data="break_gpt_dialog",
+            ),
+        ],
+    ],
 )
 
 
@@ -31,17 +31,17 @@ async def start_dialog_with_gpt(message: Message, state: FSMContext) -> None:
 async def answer_question(
         message: Message,
         gpt,
-        bot: Bot
+        bot: Bot,
 ) -> None:
     async with ChatActionSender.typing(chat_id=message.from_user.id, bot=bot):
         bot_msg = await message.answer("Генерируем ответ", reply_markup=_BREAK_BUTTON)
         answer_gpt_obj = await gpt.response(
-            question=message.text
+            question=message.text,
         )
         answer_gpt = answer_gpt_obj.choices[0].message.content
         await bot_msg.edit_text(
             text=answer_gpt,
-            reply_markup=_BREAK_BUTTON
+            reply_markup=_BREAK_BUTTON,
         )
         return
 

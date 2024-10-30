@@ -14,22 +14,22 @@ input_sportsman_dialog = Dialog(
         Column(
             Button(
                 text=Const("Текст"),
-                id="button_add_sportsman_text"
+                id="button_add_sportsman_text",
             ),
             SwitchTo(
                 text=Const("Файл"),
                 id="button_add_sportsman_file",
-                state=InputSportsman.file
-            )
+                state=InputSportsman.file,
+            ),
         ),
-        state=InputSportsman.select_options
+        state=InputSportsman.select_options,
     ),
     Window(
         Const("Пришлите файл с расширением .txt"),
         MessageInput(
             func=get_file_handler,
-            content_types=ContentType.DOCUMENT
+            content_types=ContentType.DOCUMENT,
         ),
-        state=InputSportsman.file
-    )
+        state=InputSportsman.file,
+    ),
 )

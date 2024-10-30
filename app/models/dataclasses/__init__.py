@@ -5,6 +5,8 @@ from .social_network import SocialNetworkType
 from .post import PostType
 from .strength_indicator import StrengthIndicatorType
 from .like import LikeType
+from .favorite import FavoriteType
+
 
 __all__ = [
     "Sportsman",
@@ -13,6 +15,7 @@ __all__ = [
     "SocialNetworkType",
     "PostType",
     "StrengthIndicatorType",
-    "LikeType"
+    "LikeType",
+    "FavoriteType",
 ]
 

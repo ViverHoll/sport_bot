@@ -6,5 +6,5 @@ from .message import message_router
 user_router = Router()
 user_router.include_routers(
     callback_router,
-    message_router
+    message_router,
 )

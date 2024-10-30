@@ -16,7 +16,7 @@ async def success_check_sub(callback: CallbackQuery) -> None:
     await callback.message.delete()
     await callback.message.answer(
         "Добро пожаловать в бота",
-        reply_markup=get_main_menu()
+        reply_markup=get_main_menu(),
     )
 
 
@@ -25,7 +25,7 @@ async def answer_pay_menu(callback: CallbackQuery) -> None:
     await callback.answer()
     await callback.message.answer(
         "Для оплаты пройдите по ссылке",
-        reply_markup=pay_menu()
+        reply_markup=pay_menu(),
     )
 
 
@@ -33,7 +33,7 @@ async def answer_pay_menu(callback: CallbackQuery) -> None:
 async def check_pay_menu(callback: CallbackQuery) -> None:
     await callback.answer(
         "Оплата еще не поступила",
-        show_alert=True
+        show_alert=True,
     )
 
 
@@ -41,45 +41,45 @@ async def check_pay_menu(callback: CallbackQuery) -> None:
 async def get_strength_user(callback: CallbackQuery) -> None:
     await callback.message.edit_text(
         "Тут силовые по типу:\n\n"
-        "<i>Жим лежа</i> - 50кг(50% от с.б.)"
+        "<i>Жим лежа</i> - 50кг(50% от с.б.)",
     )
 
 
 @router.callback_query(F.data == "food")
 async def get_food_user(callback: CallbackQuery) -> None:
     await callback.message.edit_text(
-        "<b><i><u>В разработке...</u></i></b>"
+        "<b><i><u>В разработке...</u></i></b>",
     )
 
 
 @router.callback_query(F.data == "get_support")
 async def inline_get_support(
         callback: CallbackQuery,
-        config: AppConfig
+        config: AppConfig,
 ) -> None:
     await callback.message.edit_text(
         "Тут какой нибудь текст",
-        reply_markup=get_support_menu(config)
+        reply_markup=get_support_menu(config),
     )
 
 
 @router.callback_query(F.data == "social_network")
 async def transition_to_social_network(
         _: CallbackQuery,
-        dialog_manager: DialogManager
+        dialog_manager: DialogManager,
 ) -> None:
     await dialog_manager.start(
-        state=SocialNetworkProfile.options
+        state=SocialNetworkProfile.options,
     )
 
 
 @router.callback_query(F.data == "training_popular_people")
 async def send_options_search_sportsman(
         _: CallbackQuery,
-        dialog_manager: DialogManager
+        dialog_manager: DialogManager,
 ) -> None:
     await dialog_manager.start(
-        state=OptionsSearchSportsman.select
+        state=OptionsSearchSportsman.select,
     )
 
 
@@ -87,7 +87,7 @@ async def send_options_search_sportsman(
 async def get_shop_menu(callback: CallbackQuery) -> None:
     await callback.answer(
         "В разработке...",
-        show_alert=True
+        show_alert=True,
     )
 
 
@@ -95,5 +95,5 @@ async def get_shop_menu(callback: CallbackQuery) -> None:
 async def get_fitness_room_menu(callback: CallbackQuery) -> None:
     await callback.answer(
         "В разработке...",
-        show_alert=True
+        show_alert=True,
     )

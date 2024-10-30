@@ -21,7 +21,7 @@ async def paging_logic(
         dialog_manager: DialogManager,
         event_context: EventContext,
         ttl_cache: TTLCache,
-        **_kwargs: Any
+        **_kwargs: Any,
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
 
@@ -42,13 +42,13 @@ async def paging_logic(
     sportsman_photo_url = MediaAttachment(
         ContentType.PHOTO,
         file_id=MediaId(
-            file_id=current_sportsman.photo_url
-        )
+            file_id=current_sportsman.photo_url,
+        ),
     )
 
     await db.users.update_user(
         event_context.user_id,
-        current_sportsman=current_sportsman.sportsmen_id
+        current_sportsman=current_sportsman.sportsmen_id,
     )
 
     return {
@@ -58,14 +58,14 @@ async def paging_logic(
         "bio_sportsman": current_sportsman.description,
         "sportsman_full_name": f"{current_sportsman.name} {current_sportsman.surname}",
         "competition_parameters": current_sportsman.competition_parameters,
-        **current_sportsman.__dict__
+        **current_sportsman.__dict__,
     }
 
 
 async def select_current_sportsman(
         _: CallbackQuery,
         __: Button,
-        dialog_manager: DialogManager
+        dialog_manager: DialogManager,
 ) -> None:
     await dialog_manager.done()
     await dialog_manager.start(OptionsSportsmanStates.options)

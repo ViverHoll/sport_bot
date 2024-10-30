@@ -12,19 +12,19 @@ if TYPE_CHECKING:
 
 async def select_one_music(
         callback: CallbackQuery,
-        *_: Any
+        *_: Any,
 ) -> None:
     await callback.message.answer(
         "brazil_fonk\n\n"
         "Тут ссылка на трек",
-        reply_markup=get_profile_menu()
+        reply_markup=get_profile_menu(),
     )
 
 
 async def select_all_music(
         callback: CallbackQuery,
         _: Button,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     user: UserType = manager.middleware_data["user"]
 
@@ -35,5 +35,5 @@ async def select_all_music(
             "Чтобы получить весь плейлист музыки и не только, "
             "Необходимо приобрести подписку\n\n"
             'Чтобы ее оплатить, нажмите на кнопку "оплатить"',
-            reply_markup=pay_menu()
+            reply_markup=pay_menu(),
         )

@@ -13,29 +13,29 @@ class LikeDAO:
     def __init__(self, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=LikeModel
+            model=LikeModel,
         )
 
     async def add_like(
             self,
             *,
             user_id: int,
-            post_id: int
+            post_id: int,
     ) -> None:
         await self.repository.insert(
             user_id=user_id,
-            post_id=post_id
+            post_id=post_id,
         )
         await self.repository.commit()
 
     async def get_like_by_ids(
             self,
             user_id: int,
-            post_id: int
+            post_id: int,
     ) -> LikeType | None:
         result_obj = await self.repository.get_by_where(
             LikeModel.user_id == user_id,
-            LikeModel.post_id == post_id
+            LikeModel.post_id == post_id,
         )
         like_info = result_obj.all()
         if like_info:
@@ -45,10 +45,10 @@ class LikeDAO:
     async def delete_like(
             self,
             user_id: int,
-            post_id: int
+            post_id: int,
     ) -> None:
         await self.repository.delete_by_where(
             LikeModel.user_id == user_id,
-            LikeModel.post_id == post_id
+            LikeModel.post_id == post_id,
         )
         await self.repository.commit()

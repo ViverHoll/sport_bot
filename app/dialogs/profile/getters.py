@@ -14,13 +14,13 @@ from app.db import Database
 def _get_photo_for_aiogram_dialog(
         *,
         photo_id: str,
-        content_type: ContentType
+        content_type: ContentType,
 ) -> MediaAttachment:
     return MediaAttachment(
         type=content_type,
         file_id=MediaId(
-            file_id=photo_id
-        )
+            file_id=photo_id,
+        ),
     )
 
 
@@ -37,7 +37,7 @@ async def getter(
     count_days = datetime.now().date() - user.created.date()
 
     parameters = await db.strength_indicator.get_all_strength_indicators(
-        user_id=user.user_id
+        user_id=user.user_id,
     )
     if parameters:
         parameters_user = "".join(f"\n<b><i>{i.name}:</i></b> <u>{i.core}</u>" for i in parameters)
@@ -47,7 +47,7 @@ async def getter(
     if user.user_photo:
         photo = _get_photo_for_aiogram_dialog(
             photo_id=user.user_photo,
-            content_type=ContentType.PHOTO
+            content_type=ContentType.PHOTO,
         )
         button_photo_name = "Изменить фото"
     else:
@@ -66,5 +66,5 @@ async def getter(
         "count_gym_bro": 32,
         "button_photo_name": button_photo_name,
         "photo_user": photo,
-        "parameters": parameters_user
+        "parameters": parameters_user,
     }

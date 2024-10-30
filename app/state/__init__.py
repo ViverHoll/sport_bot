@@ -6,5 +6,5 @@ from .user import user_router
 state_router = Router()
 state_router.include_routers(
     admin_router,
-    user_router
+    user_router,
 )

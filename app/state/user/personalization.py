@@ -18,9 +18,9 @@ _BUTTON_BACK: Final[InlineKeyboardMarkup] = InlineKeyboardMarkup(
     inline_keyboard=[[
         InlineKeyboardButton(
             text="Назад",
-            callback_data="select_trainer_for_gpt"
-        )
-    ]]
+            callback_data="select_trainer_for_gpt",
+        ),
+    ]],
 )
 
 
@@ -28,7 +28,7 @@ _BUTTON_BACK: Final[InlineKeyboardMarkup] = InlineKeyboardMarkup(
 @router.message(F.text == "Персональное ведение")
 async def start_process_personalization(message: Message, state: FSMContext) -> None:
     await message.answer(
-        text="напиши свои цели в фитнесе и нынешние параметры"
+        text="напиши свои цели в фитнесе и нынешние параметры",
     )
     await state.set_state(PersonalizationStates.parameters_user)
 
@@ -38,7 +38,7 @@ async def get_target_user(message: Message, state: FSMContext) -> None:
     await state.update_data(parameters_user=message.text)
     await message.answer(
         text="спасибо, теперь ты можешь выбрать тренера",
-        reply_markup=get_coaches_menu()
+        reply_markup=get_coaches_menu(),
     )
     await state.set_state(PersonalizationStates.select_trainer)
 
@@ -47,26 +47,26 @@ async def get_target_user(message: Message, state: FSMContext) -> None:
 async def get_target_for_user_handle(callback: CallbackQuery) -> None:
     await callback.message.edit_text(
         text="Выберите тренера",
-        reply_markup=get_coaches_menu()
+        reply_markup=get_coaches_menu(),
     )
 
 
 @router.callback_query(
     PersonalizationStates.select_trainer,
-    TrainerCallbackFactory.filter()
+    TrainerCallbackFactory.filter(),
 )
 async def get_select_trainer_user(
         callback: CallbackQuery,
         callback_data: TrainerCallbackFactory,
         bot: Bot,
         state: FSMContext,
-        gpt: GptClient
+        gpt: GptClient,
 ) -> None:
     # await callback.answer()
     async with ChatActionSender(
             bot=bot,
             chat_id=callback.from_user.id,
-            interval=3.0
+            interval=3.0,
     ):
         await callback.message.edit_reply_markup()
         state_data = await state.get_data()
@@ -85,10 +85,10 @@ async def get_select_trainer_user(
         )
         gpt_result = await gpt.response(
             question=response_text,
-            return_text=True
+            return_text=True,
         )
         await callback.message.edit_text(
             gpt_result,
             parse_mode=SULGUK_PARSE_MODE,
-            reply_markup=_BUTTON_BACK
+            reply_markup=_BUTTON_BACK,
         )

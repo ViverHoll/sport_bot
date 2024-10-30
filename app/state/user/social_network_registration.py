@@ -16,11 +16,11 @@ _COUNT_ELEMENTS_IN_FULL_NAME: Final[int] = 2
 @router.callback_query(F.data == "social_network_registration")
 async def start_registration(
         callback: CallbackQuery,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await callback.message.edit_text(
         "Введите имя и фамилию через пробел. Нужно ввести только буквы\n\n"
-        "Например: Вася Пупкин"
+        "Например: Вася Пупкин",
     )
     await state.set_state(RegSocialNetwork.full_name)
 
@@ -28,51 +28,51 @@ async def start_registration(
 @router.message(RegSocialNetwork.full_name, F.text)
 async def get_full_name_user_handle(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     full_name = message.text.split()
     if len(full_name) == _COUNT_ELEMENTS_IN_FULL_NAME:
         await state.update_data(full_name=message.text.title())
         await message.answer(
             "Отлично!\n"
-            "Теперь введите свой возраст"
+            "Теперь введите свой возраст",
         )
         await state.set_state(RegSocialNetwork.age)
 
     else:
         await message.answer(
             "Нужно ввести только буквы\n\n"
-            "Например: Вася Пупкин"
+            "Например: Вася Пупкин",
         )
 
 
 @router.message(RegSocialNetwork.age, F.text)
 async def get_age_user_handle(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     if message.text.isdigit():
         await state.update_data(age=int(message.text))
         await message.answer(
             "Супер!\n"
-            "Теперь отправьте свою фотку. Чтобы другие пользователи могли восхищаться вами!"
+            "Теперь отправьте свою фотку. Чтобы другие пользователи могли восхищаться вами!",
         )
         await state.set_state(RegSocialNetwork.media)
     else:
         await message.answer(
-            "Необходимо отправить цифры!"
+            "Необходимо отправить цифры!",
         )
 
 
 @router.message(RegSocialNetwork.media, F.photo)
 async def get_photo_user_handle(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(media=message.photo[-1].file_id)
     await message.answer(
         "Теперь нужно отправить свою локацию.\n"
-        "Введите город:"
+        "Введите город:",
     )
     await state.set_state(RegSocialNetwork.city)
 
@@ -84,16 +84,16 @@ async def incorrect_input_user_handle(message: Message) -> None:
 
 @router.message(
     RegSocialNetwork.city,
-    F.text
+    F.text,
 )
 async def get_user_location_via_tg_handle(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(city=message.text)
     await message.answer(
         "Остался последний шаг.\n"
-        "Напишите свое описание, чтобы пользователь мог прочитать его о восхищаться тобой!"
+        "Напишите свое описание, чтобы пользователь мог прочитать его о восхищаться тобой!",
     )
     await state.set_state(RegSocialNetwork.description)
 
@@ -102,7 +102,7 @@ async def get_user_location_via_tg_handle(
 async def get_description_user_handle(
         message: Message,
         state: FSMContext,
-        db: HolderDAO
+        db: HolderDAO,
 ) -> None:
     state_data = await state.get_data()
 
@@ -112,11 +112,11 @@ async def get_description_user_handle(
         age=state_data["age"],
         media=state_data["media"],
         city=state_data["city"],
-        description=message.text
+        description=message.text,
     )
     await message.answer(
         "Регистрация прошла успешно!\n"
         "Приятного пользования",
-        reply_markup=get_social_network_reply_menu()
+        reply_markup=get_social_network_reply_menu(),
     )
     await state.set_state()

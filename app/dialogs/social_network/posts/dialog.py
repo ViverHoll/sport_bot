@@ -12,7 +12,7 @@ from aiogram_dialog.widgets.kbd import (
 )
 
 from app.dialogs.states import PostSocialNetwork
-from .handlers import clicked_like
+from .handlers import clicked_like, clicked_favorites_on_post
 
 from .windows import comment_window
 from .getters import get_posts_with_info
@@ -35,26 +35,27 @@ posts_dialog = Dialog(
                 when=~F["tags"],
             ),
         ),
-        SwitchTo(
-            text=Const("✉️"),
-            id="button_comment_post",
-            state=PostSocialNetwork.comment,
-        ),
+        # SwitchTo(
+        #     text=Const("✉️"),
+        #     id="button_comment_post",
+        #     state=PostSocialNetwork.comment,
+        # ),
         Group(
             Button(
                 text=Format("{like_heart}"),
                 id="button_heart_post",
-                on_click=clicked_like
+                on_click=clicked_like,
             ),
-            # SwitchTo(
-            #     text=Const("✉️"),
-            #     id="button_comment_post",
-            #     state=PostSocialNetwork.comment
-            # ),
-            # Button(
-            #     text=Const("⭐️"),
-            #     id="button_favourites_post"
-            # ),
+            SwitchTo(
+                text=Const("✉️"),
+                id="button_comment_post",
+                state=PostSocialNetwork.comment,
+            ),
+            Button(
+                text=Format("{favorite_stars}"),
+                id="button_favourites_post",
+                on_click=clicked_favorites_on_post
+            ),
             PrevPage(
                 scroll="scroll_posts",
                 text=Const("⬅️"),
@@ -63,7 +64,7 @@ posts_dialog = Dialog(
                 scroll="scroll_posts",
                 text=Const("➡️"),
             ),
-            width=2,
+            width=3,
         ),
         state=PostSocialNetwork.look_post,
         getter=get_posts_with_info,

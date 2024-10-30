@@ -20,12 +20,12 @@ class BaseModel(DeclarativeBase):
             Int16: SmallInteger,
             Int32: Integer,
             Int64: BigInteger,
-            datetime: DateTime(timezone=True)
-        }
+            datetime: DateTime(timezone=True),
+        },
     )
 
 
 class TimestampMixin:
     created_at: Mapped[datetime] = mapped_column(
-        server_default=NowFunc
+        server_default=NowFunc,
     )

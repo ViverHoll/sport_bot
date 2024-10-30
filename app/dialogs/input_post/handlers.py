@@ -28,13 +28,13 @@ def check_tags_in_text(text: str) -> str:
 async def get_photo_user(
         message: Message,
         _: MessageInput,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     manager.dialog_data["photo_id"] = message.photo[-1].file_id
     # state: FSMContext = manager.middleware_data["state"]
     # await state.update_data(photo_id=message.photo[-1].file_id)
     await manager.switch_to(
-        state=NewPost.description
+        state=NewPost.description,
     )
 
 
@@ -42,13 +42,13 @@ async def get_description_user(
         _: Message,
         __: ManagedTextInput,
         manager: DialogManager,
-        text: str
+        text: str,
 ) -> None:
     manager.dialog_data["description"] = text
     # await state.update_data(description=text)
 
     await manager.switch_to(
-        state=NewPost.tags
+        state=NewPost.tags,
     )
 
 
@@ -56,33 +56,33 @@ async def get_tags_user(
         message: Message,
         _: ManagedTextInput | Button,
         manager: DialogManager,
-        tags: str
+        tags: str,
 ) -> None:
     db: HolderDAO = manager.middleware_data["db"]
     await db.post.add_post(
         post_from_user=message.from_user.id,
         media=manager.dialog_data["photo_id"],
         description=manager.dialog_data["description"],
-        tags=tags
+        tags=tags,
     )
 
     await manager.switch_to(
-        state=NewPost.end
+        state=NewPost.end,
     )
 
 async def get_tags_user_handler(
         callback: CallbackQuery,
         _: Button,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     db: HolderDAO = manager.middleware_data["db"]
     await db.post.add_post(
         post_from_user=callback.from_user.id,
         media=manager.dialog_data["photo_id"],
         description=manager.dialog_data["description"],
-        tags=None
+        tags=None,
     )
 
     await manager.switch_to(
-        state=NewPost.end
+        state=NewPost.end,
     )

@@ -6,6 +6,7 @@ from .post import PostModel
 from .social_network import SocialNetworkModel
 from .strength_indicators import StrengthIndicatorsModel
 from .like import LikeModel
+from .favorites import FavoriteModel
 
 __all__ = [
     "BaseModel",
@@ -15,5 +16,6 @@ __all__ = [
     "PostModel",
     "SocialNetworkModel",
     "StrengthIndicatorsModel",
-    "LikeModel"
+    "LikeModel",
+    "FavoriteModel"
 ]

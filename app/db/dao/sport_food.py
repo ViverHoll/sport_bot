@@ -15,7 +15,7 @@ class SportFoodDAO:
     def __init__(self, *, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=SportFoodModel
+            model=SportFoodModel,
         )
 
     async def add_sport_food(self, **values: Any) -> None:
@@ -24,7 +24,7 @@ class SportFoodDAO:
 
     async def get_sport_food_by_id(self, food_id: int) -> Optional[SportFood]:
         result_obj = await self.repository.get_by_where(
-            SportFoodModel.id == food_id
+            SportFoodModel.id == food_id,
         )
         food = result_obj.all()
         if food:

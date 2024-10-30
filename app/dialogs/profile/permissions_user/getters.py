@@ -21,5 +21,5 @@ async def get_settings_statuses(
         "notifications_status": notifications_options[notifications_status],
         "motivation_status": motivation_quotes[motivation_status],
         "grade_status": show_grade_options[grade_status],
-        "gym_status": search_gym_bro_options[gym_bro_status]
+        "gym_status": search_gym_bro_options[gym_bro_status],
     }

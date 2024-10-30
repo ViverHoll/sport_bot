@@ -13,7 +13,7 @@ async def cmd_start(message: Message, state: FSMContext) -> None:
     await state.set_state()
     await message.answer(
         "Добро пожаловать",
-        reply_markup=get_main_menu()
+        reply_markup=get_main_menu(),
     )
 
 

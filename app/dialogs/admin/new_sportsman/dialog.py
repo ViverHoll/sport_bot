@@ -6,7 +6,7 @@ from aiogram_dialog import Dialog, Window
 from aiogram_dialog.widgets.input import TextInput, MessageInput
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.kbd import (
-    Button, Next, Column
+    Button, Next, Column,
 )
 
 from app.dialogs.states import NewSportsmanDialog
@@ -14,7 +14,7 @@ from app.dialogs.states import NewSportsmanDialog
 stop_button: Final[Button] = Button(
     text=Const("Прекратить"),
     id="stop_input_sportsman",
-    on_click=...
+    on_click=...,
 )
 
 # skip_button: Final[Button] = Button(
@@ -24,7 +24,7 @@ stop_button: Final[Button] = Button(
 # )
 
 skip_step = Next(
-    text=Const("Пропустить")
+    text=Const("Пропустить"),
 )
 
 new_sportsman_dialog = Dialog(
@@ -32,37 +32,37 @@ new_sportsman_dialog = Dialog(
         Const("Введите имя спортсмена:"),
         TextInput(
             id="input_name_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         stop_button,
-        state=NewSportsmanDialog.name
+        state=NewSportsmanDialog.name,
     ),
     Window(
         Const("Введите фамилию:"),
         TextInput(
             id="input_surname_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         stop_button,
-        state=NewSportsmanDialog.surname
+        state=NewSportsmanDialog.surname,
     ),
     Window(
         Const("Введите описание спортсмена:"),
         TextInput(
             id="input_description_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         stop_button,
-        state=NewSportsmanDialog.description
+        state=NewSportsmanDialog.description,
     ),
     Window(
         Const("Отправьте фотку спортсмена:"),
         MessageInput(
             func=...,
-            content_types=ContentType.PHOTO
+            content_types=ContentType.PHOTO,
         ),
         stop_button,
-        state=NewSportsmanDialog.photo
+        state=NewSportsmanDialog.photo,
     ),
     Window(
         Const('Введите "прозвище" спортсмена'),
@@ -72,45 +72,45 @@ new_sportsman_dialog = Dialog(
         ),
         Column(
             stop_button,
-            skip_step
+            skip_step,
         ),
-        state=NewSportsmanDialog.nickname
+        state=NewSportsmanDialog.nickname,
     ),
     Window(
         Const("Введите программу спортсмена:"),
         TextInput(
             id="input_exercises_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         Column(
             stop_button,
-            skip_step
+            skip_step,
         ),
-        state=NewSportsmanDialog.exercises
+        state=NewSportsmanDialog.exercises,
     ),
     Window(
         Const("Введите план питания спортсмена:"),
         TextInput(
             id="input_food_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         Column(
             stop_button,
-            skip_step
+            skip_step,
         ),
-        state=NewSportsmanDialog.food
+        state=NewSportsmanDialog.food,
     ),
     Window(
         Const("Введите музыку которую слушает спортсмен:"),
         TextInput(
             id="input_music_new_sportsman",
-            on_success=...
+            on_success=...,
         ),
         Column(
             stop_button,
-            skip_step
+            skip_step,
         ),
-        state=NewSportsmanDialog.music
+        state=NewSportsmanDialog.music,
     ),
     Window(
         Format("ДАННЫЕ"),
@@ -118,14 +118,14 @@ new_sportsman_dialog = Dialog(
             Button(
                 text=Const("Подтвердить"),
                 id="confirm_sportsman",
-                on_click=...
+                on_click=...,
             ),
             Button(
                 text=Const("Отменить"),
                 id="not_confirm_sportsman",
-                on_click=...
-            )
+                on_click=...,
+            ),
         ),
-        state=NewSportsmanDialog.confirm
-    )
+        state=NewSportsmanDialog.confirm,
+    ),
 )

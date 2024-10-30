@@ -15,7 +15,7 @@ class SportsmanDAO:
     def __init__(self, *, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=SportsmanModel
+            model=SportsmanModel,
         )
 
     async def add_sportsman(self, **values) -> None:
@@ -23,10 +23,10 @@ class SportsmanDAO:
         await self.repository.commit()
 
     async def get_sportsman_by_id(self,
-                                  sportsman_id: int
+                                  sportsman_id: int,
                                   ) -> Optional[Sportsman]:
         result_obj = await self.repository.get_by_where(
-            SportsmanModel.sportsmen_id == sportsman_id
+            SportsmanModel.sportsmen_id == sportsman_id,
         )
 
         sportsman = result_obj.all()
@@ -46,7 +46,7 @@ class SportsmanDAO:
 
     async def get_sportsman_by_name(self, sportsman_name: str) -> Sportsman | None:
         result_obj = await self.repository.get_by_where(
-            SportsmanModel.name == sportsman_name
+            SportsmanModel.name == sportsman_name,
         )
 
         sportsman = result_obj.all()
@@ -57,7 +57,7 @@ class SportsmanDAO:
 
     async def get_sportsman_by_surname(self, sportsman_surname: str) -> Sportsman | None:
         result_obj = await self.repository.get_by_where(
-            SportsmanModel.surname == sportsman_surname
+            SportsmanModel.surname == sportsman_surname,
         )
 
         sportsman = result_obj.all()

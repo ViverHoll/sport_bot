@@ -8,7 +8,7 @@ class SocialNetworkModel(BaseModel, TimestampMixin):
 
     user_id: Mapped[Int64] = mapped_column(
         autoincrement=True,
-        primary_key=True
+        primary_key=True,
     )
     full_name: Mapped[str]
     age: Mapped[Int16]

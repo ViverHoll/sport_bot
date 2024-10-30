@@ -16,42 +16,42 @@ async def get_all_exercises(
     user: UserType = dialog_manager.middleware_data["user"]
 
     exercises = await db.strength_indicator.get_all_strength_indicators(
-        user_id=user.user_id
+        user_id=user.user_id,
     )
 
     return {
         "exercises": [
             (
                 exercise.name,
-                exercise.id
+                exercise.id,
             )
             for exercise in exercises
         ],
-        "pages": 1
+        "pages": 1,
     }
 
 
 async def get_exercise_info(
         dialog_manager: DialogManager,
         db: Database,
-        **_kwargs: Any
+        **_kwargs: Any,
 ) -> dict[str, Any]:
     exercise_info = await db.strength_indicator.get_by_id(
-        exercise_id=dialog_manager.dialog_data["exercise_id"]
+        exercise_id=dialog_manager.dialog_data["exercise_id"],
     )
     return {
         "exercise_info": f"Название: {exercise_info.name}\n"
-                         f"Силовые: {exercise_info.core}"
+                         f"Силовые: {exercise_info.core}",
     }
 
 
 async def get_data(
         dialog_manager: DialogManager,
         db: Database,
-        **_kwargs: Any
+        **_kwargs: Any,
 ) -> dict[str, Any]:
     exercise_info = await db.strength_indicator.get_by_id(
-        exercise_id=dialog_manager.dialog_data["exercise_id"]
+        exercise_id=dialog_manager.dialog_data["exercise_id"],
     )
     return {
         "old_exercise_info": f"Название: {exercise_info.name}\n"

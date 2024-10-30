@@ -5,11 +5,11 @@ def get_break_menu() -> ReplyKeyboardMarkup:
     keyboard = ReplyKeyboardBuilder()
 
     keyboard.button(
-        text="Отмена ❌"
+        text="Отмена ❌",
     )
 
     return keyboard.as_markup(
-        resize_keyboard=True
+        resize_keyboard=True,
     )
 
 
@@ -20,7 +20,7 @@ def get_admin_menu() -> ReplyKeyboardMarkup:
         "Премиум 💸",  # дать/забрать
         "Забанить ❌",  # пользователя
         "Кол-во юзеров 👌",
-        "Главное меню 🔙"
+        "Главное меню 🔙",
     ]
 
     keyboard = ReplyKeyboardBuilder()
@@ -30,5 +30,5 @@ def get_admin_menu() -> ReplyKeyboardMarkup:
 
     keyboard.adjust(1)
     return keyboard.as_markup(
-        resize_keyboard=True
+        resize_keyboard=True,
     )

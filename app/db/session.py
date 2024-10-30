@@ -9,7 +9,7 @@ SessionPool: TypeAlias = async_sessionmaker[AsyncSession]
 def create_session_pool(*, url: URL, echo: bool = False) -> SessionPool:
     engine = create_async_engine(
         url=url,
-        echo=echo
+        echo=echo,
     )
     return async_sessionmaker(
         bind=engine,

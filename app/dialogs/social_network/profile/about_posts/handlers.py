@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 async def send_user_posts(
         callback: CallbackQuery,
         _: Button,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     db: Database = manager.middleware_data["db"]
     bot: Bot = manager.middleware_data["bot"]
@@ -24,5 +24,5 @@ async def send_user_posts(
         await bot.send_photo(
             chat_id=callback.from_user.id,
             photo=post.media,
-            caption=f"{post.description}\n\n{tags}"
+            caption=f"{post.description}\n\n{tags}",
         )

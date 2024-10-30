@@ -14,7 +14,7 @@ class CheckUserMiddleware(BaseMiddleware):
             self,
             handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
             event: TelegramObject,
-            data: dict[str, Any]
+            data: dict[str, Any],
     ) -> Any:
         user: User = data["event_from_user"]
         db: HolderDAO = data["db"]
@@ -27,7 +27,7 @@ class CheckUserMiddleware(BaseMiddleware):
         if not user_:
             await db.users.add_user(
                 user_id=user.id,
-                username=user.username
+                username=user.username,
             )
             user_ = await db.users.get_user(user_id=user.id)
 

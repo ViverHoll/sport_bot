@@ -15,7 +15,7 @@ profile_dialog = Dialog(
             "Возраст: <b>{age}</b>\n"
             "Описание: <i>{description}</i>\n"
             "Город: <u>{city}</u>\n"
-            "Всего лайков: <s>{likes}</s>"
+            "Всего лайков: <s>{likes}</s>",
         ),
         # Button(
         #     text=Const("Прогресс"),
@@ -24,9 +24,9 @@ profile_dialog = Dialog(
         Start(
             text=Const("Посты"),
             id="button_about_posts",
-            state=AboutPostProfileSocialNetwork.options
+            state=AboutPostProfileSocialNetwork.options,
         ),
         state=SocialNetworkProfile.options,
-        getter=get_data_user
-    )
+        getter=get_data_user,
+    ),
 )

@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 async def get_info_about_sportsman(
         dialog_manager: DialogManager,
         event_from_user: User,
-        **_: Any
+        **_: Any,
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     user = await db.users.get_user(event_from_user.id)
@@ -21,8 +21,8 @@ async def get_info_about_sportsman(
     sportsman_photo_url = MediaAttachment(
         ContentType.PHOTO,
         file_id=MediaId(
-            file_id=info_sportsman.photo_url
-        )
+            file_id=info_sportsman.photo_url,
+        ),
     )
 
     return {
@@ -30,5 +30,5 @@ async def get_info_about_sportsman(
         "sportsman_photo_url": sportsman_photo_url,
         "nickname": info_sportsman.nickname,
         "years_life": info_sportsman.years_life,
-        "height": info_sportsman.height
+        "height": info_sportsman.height,
     }

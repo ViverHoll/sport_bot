@@ -1,18 +1,20 @@
 from .levels_subscribe import (
     NameSubscribe,
-    PriceSubscribe
+    PriceSubscribe,
 )
 from .options_status import (
     NotificationsStatusEnum,
-    PremiumStatusEnum
+    PremiumStatusEnum,
 )
 
 from .trainer import SpeciesCoaches
+from .favoritesenum import FavoritesEnum
 
 __all__ = [
     "NameSubscribe",
     "PriceSubscribe",
     "NotificationsStatusEnum",
     "PremiumStatusEnum",
-    "SpeciesCoaches"
+    "SpeciesCoaches",
+    "FavoritesEnum"
 ]

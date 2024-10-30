@@ -7,5 +7,5 @@ __all__ = [
     "AppConfig",
     "PostgresConfig",
     "RedisConfig",
-    "TelegramConfig"
+    "TelegramConfig",
 ]

@@ -9,5 +9,5 @@ class EnvSettings(BaseSettings):
     model_config = SettingsConfigDict(
         extra="ignore",
         env_file=_CONFIG_PATH,
-        env_file_encoding="utf-8"
+        env_file_encoding="utf-8",
     )

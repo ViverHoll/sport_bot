@@ -1,3 +1,7 @@
 flake8-COM
 flake8-ANN
 D-205
+isort
+CPY
+EM
+A

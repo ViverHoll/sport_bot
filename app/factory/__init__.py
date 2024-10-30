@@ -7,5 +7,5 @@ __all__ = [
     "create_app_config",
     "create_bot",
     "create_dispatcher",
-    "GptClient"
+    "GptClient",
 ]

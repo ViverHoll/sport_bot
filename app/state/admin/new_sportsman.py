@@ -23,11 +23,11 @@ router = Router()
 @router.message(F.text == "Добавить спортсмена")
 async def start_adding_new_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await message.answer(
         "Введите имя и фамилию спортсмена",
-        reply_markup=get_break_menu()
+        reply_markup=get_break_menu(),
     )
     await state.set_state(NewSportsman.full_name)
 
@@ -35,11 +35,11 @@ async def start_adding_new_sportsman(
 @router.message(F.text == "Отмена ❌")
 async def break_state(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await message.answer(
         "Вы успешно отменили ввод",
-        reply_markup=get_admin_menu()
+        reply_markup=get_admin_menu(),
     )
     await state.clear()
 
@@ -47,13 +47,13 @@ async def break_state(
 @router.message(NewSportsman.full_name, F.text)
 async def get_full_name_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     # мб сделать тут проверку на то, что ввели имя и фамилию, не только имя к примеру
     await state.update_data(full_name=message.text)
 
     await message.answer(
-        "Отлично! Теперь введите описание(биографию) спортсмена"
+        "Отлично! Теперь введите описание(биографию) спортсмена",
     )
     await state.set_state(NewSportsman.description)
 
@@ -61,12 +61,12 @@ async def get_full_name_sportsman(
 @router.message(NewSportsman.description, F.text)
 async def get_description_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(description=message.text)
 
     await message.answer(
-        "Введите ссылку на фотку спортсмена"
+        "Введите ссылку на фотку спортсмена",
     )
     await state.set_state(NewSportsman.photo_url)
 
@@ -76,12 +76,12 @@ async def get_description_sportsman(
 @router.message(NewSportsman.photo_url, F.text)
 async def get_photo_url_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(photo_url=message.text)
 
     await message.answer(
-        "Введите кликуху спортсмена. как его называют в народе?"
+        "Введите кликуху спортсмена. как его называют в народе?",
     )
     await state.set_state(NewSportsman.nickname)
 
@@ -89,14 +89,14 @@ async def get_photo_url_sportsman(
 @router.message(NewSportsman.nickname, F.text)
 async def get_nickname_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(nickname=message.text)
 
     await message.answer(
         "Спортсмен занимал Мистер Олимпию?\n"
         "Если да, то напишите года когда это было.\n"
-        'Если нет, то напишите "Не занимал"'
+        'Если нет, то напишите "Не занимал"',
     )
     await state.set_state(NewSportsman.mr_olympia)
 
@@ -105,12 +105,12 @@ async def get_nickname_sportsman(
 @router.message(NewSportsman.mr_olympia, F.text)
 async def get_mr_olympia_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(mr_olympia=message.text)
 
     await message.answer(
-        "Введите годы жизни спортсмена"
+        "Введите годы жизни спортсмена",
     )
     await state.set_state(NewSportsman.years_life)
 
@@ -118,12 +118,12 @@ async def get_mr_olympia_sportsman(
 @router.message(NewSportsman.years_life, F.text)
 async def get_years_life_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(years_life=message.text)
 
     await message.answer(
-        "Введите рост"
+        "Введите рост",
     )
     await state.set_state(NewSportsman.height)
 
@@ -132,12 +132,12 @@ async def get_years_life_sportsman(
 @router.message(NewSportsman.height, F.text)
 async def get_height_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(height=message.text)
 
     await message.answer(
-        "Введите соревновательные данные"
+        "Введите соревновательные данные",
     )
     await state.set_state(NewSportsman.competition_parameters)
 
@@ -145,12 +145,12 @@ async def get_height_sportsman(
 @router.message(NewSportsman.competition_parameters, F.text)
 async def get_competition_parameters_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(competition_parameters=message.text)
 
     await message.answer(
-        "Введите упражнения"
+        "Введите упражнения",
     )
     await state.set_state(NewSportsman.exercises)
 
@@ -158,12 +158,12 @@ async def get_competition_parameters_sportsman(
 @router.message(NewSportsman.exercises, F.text)
 async def get_exercises_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(exercises=message.text)
 
     await message.answer(
-        "Введите питание"
+        "Введите питание",
     )
     await state.set_state(NewSportsman.food)
 
@@ -171,12 +171,12 @@ async def get_exercises_sportsman(
 @router.message(NewSportsman.food, F.text)
 async def get_food_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     await state.update_data(food=message.text)
 
     await message.answer(
-        "Введите музыку"
+        "Введите музыку",
     )
     await state.set_state(NewSportsman.music)
 
@@ -185,7 +185,7 @@ async def get_food_sportsman(
 @router.message(NewSportsman.music, F.text)
 async def get_music_sportsman(
         message: Message,
-        state: FSMContext
+        state: FSMContext,
 ) -> None:
     """
     Короче:
@@ -202,5 +202,5 @@ async def get_music_sportsman(
     # some code ...
 
     await message.answer(
-        "<b>Спортсмен успешно добавлен!</b>"
+        "<b>Спортсмен успешно добавлен!</b>",
     )

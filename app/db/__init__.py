@@ -6,5 +6,5 @@ Database = HolderDAO
 __all__ = [
     "HolderDAO",
     "DatabaseMiddleware",
-    "Database"
+    "Database",
 ]

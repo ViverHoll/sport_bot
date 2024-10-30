@@ -11,7 +11,7 @@ class UserModel(BaseModel):
 
     user_id: Mapped[int] = mapped_column(
         BigInteger,
-        primary_key=True
+        primary_key=True,
     )
 
     user_photo: Mapped[str | None]
@@ -20,17 +20,17 @@ class UserModel(BaseModel):
     premium: Mapped[bool] = mapped_column(default=False)  # мб сделать тут енум(куплен, не куплен)
 
     select_sportsman: Mapped[bool] = mapped_column(
-        default=False
+        default=False,
     )
 
     role: Mapped[str] = mapped_column(
         default="user",
-        server_default="user"
+        server_default="user",
     )
 
     created: Mapped[datetime] = mapped_column(
         DateTime(),
-        server_default=func.now()
+        server_default=func.now(),
     )
 
     current_sportsman: Mapped[int | None]
@@ -38,7 +38,7 @@ class UserModel(BaseModel):
     current_post: Mapped[int | None]
 
     notifications: Mapped[bool | None] = mapped_column(
-        default=True
+        default=True,
     )
 
     # сделать тут енум категориями

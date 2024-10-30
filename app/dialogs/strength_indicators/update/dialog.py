@@ -5,7 +5,7 @@ from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.input import TextInput
 from aiogram_dialog.widgets.kbd import (
     Start,
-    Select, Column
+    Select, Column,
 )
 
 from app.dialogs.states import UpdateStrengthIndicator, ProfileDialog
@@ -28,7 +28,7 @@ update_strength_indicator_dialog = Dialog(
                 item_id_getter=operator.itemgetter(1),
                 items="exercises",
                 on_click=get_select_exercise,
-                type_factory=int
+                type_factory=int,
             ),
         ),
         # Row(
@@ -47,19 +47,19 @@ update_strength_indicator_dialog = Dialog(
         Start(
             text=Const("Назад"),
             id="switch_to_options_search_menu",
-            state=ProfileDialog.menu
+            state=ProfileDialog.menu,
         ),
         state=UpdateStrengthIndicator.update_menu,
-        getter=get_all_exercises
+        getter=get_all_exercises,
     ),
     Window(
         Format("{exercise_info}\n\nВведите новые силовые"),
         TextInput(
             id="input_new_strength_indicator",
-            on_success=get_new_input_strength_indicator
+            on_success=get_new_input_strength_indicator,
         ),
         state=UpdateStrengthIndicator.new_core,
-        getter=get_exercise_info
+        getter=get_exercise_info,
     ),
     Window(
         Format(
@@ -67,13 +67,13 @@ update_strength_indicator_dialog = Dialog(
             "{old_exercise_info}\n\n"
             "Стало:\n"
             "{new_exercise_info}\n\n"
-            "Вы подтверждаете изменение?"
+            "Вы подтверждаете изменение?",
         ),
         Start(
             text=Const("Подтверждаю"),
             id="confirm_update_strength_indicator",
             on_click=update_strength_indicator,
-            state=ProfileDialog.menu
+            state=ProfileDialog.menu,
         ),
         Start(
             text=Const("Отмена"),
@@ -81,6 +81,6 @@ update_strength_indicator_dialog = Dialog(
             state=ProfileDialog.menu,
         ),
         state=UpdateStrengthIndicator.confirm,
-        getter=get_data
-    )
+        getter=get_data,
+    ),
 )

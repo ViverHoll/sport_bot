@@ -13,26 +13,26 @@ main_food_window = Window(
     SwitchTo(
         text=Const("Составить план"),
         id="button_create_food_plan",
-        state=PersonalizationDialog.training_program
+        state=PersonalizationDialog.training_program,
     ),
     SwitchTo(
         text=Const("Назад"),
         id="switch_to_main_personalization_menu_from_training",
-        state=PersonalizationDialog.options
+        state=PersonalizationDialog.options,
     ),
-    state=PersonalizationDialog.training
+    state=PersonalizationDialog.training,
 )
 
 
 create_food_plan_window = Window(
     Const(
-        "Введите пожелания по программе или опишите программу которую хотите получить"
+        "Введите пожелания по программе или опишите программу которую хотите получить",
     ),
     TextInput(
         id="input_desired_training_program",
-        on_success=get_desired_program_training
+        on_success=get_desired_program_training,
     ),
-    state=PersonalizationDialog.training_program
+    state=PersonalizationDialog.training_program,
 )
 
 ready_food_plan_window = Window(
@@ -40,10 +40,10 @@ ready_food_plan_window = Window(
     SwitchTo(
         text=Const("Назад"),
         id="switch_to_main_training_program_menu",
-        state=PersonalizationDialog.training
+        state=PersonalizationDialog.training,
     ),
     state=PersonalizationDialog.ready_training_program,
-    getter=get_gpt_program
+    getter=get_gpt_program,
 )
 
 

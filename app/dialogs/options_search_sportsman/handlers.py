@@ -13,11 +13,11 @@ if TYPE_CHECKING:
 
 async def search_available(
         callback: CallbackQuery,
-        *_: Any
+        *_: Any,
 ) -> None:
     await callback.answer(
         "Поиск пока недоступен.",
-        show_alert=True
+        show_alert=True,
     )
 
 
@@ -38,12 +38,12 @@ async def select_sportsman(
         _: CallbackQuery,
         __: Select,
         manager: DialogManager,
-        button_id: int
+        button_id: int,
 ) -> None:
     db: Database = manager.middleware_data["db"]
     user: UserType = manager.middleware_data["user"]
     await db.users.update_user(
         user_id=user.user_id,
-        current_sportsman=button_id
+        current_sportsman=button_id,
     )
     await manager.start(OptionsSportsmanStates.options)

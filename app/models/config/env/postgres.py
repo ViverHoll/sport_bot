@@ -19,5 +19,5 @@ class PostgresConfig(EnvSettings, env_prefix="POSTGRES_"):
             port=self.port,
             host=self.host,
             password=self.password.get_secret_value(),
-            username=self.username
+            username=self.username,
         )

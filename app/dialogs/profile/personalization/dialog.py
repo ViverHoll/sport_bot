@@ -8,7 +8,7 @@ from .handlers import coming_soon
 from .windows import (
     main_training_window,
     create_training_program_window,
-    ready_training_program_window
+    ready_training_program_window,
 )
 
 personalization_dialog = Dialog(
@@ -17,22 +17,22 @@ personalization_dialog = Dialog(
         SwitchTo(
             text=Const("Тренировки 🏋️‍♂️"),
             id="switch_to_personally_training",
-            state=PersonalizationDialog.training
+            state=PersonalizationDialog.training,
         ),
         Button(
             text=Const("Питание 🥬"),
             id="switch_to_personally_food",
-            on_click=coming_soon
+            on_click=coming_soon,
             # state=PersonalizationDialog.food
         ),
         Start(
             text=Const("⬅️"),
             id="start_profile_dialog",
-            state=ProfileDialog.menu
+            state=ProfileDialog.menu,
         ),
-        state=PersonalizationDialog.options
+        state=PersonalizationDialog.options,
     ),
     main_training_window,
     create_training_program_window,
-    ready_training_program_window
+    ready_training_program_window,
 )

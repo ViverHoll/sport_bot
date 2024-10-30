@@ -17,23 +17,23 @@ food_sportsman_dialog = Dialog(
             Button(
                 text=Const("🍼 Один прием"),
                 id="button_one_food",
-                on_click=coming_soon
+                on_click=coming_soon,
                 # state=Food.one_item
             ),
             SwitchTo(
                 text=Const("🍱 Весь рацион"),
                 id="button_all_food",
-                state=Food.more_item
+                state=Food.more_item,
             ),
             Start(
                 text=Const("⬅️ Назад"),
                 id="button_back",
-                state=OptionsSportsmanStates.options
+                state=OptionsSportsmanStates.options,
             ),
-            width=2
+            width=2,
         ),
         state=Food.select,
-        getter=get_info_about_sportsman
+        getter=get_info_about_sportsman,
     ),
     Window(
         Const("Тут какой нибудь рецепт"),
@@ -41,7 +41,7 @@ food_sportsman_dialog = Dialog(
             text=Const("💵 Купить подписку"),
             id="button_pay_sub",
             state=Pay.menu,
-            when=~F["premium"]
+            when=~F["premium"],
         ),
         # SwitchTo(
         #     text=Const("⬅️ Назад"),
@@ -51,10 +51,10 @@ food_sportsman_dialog = Dialog(
         Start(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=OptionsSportsmanStates.options
+            state=OptionsSportsmanStates.options,
         ),
         state=Food.one_item,
-        getter=get_info_about_sportsman
+        getter=get_info_about_sportsman,
     ),
     Window(
         Format("{food}"),
@@ -66,9 +66,9 @@ food_sportsman_dialog = Dialog(
         Start(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=OptionsSportsmanStates.options
+            state=OptionsSportsmanStates.options,
         ),
         state=Food.more_item,
-        getter=get_more_foods
-    )
+        getter=get_more_foods,
+    ),
 )

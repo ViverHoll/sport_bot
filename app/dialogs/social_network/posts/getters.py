@@ -46,13 +46,13 @@ async def get_posts_with_info(
     post_photo = MediaAttachment(
         type=ContentType.PHOTO,
         file_id=MediaId(
-            file_id=current_post.media
-        )
+            file_id=current_post.media,
+        ),
     )
 
     await db.users.update_user(
         event_context.user_id,
-        current_post=current_post.post_id
+        current_post=current_post.post_id,
     )
 
     return {
@@ -62,5 +62,6 @@ async def get_posts_with_info(
         "description": current_post.description,
         "tags": current_post.tags,
         "likes": current_post.likes,
-        "like_heart": text_like
+        "like_heart": text_like,
+        "favorite_stars": dialog_manager.dialog_data.get("favorite_stars", "⭐️")
     }

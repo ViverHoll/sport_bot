@@ -17,9 +17,9 @@ class GptClient:
             http_client=httpx.AsyncClient(
                 proxies=config.common.proxy,
                 transport=httpx.AsyncHTTPTransport(
-                    local_address=_LOCAL_ADDRESS
-                )
-            )
+                    local_address=_LOCAL_ADDRESS,
+                ),
+            ),
         )
 
     async def response(
@@ -28,7 +28,7 @@ class GptClient:
             question: str,
             role: str = "user",
             model: str = "gpt-4o",
-            return_text: bool = False
+            return_text: bool = False,
     ) -> ChatCompletion | str | Any:
         content = (
             f"{question}\n\n"
@@ -39,8 +39,8 @@ class GptClient:
             messages=[
                 {
                     "role": role,
-                    "content": content
-                }
+                    "content": content,
+                },
             ],
             model=model,
         )

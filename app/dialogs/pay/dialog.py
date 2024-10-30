@@ -13,19 +13,19 @@ pay_dialog = Dialog(
         Column(
             Url(
                 text=Const("Перейти к оплате"),
-                url=Format("{pay_url}")
+                url=Format("{pay_url}"),
             ),
             Button(
                 text=Const("Оплатил"),
                 id="button_check_pay",
-                on_click=check_pay
-            )
+                on_click=check_pay,
+            ),
         ),
         state=Pay.menu,
-        getter=get_pay_url
+        getter=get_pay_url,
     ),
     Window(
         Const('Поздравляю вас с приобретением\nТеперь вам доступны функции уровня "Премиум"'),
-        state=Pay.success_pay
-    )
+        state=Pay.success_pay,
+    ),
 )

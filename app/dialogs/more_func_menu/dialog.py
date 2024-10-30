@@ -11,7 +11,7 @@ from aiogram_dialog.widgets.kbd import (
     StubScroll,
     Group,
     PrevPage,
-    NextPage
+    NextPage,
 )
 
 from app.dialogs.states import MoreFuncStates
@@ -19,7 +19,7 @@ from app.dialogs.states import MoreFuncStates
 from .getters import get_support_url, paging_sport_food
 from .handlers import (
     get_feedback_user,
-    get_idea_user
+    get_idea_user,
 )
 
 more_func_dialog = Dialog(
@@ -42,42 +42,42 @@ more_func_dialog = Dialog(
             SwitchTo(
                 text=Const("Оставить отзыв ✏️"),
                 id="button_leave_feedback",
-                state=MoreFuncStates.leave_feedback
+                state=MoreFuncStates.leave_feedback,
             ),
             SwitchTo(
                 text=Const("Тех. Поддержка 👨‍💻"),
                 id="button_support",
-                state=MoreFuncStates.support
+                state=MoreFuncStates.support,
             ),
             SwitchTo(
                 text=Const("Предложить идею 🎤"),
                 id="button_suggest_idea",
-                state=MoreFuncStates.suggest_idea
-            )
+                state=MoreFuncStates.suggest_idea,
+            ),
         ),
-        state=MoreFuncStates.menu
+        state=MoreFuncStates.menu,
     ),
     Window(
         DynamicMedia("photo_sport_food"),
         Const(
             "📄 Название: Протеин\n"
-            "🖌 Описание: чистый белок, органическое высокомолекулярное соединение, состоящие из набора аминокислот"
+            "🖌 Описание: чистый белок, органическое высокомолекулярное соединение, состоящие из набора аминокислот",
         ),
         StubScroll(
             id="stub_scroll_sport_foods",
-            pages="pages"
+            pages="pages",
         ),
         Group(
             Button(
                 text=Const("⭐️ Добавить в избранное"),
-                id="button_adding_sport_food_in_favorites"
+                id="button_adding_sport_food_in_favorites",
             ),
-            width=1
+            width=1,
         ),
         Row(
             PrevPage(
                 scroll="stub_scroll_sport_foods",
-                text=Const("⬅️")
+                text=Const("⬅️"),
             ),
             Button(
                 text=Const("✅"),
@@ -85,17 +85,17 @@ more_func_dialog = Dialog(
             ),
             NextPage(
                 scroll="stub_scroll_sport_foods",
-                text=Const("➡️")
-            )
+                text=Const("➡️"),
+            ),
         ),
         SwitchTo(
             text=Const("⬅️ Вернуться назад"),
             id="back_to_more_func_menu",
-            state=MoreFuncStates.menu
+            state=MoreFuncStates.menu,
         ),
 
         state=MoreFuncStates.sport_food,
-        getter=paging_sport_food
+        getter=paging_sport_food,
     ),
     Window(
         # Подумать, мб указать фильтр ток на сообщение. Чтобы пользователь не мог присылать любое сообщение в качестве
@@ -103,28 +103,28 @@ more_func_dialog = Dialog(
         Const("Введите отзыв:"),
         TextInput(
             id="get_input_feedback_user",
-            on_success=get_feedback_user
+            on_success=get_feedback_user,
         ),
         SwitchTo(
             text=Const("◀️ Назад"),
             id="feedback_button_back",
-            state=MoreFuncStates.menu
+            state=MoreFuncStates.menu,
         ),
-        state=MoreFuncStates.leave_feedback
+        state=MoreFuncStates.leave_feedback,
     ),
     Window(
         Const("Тут какой-то текст"),
         Url(
             text=Const("Тех. Поддержка"),
-            url=Format("{support_url}")
+            url=Format("{support_url}"),
         ),
         SwitchTo(
             text=Const("◀️ Назад"),
             id="support_button_back",
-            state=MoreFuncStates.menu
+            state=MoreFuncStates.menu,
         ),
         state=MoreFuncStates.support,
-        getter=get_support_url
+        getter=get_support_url,
     ),
     Window(
         # Подумать, мб указать фильтр ток на сообщение. Чтобы пользователь не мог присылать
@@ -132,13 +132,13 @@ more_func_dialog = Dialog(
         Const("Введите идею:"),
         TextInput(
             id="get_input_idea_user",
-            on_success=get_idea_user
+            on_success=get_idea_user,
         ),
         SwitchTo(
             text=Const("◀️ Назад"),
             id="idea_button_back",
-            state=MoreFuncStates.menu
+            state=MoreFuncStates.menu,
         ),
-        state=MoreFuncStates.suggest_idea
+        state=MoreFuncStates.suggest_idea,
     ),
 )

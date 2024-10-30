@@ -15,7 +15,7 @@ class UsersDAO:
     def __init__(self, *, session: AsyncSession) -> None:
         self.repository = Repository(
             session=session,
-            model=UserModel
+            model=UserModel,
         )
 
     async def add_user(self, **values) -> None:
@@ -24,7 +24,7 @@ class UsersDAO:
 
     async def get_user(self, user_id: int) -> Optional[UserModel]:
         result_obj = await self.repository.get_by_where(
-            UserModel.user_id == user_id
+            UserModel.user_id == user_id,
         )
         user = result_obj.all()
 
@@ -36,7 +36,7 @@ class UsersDAO:
     async def update_user(self, user_id: int, **values: Any) -> None:
         await self.repository.update_by_where(
             UserModel.user_id == user_id,
-            **values
+            **values,
         )
         await self.repository.commit()
 

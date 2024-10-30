@@ -10,7 +10,7 @@ comment_window = Window(
     Const("Введите комментарий"),
     TextInput(
         id="input_comment",
-        on_success=get_input_comment
+        on_success=get_input_comment,
     ),
-    state=PostSocialNetwork.comment
+    state=PostSocialNetwork.comment,
 )

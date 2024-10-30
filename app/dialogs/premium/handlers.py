@@ -12,10 +12,10 @@ async def go_to_select_term(
         _: CallbackQuery,
         __: Select,
         manager: DialogManager,
-        ___: str
+        ___: str,
 ) -> None:
     await manager.switch_to(
-        state=PremiumDialog.term
+        state=PremiumDialog.term,
     )
 
 
@@ -23,18 +23,18 @@ async def go_to_buy_menu(
         _: CallbackQuery,
         __: Select,
         manager: DialogManager,
-        ___: str
+        ___: str,
 ) -> None:
     await manager.switch_to(
-        state=PremiumDialog.buy
+        state=PremiumDialog.buy,
     )
 
 
 async def check_pay(
         callback: CallbackQuery,
-        *_args: Any
+        *_args: Any,
 ) -> None:
     await callback.answer(
         "Оплата еще не поступила",
-        show_alert=True
+        show_alert=True,
     )

@@ -13,18 +13,18 @@ if TYPE_CHECKING:
 async def get_data_user(
         dialog_manager: DialogManager,
         user: UserType,
-        **_kwargs: Any
+        **_kwargs: Any,
 ) -> dict[str, Any]:
     db: HolderDAO = dialog_manager.middleware_data["db"]
     user_social_network = await db.social_network.get_user_by_id(
-        user_id=user.user_id
+        user_id=user.user_id,
     )
 
     user_media = MediaAttachment(
         ContentType.PHOTO,
         file_id=MediaId(
-            file_id=user_social_network.media
-        )
+            file_id=user_social_network.media,
+        ),
     )
 
     return {
@@ -33,5 +33,5 @@ async def get_data_user(
         "age": user_social_network.age,
         "description": user_social_network.description,
         "city": user_social_network.city,
-        "likes": user_social_network.likes
+        "likes": user_social_network.likes,
     }

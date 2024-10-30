@@ -8,7 +8,7 @@ class SportsmanModel(BaseModel):
 
     sportsmen_id: Mapped[int] = mapped_column(
         primary_key=True,
-        autoincrement=True
+        autoincrement=True,
     )
 
     name: Mapped[str]

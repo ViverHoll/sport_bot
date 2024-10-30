@@ -16,27 +16,27 @@ if TYPE_CHECKING:
 async def clicked_on_notifications(
         _: CallbackQuery,
         checkbox: ManagedCheckbox,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     manager.dialog_data.update(
-        is_checked=checkbox.is_checked()
+        is_checked=checkbox.is_checked(),
     )
 
 
 async def coming_soon(
         callback: CallbackQuery,
-        *_args: Any
+        *_args: Any,
 ) -> None:
     await callback.answer(
         "В разработке... 🛠",
-        show_alert=True
+        show_alert=True,
     )
 
 
 async def get_new_photo_user(
         message: Message,
         _: MessageInput,
-        manager: DialogManager
+        manager: DialogManager,
 ) -> None:
     db: HolderDAO = manager.middleware_data["db"]
     user: UserType = manager.middleware_data["user"]
@@ -44,12 +44,12 @@ async def get_new_photo_user(
 
     await db.users.update_user(
         user_id=message.from_user.id,
-        user_photo=message.photo[-1].file_id
+        user_photo=message.photo[-1].file_id,
     )
     await message.answer(
-        "Фото успешно обновлено"
+        "Фото успешно обновлено",
     )
     await manager.switch_to(
-        state=ProfileDialog.menu
+        state=ProfileDialog.menu,
     )
 

@@ -13,14 +13,14 @@ class CheckSubMessageMiddleware(BaseMiddleware):
             self,
             handler: Callable[[Message, dict[str, Any]], Awaitable[Any]],
             event: Message,
-            data: dict[str, Any]
+            data: dict[str, Any],
     ) -> Any:
         bot: Bot = data["bot"]
         config: AppConfig = data["config"]
 
         status_user = await bot.get_chat_member(
             chat_id=config.channel.id.get_secret_value(),
-            user_id=event.from_user.id
+            user_id=event.from_user.id,
         )
 
         if status_user.status == "left":
@@ -34,14 +34,14 @@ class CheckSubCallbackMiddleware(BaseMiddleware):
             self,
             handler: Callable[[CallbackQuery, dict[str, Any]], Awaitable[Any]],
             event: CallbackQuery,
-            data: dict[str, Any]
+            data: dict[str, Any],
     ) -> Any:
         bot: Bot = data["bot"]
         config: AppConfig = data["config"]
 
         status_user = await bot.get_chat_member(
             chat_id=config.channel.id.get_secret_value(),
-            user_id=event.from_user.id
+            user_id=event.from_user.id,
         )
 
         if status_user.status == "left":

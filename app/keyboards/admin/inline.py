@@ -7,11 +7,11 @@ def get_options_add_sportsman() -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardBuilder()
     keyboard.button(
         text="Текст",
-        callback_data="add_sportsman_text"
+        callback_data="add_sportsman_text",
     )
     keyboard.button(
         text="Файл",
-        callback_data="add_sportsman_file"
+        callback_data="add_sportsman_file",
     )
     keyboard.adjust(1)
     return keyboard.as_markup()

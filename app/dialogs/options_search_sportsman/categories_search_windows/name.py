@@ -13,27 +13,27 @@ window_name = Window(
     SwitchTo(
         text=Const("◀️"),
         id="button_back",
-        state=OptionsSearchSportsman.categories
+        state=OptionsSearchSportsman.categories,
     ),
     TextInput(
         id="input_name_sportsman",
-        on_success=get_input_name
+        on_success=get_input_name,
     ),
-    state=OptionsSearchSportsman.name
+    state=OptionsSearchSportsman.name,
 )
 
 
 not_found_sportsman_window = Window(
     Format(
-        'К сожалению спортсмен "{sportsman}" не найден'
+        'К сожалению спортсмен "{sportsman}" не найден',
     ),
     SwitchTo(
         text=Const("Попробовать еще раз"),
         id="switch_to_try_again",
-        state=OptionsSearchSportsman.categories
+        state=OptionsSearchSportsman.categories,
     ),
     state=OptionsSearchSportsman.not_found,
-    getter=get_not_found_sportsman
+    getter=get_not_found_sportsman,
 )
 
 

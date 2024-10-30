@@ -11,9 +11,9 @@ commands_router = Router()
 @commands_router.message(CommandStart())
 async def admin_command_start(message: Message) -> None:
     await message.answer_sticker(
-        sticker="CAACAgIAAxkBAAIE4ma17FQR0nzHkRV729g6KXi6dPhJAAIgAANZu_wlhYqWmghNyX01BA"
+        sticker="CAACAgIAAxkBAAIE4ma17FQR0nzHkRV729g6KXi6dPhJAAIgAANZu_wlhYqWmghNyX01BA",
     )
     await message.answer(
         "Добро пожаловать",
-        reply_markup=get_main_menu(admin=True)
+        reply_markup=get_main_menu(admin=True),
     )

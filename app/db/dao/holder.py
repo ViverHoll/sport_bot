@@ -7,6 +7,7 @@ from .post import PostDAO
 from .social_network import SocialNetworkDAO
 from .strength_indicators import StrengthIndicatorDAO
 from .like import LikeDAO
+from .favorite import FavoriteDAO
 
 
 class HolderDAO:
@@ -17,6 +18,7 @@ class HolderDAO:
     social_network: SocialNetworkDAO
     strength_indicator: StrengthIndicatorDAO
     like: LikeDAO
+    favorite: FavoriteDAO
 
     __slots__ = (
         "users",
@@ -25,7 +27,8 @@ class HolderDAO:
         "post",
         "social_network",
         "strength_indicator",
-        "like"
+        "like",
+        "favorite"
     )
 
     def __init__(self, *, session: AsyncSession) -> None:
@@ -36,3 +39,4 @@ class HolderDAO:
         self.social_network = SocialNetworkDAO(session=session)
         self.strength_indicator = StrengthIndicatorDAO(session=session)
         self.like = LikeDAO(session=session)
+        self.favorite = FavoriteDAO(session=session)

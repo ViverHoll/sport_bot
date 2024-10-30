@@ -15,7 +15,7 @@ async def get_input_name(
         message: Message,
         _: ManagedTextInput,
         manager: DialogManager,
-        name_sportsman: str
+        name_sportsman: str,
 ) -> None:
     db: Database = manager.middleware_data["db"]
     user: UserType = manager.middleware_data["user"]
@@ -24,7 +24,7 @@ async def get_input_name(
     if sportsman:
         await db.users.update_user(
             user_id=user.user_id,
-            current_sportsman=sportsman.sportsmen_id
+            current_sportsman=sportsman.sportsmen_id,
         )
         await manager.start(OptionsSportsmanStates.options)
     else:
@@ -36,7 +36,7 @@ async def get_input_surname(
         message: Message,
         _: ManagedTextInput,
         manager: DialogManager,
-        surname_sportsman: str
+        surname_sportsman: str,
 ) -> None:
     db: Database = manager.middleware_data["db"]
     user: UserType = manager.middleware_data["user"]
@@ -45,7 +45,7 @@ async def get_input_surname(
     if sportsman:
         await db.users.update_user(
             user_id=user.user_id,
-            current_sportsman=sportsman.sportsmen_id
+            current_sportsman=sportsman.sportsmen_id,
         )
         await manager.start(OptionsSportsmanStates.options)
     else:

@@ -10,6 +10,6 @@ def create_bot(config: AppConfig) -> Bot:
         token=config.common.bot_token.get_secret_value(),
         default=DefaultBotProperties(
             parse_mode=ParseMode.HTML,
-            link_preview_is_disabled=True
-        )
+            link_preview_is_disabled=True,
+        ),
     )

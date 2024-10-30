@@ -18,8 +18,8 @@ class UserRegSocialNetwork(Filter):
             self,
             message: Message,
             db: HolderDAO,
-            **_kwargs: Any
+            **_kwargs: Any,
     ) -> None | UserType:
         return await db.social_network.get_user_by_id(
-            user_id=message.from_user.id
+            user_id=message.from_user.id,
         )

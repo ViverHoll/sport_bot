@@ -28,16 +28,16 @@ async def create_dispatcher(config: AppConfig) -> Dispatcher:
         storage=RedisStorage(
             redis=await create_redis(config),
             key_builder=DefaultKeyBuilder(
-                with_destiny=True
-            )
+                with_destiny=True,
+            ),
         ),
         session_pool=create_session_pool(
-            url=config.postgres.build_url()
+            url=config.postgres.build_url(),
         ),
         ttl_cache=create_ttl_cache(
             max_size=100_000,
-            ttl=60
-        )
+            ttl=60,
+        ),
     )
 
     _setup_outer_middleware(dp)
@@ -45,7 +45,7 @@ async def create_dispatcher(config: AppConfig) -> Dispatcher:
     dp.include_routers(
         handler_router,
         state_router,
-        setup_all_dialogs()
+        setup_all_dialogs(),
     )
 
     setup_dialogs(dp)

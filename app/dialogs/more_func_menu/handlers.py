@@ -16,7 +16,7 @@ async def get_feedback_user(
         message: Message,
         _: ManagedTextInput,
         manager: DialogManager,
-        text: str
+        text: str,
 ) -> None:
     bot: Bot = manager.middleware_data["bot"]
     config: AppConfig = manager.middleware_data["config"]
@@ -26,11 +26,11 @@ async def get_feedback_user(
             chat_id=admin,
             text=f"Пришел отзыв о боте!\n"
                  f"@{message.from_user.username} ({message.from_user.id})\n\n"
-                 f"{text}"
+                 f"{text}",
         )
     await message.answer(
         "Ваше сообщение успешно принято.\n"
-        "Ожидайте обратной связи от админа"
+        "Ожидайте обратной связи от админа",
     )
     await manager.switch_to(MoreFuncStates.menu)
 
@@ -39,7 +39,7 @@ async def get_idea_user(
         message: Message,
         _: ManagedTextInput,
         manager: DialogManager,
-        text: str
+        text: str,
 ) -> None:
     bot: Bot = manager.middleware_data["bot"]
     config: AppConfig = manager.middleware_data["config"]
@@ -49,20 +49,20 @@ async def get_idea_user(
             chat_id=admin,
             text=f"Пришла идея для бота!\n"
                  f"@{message.from_user.username}({message.from_user.id})\n\n"
-                 f"{text}"
+                 f"{text}",
         )
     await message.answer(
         "Ваша идея успешно принята.\n"
-        "Ожидайте обратной связи от админа"
+        "Ожидайте обратной связи от админа",
     )
     await manager.switch_to(MoreFuncStates.menu)
 
 
 async def coming_soon(
         callback: CallbackQuery,
-        *_args: Any
+        *_args: Any,
 ) -> None:
     await callback.answer(
         "В разработке... 🛠",
-        show_alert=True
+        show_alert=True,
     )

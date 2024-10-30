@@ -9,13 +9,13 @@ from aiogram_dialog.widgets.kbd import (
     Column,
     Start,
     SwitchTo,
-    Group
+    Group,
 )
 
 from app.dialogs.states import (
     ProfileDialog,
     # PersonalizationDialog,
-    SettingProfileUser, PremiumDialog, NewStrengthIndicators, UpdateStrengthIndicator
+    SettingProfileUser, PremiumDialog, NewStrengthIndicators, UpdateStrengthIndicator,
 )
 
 from .getters import getter
@@ -29,7 +29,7 @@ profile_dialog = Dialog(
     Window(
         DynamicMedia(
             "photo_user",
-            when=F["photo_user"]
+            when=F["photo_user"],
         ),
         # write code for output media user in chat
         # Format(
@@ -41,14 +41,14 @@ profile_dialog = Dialog(
         Format(
             "<b>✨ Подписка:</b> <u>{premium_status}</u>\n"
             "<b>Потенциальные gym-bro:</b> <u>{count_gym_bro}</u>\n"
-            "<b>Прогресс по параметрам:</b>{parameters}"
+            "<b>Прогресс по параметрам:</b>{parameters}",
         ),
         Column(
             Group(
                 Start(
                     text=Const("Обновить параметры"),
                     id="switch_to_update_parameters",
-                    state=UpdateStrengthIndicator.update_menu
+                    state=UpdateStrengthIndicator.update_menu,
                 ),
                 # SwitchTo(
                 #     text=Const("Изменить параметры"),
@@ -63,9 +63,9 @@ profile_dialog = Dialog(
                 Start(
                     text=Const("Добавить параметры"),
                     id="switch_to_add_parameters",
-                    state=NewStrengthIndicators.name
+                    state=NewStrengthIndicators.name,
                 ),
-                width=2
+                width=2,
             ),
             # Start(
             #     text=Const("Персонализация 👨‍💻"),
@@ -76,7 +76,7 @@ profile_dialog = Dialog(
                 text=Const("Настройки ⚙️"),
                 id="start_settings_profile_user",
                 state=SettingProfileUser.options,
-                when=F["premium"]
+                when=F["premium"],
             ),
             SwitchTo(
                 text=Format("{button_photo_name} 📷"),
@@ -94,18 +94,18 @@ profile_dialog = Dialog(
                 text=Const("Купить подписку 💵"),
                 id="buy_premium",
                 state=PremiumDialog.level,
-                when=F["premium"]
-            )
+                when=F["premium"],
+            ),
         ),
         state=ProfileDialog.menu,
-        getter=getter
+        getter=getter,
     ),
     Window(
         Const("Пришлите новое фото"),
         MessageInput(
             func=get_new_photo_user,
-            content_types=ContentType.PHOTO
+            content_types=ContentType.PHOTO,
         ),
-        state=ProfileDialog.edit_photo
-    )
+        state=ProfileDialog.edit_photo,
+    ),
 )

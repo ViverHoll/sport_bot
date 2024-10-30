@@ -12,21 +12,21 @@ music_sportsman_dialog = Dialog(
             SwitchTo(
                 text=Const("🎵 1 трек"),
                 id="button_one_music",
-                state=Music.one_item
+                state=Music.one_item,
             ),
             SwitchTo(
                 text=Const("🎶 Все треки"),
                 id="button_all_music",
-                state=Music.more_item
+                state=Music.more_item,
             ),
             Start(
                 text=Const("⬅️ Назад"),
                 id="button_back",
-                state=OptionsSportsmanStates.options
+                state=OptionsSportsmanStates.options,
             ),
-            width=2
+            width=2,
         ),
-        state=Music.select
+        state=Music.select,
     ),
     Window(
         Const("Тут 1 трек спортсмена"),
@@ -34,22 +34,22 @@ music_sportsman_dialog = Dialog(
             text=Const("💵 Купить подписку"),
             id="button_pay_sub",
             state=Pay.menu,
-            when=~F["premium"]
+            when=~F["premium"],
         ),
         SwitchTo(
             text=Const("⬅️ Назад"),
             id="button_back",
-            state=Music.select
+            state=Music.select,
         ),
-        state=Music.one_item
+        state=Music.one_item,
     ),
     Window(
         Const("Тут все треки спортсмена"),
         SwitchTo(
             text=Const("⬅️ Назад"),
             id="back_to_select_menu",
-            state=Music.select
+            state=Music.select,
         ),
-        state=Music.more_item
-    )
+        state=Music.more_item,
+    ),
 )

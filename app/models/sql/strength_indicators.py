@@ -8,7 +8,7 @@ class StrengthIndicatorsModel(BaseModel, TimestampMixin):
 
     id: Mapped[Int64] = mapped_column(
         primary_key=True,
-        autoincrement=True
+        autoincrement=True,
     )
     user_id: Mapped[Int64]
     name: Mapped[str]

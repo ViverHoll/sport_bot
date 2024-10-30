@@ -13,17 +13,17 @@ options_sportsman_dialog = Dialog(
             "<b><i>{sportsman_full_name}</i></b>\n"
             "🙊 Прозвище: {nickname}\n\n"
             "🎊 Дата рождения: {years_life}\n\n"
-            "📏 Рост: {height} см\n\n"
+            "📏 Рост: {height} см\n\n",
         ),
         Start(
             text=Const("🥊 Упражнения"),
             id="button_exercises",
-            state=Exercises.more_item
+            state=Exercises.more_item,
         ),
         Start(
             text=Const("🥬 Питание"),
             id="button_food",
-            state=Food.more_item
+            state=Food.more_item,
         ),
         # Start(
         #     text=Const("🎧 Музыка"),
@@ -34,10 +34,10 @@ options_sportsman_dialog = Dialog(
             text=Const("⬅️ Назад"),
             id="back_to_select_sportsman",
             # state=StubScrollSportsman.sportsman
-            state=OptionsSearchSportsman.list_sportsman
+            state=OptionsSearchSportsman.list_sportsman,
         ),
         state=OptionsSportsmanStates.options,
-        getter=get_info_about_sportsman
+        getter=get_info_about_sportsman,
     ),
     Window(
         DynamicMedia("sportsman_photo_url"),
@@ -45,17 +45,17 @@ options_sportsman_dialog = Dialog(
             "<b><i>{sportsman_full_name}</i></b>\n"
             "🙊 Прозвище: {nickname}\n\n"
             "🎊 Дата рождения: {years_life}\n\n"
-            "📏 Рост: {height} см\n\n"
+            "📏 Рост: {height} см\n\n",
         ),
         Start(
             text=Const("🥊 Упражнения"),
             id="button_exercises",
-            state=Exercises.more_item
+            state=Exercises.more_item,
         ),
         Start(
             text=Const("🥬 Питание"),
             id="button_food",
-            state=Food.more_item
+            state=Food.more_item,
         ),
         # Start(
         #     text=Const("🎧 Музыка"),
@@ -65,10 +65,10 @@ options_sportsman_dialog = Dialog(
         Start(
             text=Const("⬅️ Назад"),
             id="back_to_select_sportsman",
-            state=StubScrollSportsman.sportsman
+            state=StubScrollSportsman.sportsman,
         ),
         state=OptionsSportsmanStates.options_for_list,
-        getter=get_info_about_sportsman
+        getter=get_info_about_sportsman,
     ),
 )
 """173"""

@@ -22,7 +22,7 @@ class Repository(Generic[ModelType]):
             self,
             *,
             session: AsyncSession,
-            model: type[ModelType]
+            model: type[ModelType],
     ) -> None:
         self.session = session
         self.model = model

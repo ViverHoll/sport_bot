@@ -71,9 +71,9 @@ delete_post_dialog = Dialog(
         SwitchTo(
             text=Const("Назад"),
             id="back_to_scrolling_posts",
-            state=DeletePostDialog.menu
+            state=DeletePostDialog.menu,
         ),
         state=DeletePostDialog.confirm,
-        getter=get_info_post
+        getter=get_info_post,
     ),
 )
