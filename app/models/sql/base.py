@@ -3,7 +3,7 @@ from typing import Annotated, TypeAlias
 from typing import Any, Final
 
 from sqlalchemy import Function, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, as_declarative
 from sqlalchemy import SmallInteger, Integer, BigInteger, DateTime
 from sqlalchemy.orm import DeclarativeBase, registry
 
@@ -14,7 +14,8 @@ Int64: TypeAlias = Annotated[int, 64]
 NowFunc: Final[Function[Any]] = func.timezone("UTC", func.now())
 
 
-class BaseModel(DeclarativeBase):
+@as_declarative()
+class BaseModel:
     registry = registry(
         type_annotation_map={
             Int16: SmallInteger,
@@ -22,6 +23,11 @@ class BaseModel(DeclarativeBase):
             Int64: BigInteger,
             datetime: DateTime(timezone=True),
         },
+    )
+
+    id: Mapped[Int64] = mapped_column(
+        autoincrement=True,
+        primary_key=True,
     )
 
 

@@ -16,5 +16,5 @@ __all__ = [
     "NotificationsStatusEnum",
     "PremiumStatusEnum",
     "SpeciesCoaches",
-    "FavoritesEnum"
+    "FavoritesEnum",
 ]

@@ -3,11 +3,11 @@ from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from aiogram_dialog import setup_dialogs
 
 from app.models.config import AppConfig
-from app.db import DatabaseMiddleware
-from app.db.session import create_session_pool
-from app.dialogs import setup_all_dialogs
-from app.handlers import handler_router
-from app.middleware.outer import CheckUserMiddleware
+from app.services.db import DatabaseMiddleware
+from app.services.db import create_session_pool
+from app.services.dialogs import setup_all_dialogs
+from app.telegram.handlers import handler_router
+from app.telegram.middleware import CheckUserMiddleware
 from app.state import state_router
 
 from .gpt import GptClient

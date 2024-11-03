@@ -2,37 +2,39 @@ services:
    redis:
       image: redis:7-alpine
       restart: always
-      env_file: config.env
+      env_file: ./config.env
       ports:
-         - "${REDIS_PORT}:${REDIS_PORT}"
+         - "6379:6379"
       expose:
-         - "${REDIS_PORT}"
+         - "6379"
       volumes:
-         - redis-data:${REDIS_DATA}
+         - redis-data:/redis_data
 
    postgres:
       image: postgres:16-alpine
       restart: always
-      env_file: config.env
+      env_file: ./config.env
       environment:
-         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-         POSTGRES_USERNAME: ${POSTGRES_USERNAME}
-         POSTGRES_DB_NAME: ${POSTGRES_DB_NAME}
-         PGDATA: ${POSTGRES_DATA}
+         POSTGRES_PASSWORD: 090807opol
+         POSTGRES_USERNAME: postgres
+         POSTGRES_DB_NAME: sport_bot
+         PGDATA: /var/lib/postgresql/data
       ports:
-         - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+         - "5432:5432"
       expose:
-         - "${POSTGRES_PORT}"
+         - "5432"
       volumes:
-         - postgres-data:${POSTGRES_DATA}
+         - postgres-data:/var/lib/postgresql/data
 
    bot:
       build: .
       restart: always
-      env_file: config.env
+      env_file: ./config.env
       depends_on:
          - redis
          - postgres
+#      environment:
+#        DATABASE_URL: postgres+asyncpg://postgres:090807opol@postgres:5432/
 
 volumes:
    redis-data:

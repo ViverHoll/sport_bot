@@ -2,8 +2,8 @@ from aiogram import Router, F
 from aiogram.types import CallbackQuery, Message
 from aiogram.fsm.context import FSMContext
 
-from app.db import HolderDAO
-from app.keyboards.user.inline import get_confirm_edit_photo_menu
+from app.services.db import HolderDAO
+from app.telegram.keyboards.user.inline import get_confirm_edit_photo_menu
 from app.state.states import NewProfilePhoto
 
 router = Router()

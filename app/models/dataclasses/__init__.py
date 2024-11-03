@@ -6,6 +6,7 @@ from .post import PostType
 from .strength_indicator import StrengthIndicatorType
 from .like import LikeType
 from .favorite import FavoriteType
+from .gpt import GptQueryType
 
 
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     "StrengthIndicatorType",
     "LikeType",
     "FavoriteType",
+    "GptQueryType",
 ]
 

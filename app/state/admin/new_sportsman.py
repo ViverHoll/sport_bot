@@ -2,7 +2,7 @@ from aiogram import F, Router
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
 
-from app.keyboards.admin.reply import get_admin_menu, get_break_menu
+from app.telegram.keyboards.admin import get_admin_menu, get_break_menu
 from app.state.states import NewSportsman
 
 router = Router()

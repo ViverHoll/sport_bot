@@ -11,3 +11,6 @@ class EnvSettings(BaseSettings):
         env_file=_CONFIG_PATH,
         env_file_encoding="utf-8",
     )
+
+
+
