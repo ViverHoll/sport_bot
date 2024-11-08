@@ -4,11 +4,11 @@ from aiogram_dialog import setup_dialogs
 
 from app.models.config import AppConfig
 from app.services.db import DatabaseMiddleware
-from app.services.db import create_session_pool
+from app.services.db.session import create_session_pool
 from app.services.dialogs import setup_all_dialogs
 from app.telegram.handlers import handler_router
-from app.telegram.middleware import CheckUserMiddleware
-from app.state import state_router
+from app.telegram.middleware.outer import CheckUserMiddleware
+from app.telegram.state import state_router
 
 from .gpt import GptClient
 from .redis import create_redis
@@ -46,6 +46,7 @@ async def create_dispatcher(config: AppConfig) -> Dispatcher:
         handler_router,
         state_router,
         setup_all_dialogs(),
+        # handler_router,
     )
 
     setup_dialogs(dp)

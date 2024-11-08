@@ -2,7 +2,6 @@ from typing import Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.exceptions import ArgumentsNotPassedError
 from app.models.sql import FavoriteModel
 from app.services.db.repository import Repository
 from app.models.dataclasses import FavoriteType
@@ -44,8 +43,6 @@ class FavoriteDAO:
             ]
         return None
 
-
-
     async def get_favorite_by_sportsman_id(
             self,
             sportsman_id: int,
@@ -65,22 +62,11 @@ class FavoriteDAO:
             self,
             user_id: int,
             sportsman_id: Optional[int] = None,
-            post_id: Optional[int] = None,
     ) -> None:
         """Delete favorite."""
-        if not (sportsman_id or post_id):
-            raise ArgumentsNotPassedError([sportsman_id, post_id])
-
-        if sportsman_id:
-            await self.repository.delete_by_where(
-                FavoriteModel.user_id == user_id,
-                FavoriteModel.sportsman_id == sportsman_id,
-            )
-
-        if post_id:
-            await self.repository.delete_by_where(
-                FavoriteModel.user_id == user_id,
-                FavoriteModel.post_id == post_id,
-            )
+        await self.repository.delete_by_where(
+            FavoriteModel.user_id == user_id,
+            FavoriteModel.sportsman_id == sportsman_id,
+        )
 
         await self.repository.commit()

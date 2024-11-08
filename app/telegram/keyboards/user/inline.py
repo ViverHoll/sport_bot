@@ -3,8 +3,8 @@ from typing import Mapping, Iterable
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardMarkup
 
 from app.models.config import AppConfig
-from app.callback_factory import SubscribeFactory
-from app.callback_factory.trainer import TrainerCallbackFactory
+from app.telegram.callback_factory import SubscribeFactory
+from app.telegram.callback_factory.trainer import TrainerCallbackFactory
 from app.models.enums.levels_subscribe import (
     NameSubscribe,
     PriceSubscribe,

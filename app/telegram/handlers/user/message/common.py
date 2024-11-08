@@ -105,7 +105,6 @@ async def get_favorites_user(
             text=f"{sportsman}",
         )
 
-
     await message.answer("все...")
 
 

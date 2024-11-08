@@ -4,9 +4,9 @@ services:
       restart: always
       env_file: ./config.env
       ports:
-         - "6379:6379"
+         - 6379:6379
       expose:
-         - "6379"
+         - 6379
       volumes:
          - redis-data:/redis_data
 
@@ -20,9 +20,9 @@ services:
          POSTGRES_DB_NAME: sport_bot
          PGDATA: /var/lib/postgresql/data
       ports:
-         - "5432:5432"
+         - 5432:5432
       expose:
-         - "5432"
+         - 5432
       volumes:
          - postgres-data:/var/lib/postgresql/data
 
@@ -33,8 +33,6 @@ services:
       depends_on:
          - redis
          - postgres
-#      environment:
-#        DATABASE_URL: postgres+asyncpg://postgres:090807opol@postgres:5432/
 
 volumes:
    redis-data:

@@ -4,9 +4,8 @@ project_dir := .
 .PHONY: migration
 migration:
 	alembic revision \
-	  --autogenerate \
-	  --rev-id $(shell python migrations/_get_revision_id.py) \
-	  --message "init"
+	  --autogenerate
+	  -m "init"
 
 # Apply database migrations
 .PHONY: migrate
@@ -32,8 +31,8 @@ app-run-db:
 # Run bot in docker container
 .PHONY: app-run
 app-run:
-	@docker-compose stop
-	@docker-compose up -d --remove-orphans
+	docker-compose stop
+	docker-compose up -d --remove-orphans
 
 # Stop docker containers
 .PHONY: app-stop

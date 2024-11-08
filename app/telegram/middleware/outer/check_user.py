@@ -16,6 +16,7 @@ class CheckUserMiddleware(BaseMiddleware):
             event: TelegramObject,
             data: dict[str, Any],
     ) -> Any:
+        """Проверка пользователя на существование в базе."""
         user: User = data["event_from_user"]
         db: HolderDAO = data["db"]
 

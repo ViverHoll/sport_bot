@@ -7,7 +7,6 @@ class SportsmanModel(BaseModel):
     __tablename__ = "sportsman"
 
     sportsmen_id: Mapped[int] = mapped_column(
-        primary_key=True,
         autoincrement=True,
     )
 

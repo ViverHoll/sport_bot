@@ -4,7 +4,7 @@ from aiogram import BaseMiddleware, Bot
 from aiogram.types import CallbackQuery, Message
 
 if TYPE_CHECKING:
-    from app.app_config import AppConfig
+    from app.models.config import AppConfig
 from app.telegram.keyboards.user.inline import get_sub_menu
 
 
@@ -15,6 +15,7 @@ class CheckSubMessageMiddleware(BaseMiddleware):
             event: Message,
             data: dict[str, Any],
     ) -> Any:
+        """Проверка подписки пользователя на канал."""
         bot: Bot = data["bot"]
         config: AppConfig = data["config"]
 
@@ -36,6 +37,7 @@ class CheckSubCallbackMiddleware(BaseMiddleware):
             event: CallbackQuery,
             data: dict[str, Any],
     ) -> Any:
+        """Проверка подписки пользователя на канал."""
         bot: Bot = data["bot"]
         config: AppConfig = data["config"]
 

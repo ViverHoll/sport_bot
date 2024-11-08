@@ -12,4 +12,5 @@ async def start_add_sportsman_dialog(
         _: CallbackQuery,
         dialog_manager: DialogManager,
 ) -> None:
+    """Старт диалога добавления спортсмена."""
     await dialog_manager.start(InputSportsman.select_options)

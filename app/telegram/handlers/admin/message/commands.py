@@ -1,5 +1,5 @@
 from aiogram import F, Router
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, or_f
 from aiogram.types import Message
 
 from app.telegram.keyboards.user.reply import get_main_menu
@@ -7,12 +7,14 @@ from app.telegram.keyboards.user.reply import get_main_menu
 commands_router = Router()
 
 
-@commands_router.message(F.text == "Главное меню 🔙")
-@commands_router.message(CommandStart())
+@commands_router.message(
+    or_f(
+        CommandStart(),
+        F.text == "Главное меню 🔙",
+    ),
+)
 async def admin_command_start(message: Message) -> None:
-    await message.answer_sticker(
-        sticker="CAACAgIAAxkBAAIE4ma17FQR0nzHkRV729g6KXi6dPhJAAIgAANZu_wlhYqWmghNyX01BA",
-    )
+    """Старт админской команды."""
     await message.answer(
         "Добро пожаловать",
         reply_markup=get_main_menu(admin=True),

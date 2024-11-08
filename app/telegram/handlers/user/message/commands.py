@@ -17,9 +17,6 @@ async def cmd_start(message: Message, state: FSMContext) -> None:
     )
 
 
-
-
-
 @commands_router.message(Command("privacy"))
 async def cmd_privacy(message: Message) -> None:
     await message.answer("PRIVACY")

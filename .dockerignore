@@ -1,6 +1,7 @@
 # Project
 .idea/
 .github/
+venv/
 .*ignore
 README.md
 

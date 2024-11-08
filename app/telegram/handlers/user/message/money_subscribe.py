@@ -7,7 +7,7 @@ from aiogram.types import (
     InlineKeyboardButton,
 )
 
-from app.callback_factory import SubscribeFactory
+from app.telegram.callback_factory import SubscribeFactory
 
 from app.models.enums.levels_subscribe import (
     NameSubscribe,

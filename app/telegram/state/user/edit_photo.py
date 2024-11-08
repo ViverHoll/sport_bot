@@ -4,13 +4,17 @@ from aiogram.fsm.context import FSMContext
 
 from app.services.db import HolderDAO
 from app.telegram.keyboards.user.inline import get_confirm_edit_photo_menu
-from app.state.states import NewProfilePhoto
+from app.telegram.state.states import NewProfilePhoto
 
 router = Router()
 
 
 @router.callback_query(F.data == "edit_photo_profile")
-async def editing_photo_in_profile(callback: CallbackQuery, state: FSMContext) -> None:
+async def editing_photo_in_profile(
+        callback: CallbackQuery,
+        state: FSMContext,
+) -> None:
+    """Редактирование фото профиля."""
     await callback.message.delete()
     await callback.message.answer(
         "Вы можете изменить фото профиля. "
@@ -25,6 +29,7 @@ async def get_new_photo_user(
         message: Message,
         state: FSMContext,
 ) -> None:
+    """Получение нового фото пользователя."""
     await state.update_data(
         photo_id=message.photo[-1].file_id,
     )
@@ -44,6 +49,7 @@ async def confirm_edit_photo(
         state: FSMContext,
         db: HolderDAO,
 ) -> None:
+    """Подтверждение изменения фото профиля."""
     state_data = await state.get_data()
     await db.users.update_user(
         user_id=callback.from_user.id,
@@ -63,6 +69,7 @@ async def not_confirm_edit_photo(
         callback: CallbackQuery,
         state: FSMContext,
 ) -> None:
+    """Отмена изменения фото профиля."""
     await callback.message.edit_text(
         "Изменение фотографии успешно отменено",
     )
@@ -71,6 +78,7 @@ async def not_confirm_edit_photo(
 
 @router.message(NewProfilePhoto.photo)
 async def empty_handler(message: Message) -> None:
+    """Неправильный ввод."""
     await message.answer(
         "Необходимо отправить фотографию",
     )

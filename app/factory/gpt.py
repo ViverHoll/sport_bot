@@ -29,20 +29,18 @@ class GptClient:
             role: str = "user",
             model: str = "gpt-4o",
             return_text: bool = False,
+            data: list[dict[str, Any]] | None = None,
     ) -> ChatCompletion | str | Any:
         content = (
             f"{question}\n\n"
             f'если это не относится к спортивной тематике отправь '
             f'"Ваше сообщение не относится к спортивной тематике"'
         )
+        messages = data if data else [{"role": role, "content": content}]
+
         response = await self.gpt.chat.completions.create(
-            messages=[
-                {
-                    "role": role,
-                    "content": content,
-                },
-            ],
             model=model,
+            messages=messages,
         )
         if return_text:
             return response.choices[0].message.content

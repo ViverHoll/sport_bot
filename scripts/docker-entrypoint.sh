@@ -2,7 +2,9 @@
 
 set -e
 
-make migrate
-exec make run
+alembic revision --autogenerate -m "init"
+alembic upgrade head
+
+
 
 

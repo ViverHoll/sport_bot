@@ -1,0 +1,16 @@
+[Unit]
+Description=My Python Bot
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/bot_env/
+Restart=on-failure
+ExecStartPre=/bin/mkdir -p /var/run/bot
+PIDFile=/var/run/bot/service.pid
+ExecStart=/root/bot_env/venv/bin/python3 -m app
+
+[Install]
+WantedBy=multi-user.target

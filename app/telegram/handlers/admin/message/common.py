@@ -3,13 +3,14 @@ from aiogram.types import Message
 from aiogram_dialog import DialogManager
 
 from app.services.dialogs.states import InputSportsman
-from app.telegram.keyboards.admin import get_admin_menu
+from app.telegram.keyboards.admin.reply import get_admin_menu
 
 router = Router()
 
 
 @router.message(F.text == "Админ-Панель 🚀")
 async def get_admin_menu_handler(message: Message) -> None:
+    """Старт админской команды."""
     await message.answer(
         "Вы в админке",
         reply_markup=get_admin_menu(),
@@ -18,6 +19,7 @@ async def get_admin_menu_handler(message: Message) -> None:
 
 @router.message(F.text == "Добавить спортсмена ➕")
 async def add_sportsman_handler(_: Message, dialog_manager: DialogManager) -> None:
+    """Старт диалога добавления спортсмена."""
     await dialog_manager.start(
         state=InputSportsman.select_options,
     )
@@ -25,6 +27,7 @@ async def add_sportsman_handler(_: Message, dialog_manager: DialogManager) -> No
 
 @router.message(F.text == "Рассылка ✉️")
 async def mailing_handle(message: Message) -> None:
+    """Рассылка сообщений."""
     await message.answer(
         "Пока нельзя рассылать сообщения",
     )
@@ -32,6 +35,7 @@ async def mailing_handle(message: Message) -> None:
 
 @router.message(F.text == "Премиум 💸")
 async def get_premium_handle(message: Message) -> None:
+    """Выдача премиума для юзера."""
     await message.answer(
         "Пока нельзя ничего делать с премиумом",
     )
@@ -39,6 +43,7 @@ async def get_premium_handle(message: Message) -> None:
 
 @router.message(F.text == "Забанить ❌")
 async def banned_user_handle(message: Message) -> None:
+    """Забанить юзера."""
     await message.answer(
         "Пока нельзя никого банить",
     )
@@ -46,6 +51,7 @@ async def banned_user_handle(message: Message) -> None:
 
 @router.message(F.text == "Кол-во юзеров 👌")
 async def send_count_users(message: Message) -> None:
+    """Отправка кол-ва юзеров."""
     await message.answer(
         "Пока нельзя узнать кол-во юзеров",
     )

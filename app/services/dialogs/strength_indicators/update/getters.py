@@ -57,5 +57,5 @@ async def get_data(
         "old_exercise_info": f"Название: {exercise_info.name}\n"
                              f"Силовые: {exercise_info.core}",
         "new_exercise_info": f"Название: {exercise_info.name}\n"
-                             f"Силовые: {dialog_manager.dialog_data["exercise_core"]}",
+                             f"Силовые: {dialog_manager.dialog_data['exercise_core']}",
     }

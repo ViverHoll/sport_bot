@@ -8,11 +8,11 @@ from . import (
     pay,
     select_sportsman,
     profile,
-    social_network,
-    input_post,
+    # social_network,
+    # input_post,
     premium,
     strength_indicators,
-    delete_post,
+    # delete_post,
 )
 
 
@@ -27,11 +27,11 @@ def setup_all_dialogs() -> Router:
     pay.setup(router)
     input_sportsman.setup(router)
     profile.setup(router)
-    input_post.setup(router)
+    # input_post.setup(router)
     premium.setup(router)
     strength_indicators.setup(router)
 
-    social_network.setup(router)
-    delete_post.setup(router)
+    # social_network.setup(router)
+    # delete_post.setup(router)
 
     return router

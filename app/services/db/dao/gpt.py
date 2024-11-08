@@ -5,7 +5,7 @@ from app.models.sql import GptQueryModel
 from app.models.dataclasses import GptQueryType
 
 
-class LikeDAO:
+class GptDAO:
     repository: Repository[GptQueryModel]
 
     __slots__ = ("repository",)
