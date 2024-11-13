@@ -1,6 +1,7 @@
-def main():
-    pass
+from aiogram import Router
+
+from .dialog import new_sportsman_dialog
 
 
-if __name__ == "__main__":
-    main()
+def setup(router: Router) -> None:
+    router.include_router(new_sportsman_dialog)

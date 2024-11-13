@@ -1,14 +1,17 @@
+from typing import Annotated
+
 from sqlalchemy.orm import Mapped, mapped_column
 
 from .base import BaseModel
 
+StrOrAbsent = Annotated[str, mapped_column(
+    default="Отсутствует",
+    server_default="Отсутствует",
+)]
+
 
 class SportsmanModel(BaseModel):
     __tablename__ = "sportsman"
-
-    sportsmen_id: Mapped[int] = mapped_column(
-        autoincrement=True,
-    )
 
     name: Mapped[str]
     surname: Mapped[str]
@@ -16,8 +19,8 @@ class SportsmanModel(BaseModel):
     description: Mapped[str]
 
     photo: Mapped[str]
-    nickname: Mapped[str | None]
+    nickname: Mapped[StrOrAbsent | None]
 
-    exercises: Mapped[str | None]
-    food: Mapped[str | None]
-    music: Mapped[str | None]
+    exercises: Mapped[StrOrAbsent | None]
+    food: Mapped[StrOrAbsent | None]
+    music: Mapped[StrOrAbsent | None]

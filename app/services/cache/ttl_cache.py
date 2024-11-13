@@ -22,5 +22,5 @@ class Cache(TTLCache):
 
 if __name__ == "__main__":
     c = Cache(10, 1.0)
-    print(c.check_key("53"))
+    # print(c.check_key("53"))
 

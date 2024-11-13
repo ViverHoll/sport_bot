@@ -19,6 +19,7 @@ async def get_all_exercises(
         user_id=user.user_id,
     )
 
+    # print(f"{exercises=}")
     return {
         "exercises": [
             (

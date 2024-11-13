@@ -29,14 +29,14 @@ scroll_sportsman_dialog = Dialog(
             id="stub_scroll",
             pages="pages",
         ),
-        Group(
-            Button(
-                text=Const("⭐️ Добавить в сохраненное"),
-                id="button_adding_sportsman_in_favorites",
-                on_click=save_in_favorite,
-            ),
-            width=1,
-        ),
+        # Group(
+        #     Button(
+        #         text=Const("⭐️ Добавить в сохраненное"),
+        #         id="button_adding_sportsman_in_favorites",
+        #         on_click=save_in_favorite,
+        #     ),
+        #     width=1,
+        # ),
         Row(
             PrevPage(
                 scroll="stub_scroll",

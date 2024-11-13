@@ -24,7 +24,7 @@ async def get_input_name(
     if sportsman:
         await db.users.update_user(
             user_id=user.user_id,
-            current_sportsman=sportsman.sportsmen_id,
+            current_sportsman=sportsman.id,
         )
         await manager.start(OptionsSportsmanStates.options)
     else:
@@ -45,7 +45,7 @@ async def get_input_surname(
     if sportsman:
         await db.users.update_user(
             user_id=user.user_id,
-            current_sportsman=sportsman.sportsmen_id,
+            current_sportsman=sportsman.id,
         )
         await manager.start(OptionsSportsmanStates.options)
     else:

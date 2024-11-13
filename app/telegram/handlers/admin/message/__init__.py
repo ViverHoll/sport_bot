@@ -6,9 +6,9 @@ from .common import router as common_router
 
 message_router = Router()
 
-message_router.message.filter(
-    MagicData(F.user.role == "admin"),
-)
+# message_router.message.filter(
+#     MagicData(F.user.role == "admin"),
+# )
 
 message_router.include_routers(
     commands_router,

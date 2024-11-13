@@ -18,15 +18,36 @@ class SportsmanDAO:
             model=SportsmanModel,
         )
 
-    async def add_sportsman(self, **values) -> None:
-        await self.repository.insert(**values)
+    async def add_sportsman(
+            self,
+            *,
+            name: str,
+            surname: str,
+            description: str,
+            photo: str,
+            nickname: str | None,
+            exercises: str | None,
+            food: str | None,
+            music: str | None,
+    ) -> None:
+        await self.repository.insert(
+            name=name,
+            surname=surname,
+            full_name=f"{name} {surname}",
+            description=description,
+            photo=photo,
+            nickname=nickname,
+            exercises=exercises,
+            food=food,
+            music=music,
+        )
         await self.repository.commit()
 
     async def get_sportsman_by_id(self,
                                   sportsman_id: int,
                                   ) -> Optional[Sportsman]:
         result_obj = await self.repository.get_by_where(
-            SportsmanModel.sportsmen_id == sportsman_id,
+            SportsmanModel.id == sportsman_id,
         )
 
         sportsman = result_obj.all()

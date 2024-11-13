@@ -22,7 +22,7 @@ def get_main_menu(admin: bool = False) -> ReplyKeyboardMarkup:
         # "Соц. сеть 🤩",
         "Купить подписку 💵",
         "О боте",
-        "Сохраненные спортсмены ⭐️",
+        # "Сохраненные спортсмены ⭐️",
     ]
 
     keyboard = ReplyKeyboardBuilder()
@@ -72,4 +72,6 @@ def get_gpt_menu() -> ReplyKeyboardMarkup:
         builder.button(text=text)
 
     builder.adjust(1)
-    return builder.as_markup()
+    return builder.as_markup(
+        resize_keyboard=True,
+    )

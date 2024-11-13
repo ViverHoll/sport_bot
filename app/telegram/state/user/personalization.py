@@ -83,10 +83,12 @@ async def get_manual_by_newbie(
 async def complete_dialog(
         message: Message,
         state: FSMContext,
+        db: Database
 ) -> None:
     """Завершение диалога с чатом гпт."""
     # clear dialog with gpt in database.
     # await state.set_state()
+    await db.gpt.clear_dialog(user_id=message.from_user.id)
     await message.answer(
         "Добро пожаловать",
         reply_markup=get_main_menu(),
@@ -141,7 +143,7 @@ async def get_query_for_gpt(
 
                 },
             ]
-            print(query)
+            # print(query)
         else:
             query = (f"{message.text}\n"
                      f"только общайся как человек")

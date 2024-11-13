@@ -24,7 +24,7 @@ update_strength_indicator_dialog = Dialog(
         Column(
             Select(
                 text=Format("{item[0]}"),
-                id="select_exercise_for_update",
+                id="select_exercise",
                 item_id_getter=operator.itemgetter(1),
                 items="exercises",
                 on_click=get_select_exercise,

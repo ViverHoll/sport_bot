@@ -46,9 +46,11 @@ async def paging_logic(
         ),
     )
 
+    # print(f"{current_sportsman=}")
+
     await db.users.update_user(
         event_context.user_id,
-        current_sportsman=current_sportsman.sportsmen_id,
+        current_sportsman=current_sportsman.id,
     )
 
     return {
@@ -57,7 +59,7 @@ async def paging_logic(
         "sportsman_photo_url": sportsman_photo_url,
         "bio_sportsman": current_sportsman.description,
         "sportsman_full_name": current_sportsman.full_name,
-        **current_sportsman.__dict__,
+        # **current_sportsman.__dict__,
     }
 
 

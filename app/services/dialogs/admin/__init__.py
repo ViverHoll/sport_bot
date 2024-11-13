@@ -1,6 +1,9 @@
-def main():
-    pass
+from aiogram import Router
+
+from . import new_admin, new_sportsman
 
 
-if __name__ == "__main__":
-    main()
+def setup(router: Router) -> None:
+    """Setups all dialogs."""
+    new_admin.setup(router)
+    new_sportsman.setup(router)

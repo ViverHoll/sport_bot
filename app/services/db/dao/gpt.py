@@ -45,5 +45,11 @@ class GptDAO:
             ]
         return None
 
-
-
+    async def clear_dialog(
+            self,
+            user_id: int,
+    ) -> None:
+        await self.repository.delete_by_where(
+            GptQueryModel.user_id == user_id,
+        )
+        await self.repository.commit()

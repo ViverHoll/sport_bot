@@ -11,10 +11,23 @@ from aiogram_dialog.widgets.kbd import (
 
 from app.services.dialogs.states import NewSportsmanDialog
 
+from .handlers import (
+    get_name_sportsman,
+    get_surname_sportsman,
+    get_description_sportsman,
+    get_photo_sportsman,
+    get_nickname_sportsman,
+    get_exercises_sportsman,
+    get_food_sportsman,
+    get_music_sportsman,
+    cancel_add_new_sportsman,
+    success_confirm_add_new_sportsman,
+)
+
 stop_button: Final[Button] = Button(
     text=Const("Прекратить"),
     id="stop_input_sportsman",
-    on_click=...,
+    on_click=cancel_add_new_sportsman,
 )
 
 # skip_button: Final[Button] = Button(
@@ -32,7 +45,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите имя спортсмена:"),
         TextInput(
             id="input_name_new_sportsman",
-            on_success=...,
+            on_success=get_name_sportsman,
         ),
         stop_button,
         state=NewSportsmanDialog.name,
@@ -41,7 +54,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите фамилию:"),
         TextInput(
             id="input_surname_new_sportsman",
-            on_success=...,
+            on_success=get_surname_sportsman,
         ),
         stop_button,
         state=NewSportsmanDialog.surname,
@@ -50,7 +63,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите описание спортсмена:"),
         TextInput(
             id="input_description_new_sportsman",
-            on_success=...,
+            on_success=get_description_sportsman,
         ),
         stop_button,
         state=NewSportsmanDialog.description,
@@ -58,7 +71,7 @@ new_sportsman_dialog = Dialog(
     Window(
         Const("Отправьте фотку спортсмена:"),
         MessageInput(
-            func=...,
+            func=get_photo_sportsman,
             content_types=ContentType.PHOTO,
         ),
         stop_button,
@@ -68,7 +81,7 @@ new_sportsman_dialog = Dialog(
         Const('Введите "прозвище" спортсмена'),
         TextInput(
             id="input_nickname_new_sportsman",
-            on_success=...,
+            on_success=get_nickname_sportsman,
         ),
         Column(
             stop_button,
@@ -80,7 +93,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите программу спортсмена:"),
         TextInput(
             id="input_exercises_new_sportsman",
-            on_success=...,
+            on_success=get_exercises_sportsman,
         ),
         Column(
             stop_button,
@@ -92,7 +105,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите план питания спортсмена:"),
         TextInput(
             id="input_food_new_sportsman",
-            on_success=...,
+            on_success=get_food_sportsman,
         ),
         Column(
             stop_button,
@@ -104,7 +117,7 @@ new_sportsman_dialog = Dialog(
         Const("Введите музыку которую слушает спортсмен:"),
         TextInput(
             id="input_music_new_sportsman",
-            on_success=...,
+            on_success=get_music_sportsman,
         ),
         Column(
             stop_button,
@@ -118,12 +131,12 @@ new_sportsman_dialog = Dialog(
             Button(
                 text=Const("Подтвердить"),
                 id="confirm_sportsman",
-                on_click=...,
+                on_click=success_confirm_add_new_sportsman,
             ),
             Button(
                 text=Const("Отменить"),
                 id="not_confirm_sportsman",
-                on_click=...,
+                on_click=cancel_add_new_sportsman,
             ),
         ),
         state=NewSportsmanDialog.confirm,

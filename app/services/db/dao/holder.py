@@ -5,6 +5,7 @@ from .user import UsersDAO
 from .strength_indicators import StrengthIndicatorDAO
 from .favorite import FavoriteDAO
 from .gpt import GptDAO
+from .admin import AdminDAO
 
 
 class HolderDAO:
@@ -13,6 +14,7 @@ class HolderDAO:
     strength_indicator: StrengthIndicatorDAO
     favorite: FavoriteDAO
     gpt: GptDAO
+    admin: AdminDAO
 
     __slots__ = (
         "users",
@@ -20,6 +22,7 @@ class HolderDAO:
         "strength_indicator",
         "favorite",
         "gpt",
+        "admin",
     )
 
     def __init__(self, *, session: AsyncSession) -> None:
@@ -28,3 +31,4 @@ class HolderDAO:
         self.strength_indicator = StrengthIndicatorDAO(session=session)
         self.favorite = FavoriteDAO(session=session)
         self.gpt = GptDAO(session=session)
+        self.admin = AdminDAO(session=session)

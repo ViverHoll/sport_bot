@@ -24,7 +24,6 @@ class StubScrollSportsman(StatesGroup):
 
 class OptionsSportsmanStates(StatesGroup):
     options = State()
-    options_for_list = State()
     select_options = State()
     exercises = State()
     food = State()
@@ -69,9 +68,19 @@ class Pay(StatesGroup):
 
 
 class InputSportsman(StatesGroup):
-    select_options = State()
-    file = State()
-    text = State()
+    # select_options = State()
+    # file = State()
+    # text = State()
+    name = State()
+    surname = State()
+    description = State()
+
+    photo = State()
+    nickname = State()
+
+    exercises = State()
+    food = State()
+    music = State()
 
 
 class SocialNetwork(StatesGroup):
@@ -144,16 +153,16 @@ class SettingProfileUser(StatesGroup):
 
 
 class NewSportsmanDialog(StatesGroup):
-    name = StatesGroup()
-    surname = StatesGroup()
-    description = StatesGroup()
+    name = State()
+    surname = State()
+    description = State()
 
-    photo = StatesGroup()
-    nickname = StatesGroup()
+    photo = State()
+    nickname = State()
 
-    exercises = StatesGroup()
-    food = StatesGroup()
-    music = StatesGroup()
+    exercises = State()
+    food = State()
+    music = State()
 
     confirm = State()
 
@@ -165,3 +174,9 @@ class DeletePostDialog(StatesGroup):
 
 class FavoriteDialog(StatesGroup):
     scroll = State()
+
+
+class NewAdminDialog(StatesGroup):
+    admin_id = State()
+    name = State()
+    confirm = State()

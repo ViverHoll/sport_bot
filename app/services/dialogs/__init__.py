@@ -12,6 +12,7 @@ from . import (
     # input_post,
     premium,
     strength_indicators,
+    admin,
     # delete_post,
 )
 
@@ -30,6 +31,8 @@ def setup_all_dialogs() -> Router:
     # input_post.setup(router)
     premium.setup(router)
     strength_indicators.setup(router)
+
+    admin.setup(router)
 
     # social_network.setup(router)
     # delete_post.setup(router)

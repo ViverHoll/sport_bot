@@ -7,7 +7,7 @@ from .strength_indicator import StrengthIndicatorType
 from .like import LikeType
 from .favorite import FavoriteType
 from .gpt import GptQueryType
-
+from .admin import Admin
 
 __all__ = [
     "Sportsman",
@@ -19,5 +19,6 @@ __all__ = [
     "LikeType",
     "FavoriteType",
     "GptQueryType",
+    "Admin"
 ]
 

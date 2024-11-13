@@ -2,6 +2,7 @@ import logging
 
 from aiogram import F, Router, Bot
 from aiogram.types import Message
+from aiogram.filters import StateFilter
 from aiogram_dialog import DialogManager, StartMode
 
 from app.services.db import Database
@@ -171,8 +172,11 @@ async def get_info_about_subscribe(
 #     )
 #
 #
-@common_router.message(F.photo)
-async def send_photo_id(message: Message) -> None:
-    await message.answer(
-        f"{message.photo[-1].file_id}",
-    )
+# @common_router.message(
+#     StateFilter(None),
+#     F.photo
+# )
+# async def send_photo_id(message: Message) -> None:
+#     await message.answer(
+#         f"{message.photo[-1].file_id}",
+#     )

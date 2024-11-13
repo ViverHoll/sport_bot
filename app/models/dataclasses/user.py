@@ -5,7 +5,6 @@ from typing import Optional
 
 @dataclass
 class UserType:
-    id: int
     user_id: int
     user_photo: Optional[str]
     username: Optional[str]
@@ -19,3 +18,4 @@ class UserType:
     user_photo: Optional[str]
     notifications: Optional[bool]
     notifications_category: Optional[str]  # this enum
+    id: int

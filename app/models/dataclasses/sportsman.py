@@ -3,8 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Sportsman:
-    id: int
-    sportsmen_id: int
+    # id: int
     name: str
     surname: str
     full_name: str
@@ -14,4 +13,5 @@ class Sportsman:
     exercises: dict
     food: str
     music: str
+    id: int
 

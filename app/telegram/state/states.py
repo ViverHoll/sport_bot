@@ -25,3 +25,9 @@ class GptSteps(StatesGroup):
     newbie = State()
     end_dialog = State()
     options_trainer = State()
+
+
+class NewAdmin(StatesGroup):
+    admin_id = State()
+    name = State()
+    confirm = State()
